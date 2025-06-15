@@ -1,0 +1,411 @@
+/*
+ * assets/css/main.css
+ *
+ * Global styles and section-specific CSS for the So So Def theme.
+ */
+
+:root {
+  /* Color palette */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-accent: #e10600; /* So So Def red accent */
+
+  /* Type scale */
+  --font-base: 1rem;
+  --font-scale-ratio: 1.25;
+  --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-serif: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Reset & base */
+html {
+  box-sizing: border-box;
+  font-size: var(--font-base);
+}
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-black); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4, h5, h6 { margin: 0 0 1rem; font-family: var(--font-family-serif); }
+p { margin: 0 0 1rem; }
+.button, .link { font-weight: 600; cursor: pointer; }
+
+/* Section header common */
+.section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.section__header-heading {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Talent Spotlight Section */
+.talent-spotlight {
+  padding: 4rem 0;
+}
+.talent-spotlight__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+}
+.talent-spotlight__content {
+  background: rgba(255,255,255,0.85);
+  padding: 2rem;
+  z-index: 2;
+}
+.talent-spotlight__heading {
+  font-size: calc(var(--font-base) * var(--font-scale-ratio) * var(--font-scale-ratio));
+  margin-top: 0.5rem;
+}
+.talent-spotlight__side-block-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.side-block--statistic .side-block__number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.side-block--statistic .side-block__eyebrow {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.side-block--statistic .side-block__secondary-text,
+.side-block--statistic .side-block__tertiary-text {
+  font-size: 0.875rem;
+}
+
+/* Background image layering */
+.talent-spotlight__background-image {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 50%;
+  overflow: hidden;
+}
+.talent-spotlight__background-image .media-container__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .talent-spotlight__main {
+    grid-template-columns: 1fr;
+  }
+  .talent-spotlight__background-image {
+    left: 0;
+    height: 200px;
+  }
+  .talent-spotlight__content {
+    margin-top: 200px;
+  }
+}
+
+
+/* ——— Sticky Header ——— */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+.site-logo img {
+  height: 40px;
+}
+
+.site-navigation ul {
+  display: flex;
+  list-style: none;
+}
+
+.site-navigation li + li {
+  margin-left: 2rem;
+}
+
+.site-navigation a {
+  color: var(--color-white);
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+
+/* ——— Home Hero ——— */
+.home-hero {
+  background: url('../images/GENERAL-scaled.jpg') center/cover no-repeat;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.home-hero h1 {
+  font-family: var(--font-family-serif);
+  font-size: calc(var(--font-base) * var(--font-scale-ratio) * var(--font-scale-ratio));
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.home-hero p {
+  font-family: var(--font-family-sans);
+  font-size: calc(var(--font-base) * var(--font-scale-ratio));
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+.home-hero .button {
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* ——— Features Grid ——— */
+.home-features {
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.feature-item h3 {
+  font-family: var(--font-family-sans);
+  margin-bottom: 1rem;
+  font-size: calc(var(--font-base) * var(--font-scale-ratio));
+  color: var(--color-white);
+}
+
+/* Header scroll effect */
+.site-header {
+  background: rgba(0, 0, 0, 0.85);    /* default dark */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.site-header .site-logo a,
+.site-header .site-navigation a {
+  transition: color 0.3s;
+}
+
+/* scrolled state */
+.site-header.is-scrolled {
+  background: var(--color-white);     /* switch to white */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-header.is-scrolled .site-logo a,
+.site-header.is-scrolled .site-navigation a {
+  color: var(--color-black) !important;  /* switch links to dark */
+}
+
+.site-header.is-scrolled .site-navigation .current-menu-item > a {
+  color: var(--color-accent) !important; /* keep accent on current item */
+}
+/* ——— Primary Menu Hover & Active States ——— */
+.site-navigation a:hover {
+  color: var(--color-accent);
+}
+
+.site-navigation .current-menu-item > a,
+.site-navigation .current_page_item > a {
+  color: var(--color-accent);
+}
+/* ——— Swiper Arrow Styling ——— */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 50%;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 10; /* sit above slides */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Position overrides (if needed) */
+.swiper-button-prev { left: 1rem; }
+.swiper-button-next { right: 1rem; }
+
+/* ——— Pagination Bullet Styling ——— */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 1px solid var(--color-white);
+  opacity: 1;
+  margin: 0 6px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ——— Responsive Slider Height ——— */
+.hero.swiper-container {
+  height: 80vh; /* desktop */
+}
+
+@media (max-width: 768px) {
+  .hero.swiper-container {
+    height: 60vh; /* mobile */
+  }
+}
+/* ——— Latest Grid: Card Hover & Reveal ——— */
+.latest-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f8f5f0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card__image {
+  overflow: hidden;
+}
+.card__image img {
+  transition: transform 0.5s ease;
+}
+
+.card__inner {
+  padding: 1rem;
+  transition: color 0.3s ease, transform 0.4s ease;
+}
+
+.card__heading {
+  margin: 0;
+  font-family: var(--font-family-serif);
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+}
+
+/* Hover effects */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card:hover .card__image img {
+  transform: scale(1.1);
+}
+
+.card:hover .card__heading {
+  color: var(--color-accent);
+}
+
+/* Section header link underline slide */
+.section__header-link .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.link__icon {
+  transition: transform 0.3s ease;
+}
+.section__header-link .link:hover .link__icon {
+  transform: translateX(4px);
+}
+
+/* AOS: ensure cards start hidden */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+/* ——— Latest Grid: Make the “Song of the Week” embed span 2 cols on desktop ——— */
+.latest-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* On screens ≥768px, span the embed item across 2 columns */
+@media (min-width: 768px) {
+  .latest-grid__embed {
+    grid-column: span 2;
+  }
+}
+/* ——— Latest Grid: Spotify embed styling ——— */
+.latest-grid__embed .audio-player {
+  background-color: var(--color-accent);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* remove any white flash behind the iframe */
+.latest-grid__embed .audio-player iframe {
+  background: transparent;
+  border-radius: 4px; /* match inner corners if you like */
+}
+
+/* ensure the embed still spans two columns on desktop */
+@media (min-width: 768px) {
+  .latest-grid__embed {
+    grid-column: span 2;
+  }
+}
+

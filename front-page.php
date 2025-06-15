@@ -35,19 +35,19 @@ get_header();
   </section>
 
   <!-- About Card Grid Section -->
-  <?php get_template_part( 'template-parts/section', 'card-grid' ); ?>
+  <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>
 
   <!-- The Latest Section -->
-  <?php get_template_part( 'template-parts/section', 'latest-grid' ); ?>
+  <?php get_template_part( 'template-parts/sections/section', 'latest-grid' ); ?>
 
   <!-- Announcements Section -->
-  <?php get_template_part( 'template-parts/section', 'announcements' ); ?>
+  <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
 
   <!-- Philanthropy Section -->
-  <?php // get_template_part( 'template-parts/section', 'philanthropy' ); ?>
+  <?php get_template_part( 'template-parts/sections/section', 'philanthropy' ); ?>
 
   <!-- Talent Spotlight Section -->
-  <?php get_template_part( 'template-parts/section', 'talent-spotlight' ); ?>
+  <?php get_template_part( 'template-parts/sections/section', 'talent-spotlight' ); ?>
 
 </main>
 

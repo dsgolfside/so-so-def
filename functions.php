@@ -1,184 +1,467 @@
 <?php
 /**
- * _s functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package _s
+ * Enqueue theme assets and initialize AOS, Swiper & AWS IVS Player
  */
+function ssd_enqueue_assets() {
+    // Front-end styles & scripts
+    wp_enqueue_style( 'ssd-style',    get_stylesheet_uri() );
+    wp_enqueue_style( 'ssd-main-css', get_template_directory_uri() . '/assets/css/main.css', [], '1.0' );
+    wp_enqueue_script( 'ssd-scripts', get_template_directory_uri() . '/assets/js/scripts.js', [ 'jquery' ], '1.0', true );
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+    // AOS animation library
+    wp_enqueue_script( 'aos',     'https://unpkg.com/aos@2.3.1/dist/aos.js', [], null, true );
+    wp_enqueue_style(  'aos-css','https://unpkg.com/aos@2.3.1/dist/aos.css' );
+
+    // Swiper slider
+    wp_enqueue_style(  'swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css', [], null );
+    wp_enqueue_script( 'swiper-js',  'https://unpkg.com/swiper/swiper-bundle.min.js', [], null, true );
+
+    // AWS IVS player SDK
+    wp_enqueue_script(
+        'ivs-player',
+        'https://player.live-video.net/1.18.0/amazon-ivs-player.min.js',
+        [],
+        null,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'ssd_enqueue_assets' );
+
+/**
+ * Theme setup: title tag, thumbnails, and menu
+ */
+function ssd_theme_setup() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    register_nav_menu( 'primary', __( 'Primary Menu', 'so-so-def' ) );
+}
+add_action( 'after_setup_theme', 'ssd_theme_setup' );
+
+/**
+ * Register the “Homepage Slides” meta box on Pages
+ */
+function ssd_add_homepage_slides_metabox() {
+    add_meta_box(
+        'ssd-homepage-slides',
+        __( 'Homepage Slides', 'so-so-def' ),
+        'ssd_homepage_slides_metabox_callback',
+        'page',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'ssd_add_homepage_slides_metabox' );
+
+/**
+ * Render the meta box fields (3 slides)
+ */
+function ssd_homepage_slides_metabox_callback( $post ) {
+    wp_nonce_field( 'ssd_homepage_slides_nonce', 'ssd_homepage_slides_nonce_field' );
+
+    for ( $i = 1; $i <= 3; $i++ ) {
+        $img     = get_post_meta( $post->ID, "ssd_slide{$i}_image_url", true );
+        $heading = get_post_meta( $post->ID, "ssd_slide{$i}_heading",   true );
+        $link    = get_post_meta( $post->ID, "ssd_slide{$i}_link",      true );
+        ?>
+        <h4><?php printf( __( 'Slide %d', 'so-so-def' ), $i ); ?></h4>
+        <p>
+          <label>
+            <?php _e( 'Background Image URL', 'so-so-def' ); ?><br>
+            <input type="text"
+                   id="ssd_slide<?php echo $i; ?>_image_url"
+                   name="ssd_slide<?php echo $i; ?>_image_url"
+                   value="<?php echo esc_attr( $img ); ?>"
+                   style="width:80%;" />
+            <button class="button upload_slide_image"
+                    data-target="ssd_slide<?php echo $i; ?>_image_url">
+              <?php _e( 'Upload', 'so-so-def' ); ?>
+            </button>
+          </label>
+        </p>
+        <p>
+          <label>
+            <?php _e( 'Heading', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_slide<?php echo $i; ?>_heading"
+                   value="<?php echo esc_attr( $heading ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <?php _e( 'Link URL (optional)', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_slide<?php echo $i; ?>_link"
+                   value="<?php echo esc_attr( $link ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <hr>
+        <?php
+    }
 }
 
 /**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Save the meta box data for Homepage Slides
  */
-function _s_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on _s, use a find and replace
-		* to change '_s' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+function ssd_save_homepage_slides_meta( $post_id ) {
+    if ( ! isset( $_POST['ssd_homepage_slides_nonce_field'] ) ||
+         ! wp_verify_nonce( $_POST['ssd_homepage_slides_nonce_field'], 'ssd_homepage_slides_nonce' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( get_post_type( $post_id ) !== 'page' ) return;
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-	add_theme_support( 'title-tag' );
-
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', '_s' ),
-		)
-	);
-
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'_s_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+    for ( $i = 1; $i <= 3; $i++ ) {
+        if ( isset( $_POST["ssd_slide{$i}_image_url"] ) ) {
+            update_post_meta( $post_id,
+                "ssd_slide{$i}_image_url",
+                esc_url_raw( $_POST["ssd_slide{$i}_image_url"] )
+            );
+        }
+        if ( isset( $_POST["ssd_slide{$i}_heading"] ) ) {
+            update_post_meta( $post_id,
+                "ssd_slide{$i}_heading",
+                sanitize_text_field( $_POST["ssd_slide{$i}_heading"] )
+            );
+        }
+        if ( isset( $_POST["ssd_slide{$i}_link"] ) ) {
+            update_post_meta( $post_id,
+                "ssd_slide{$i}_link",
+                esc_url_raw( $_POST["ssd_slide{$i}_link"] )
+            );
+        }
+    }
 }
-add_action( 'after_setup_theme', '_s_setup' );
+add_action( 'save_post', 'ssd_save_homepage_slides_meta' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
+ * Register a “Card Grid” meta box on Pages
  */
-function _s_content_width() {
-	$GLOBALS['content_width'] = apply_filters( '_s_content_width', 640 );
+function ssd_add_card_grid_metabox() {
+    add_meta_box(
+        'ssd-card-grid',
+        __( 'Card Grid Items', 'so-so-def' ),
+        'ssd_card_grid_metabox_callback',
+        'page',
+        'normal',
+        'high'
+    );
 }
-add_action( 'after_setup_theme', '_s_content_width', 0 );
+add_action( 'add_meta_boxes', 'ssd_add_card_grid_metabox' );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * Render the Card Grid meta box (3 cards)
  */
-function _s_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', '_s' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', '_s' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', '_s_widgets_init' );
+function ssd_card_grid_metabox_callback( $post ) {
+    wp_nonce_field( 'ssd_card_grid_nonce', 'ssd_card_grid_nonce_field' );
 
-/**
- * Enqueue scripts and styles.
- */
-function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( '_s-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+    for ( $i = 1; $i <= 3; $i++ ) {
+        $title    = get_post_meta( $post->ID, "ssd_card{$i}_title",    true );
+        $subtext  = get_post_meta( $post->ID, "ssd_card{$i}_subtext",  true );
+        $img      = get_post_meta( $post->ID, "ssd_card{$i}_image",    true );
+        $link     = get_post_meta( $post->ID, "ssd_card{$i}_link_url", true );
+        ?>
+        <h4><?php printf( __( 'Card %d', 'so-so-def' ), $i ); ?></h4>
+        <p>
+          <label>
+            <?php _e( 'Title', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_card<?php echo $i; ?>_title"
+                   value="<?php echo esc_attr( $title ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <?php _e( 'Subtext', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_card<?php echo $i; ?>_subtext"
+                   value="<?php echo esc_attr( $subtext ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <?php _e( 'Image URL', 'so-so-def' ); ?><br>
+            <input type="text"
+                   id="ssd_card<?php echo $i; ?>_image"
+                   name="ssd_card<?php echo $i; ?>_image"
+                   value="<?php echo esc_attr( $img ); ?>"
+                   style="width:80%;" />
+            <button class="button upload_slide_image" data-target="ssd_card<?php echo $i; ?>_image">
+              <?php _e( 'Upload', 'so-so-def' ); ?>
+            </button>
+          </label>
+        </p>
+        <p>
+          <label>
+            <?php _e( 'Link URL', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_card<?php echo $i; ?>_link_url"
+                   value="<?php echo esc_attr( $link ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <hr>
+        <?php
+    }
 }
 
 /**
- * Load WooCommerce compatibility file.
+ * Save the Card Grid meta data
  */
-if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce.php';
+function ssd_save_card_grid_meta( $post_id ) {
+    if ( ! isset( $_POST['ssd_card_grid_nonce_field'] ) ||
+         ! wp_verify_nonce( $_POST['ssd_card_grid_nonce_field'], 'ssd_card_grid_nonce' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( get_post_type( $post_id ) !== 'page' ) return;
+
+    for ( $i = 1; $i <= 3; $i++ ) {
+        update_post_meta( $post_id,
+            "ssd_card{$i}_title",
+            sanitize_text_field( $_POST["ssd_card{$i}_title"] ?? '' )
+        );
+        update_post_meta( $post_id,
+            "ssd_card{$i}_subtext",
+            sanitize_text_field( $_POST["ssd_card{$i}_subtext"] ?? '' )
+        );
+        update_post_meta( $post_id,
+            "ssd_card{$i}_image",
+            esc_url_raw( $_POST["ssd_card{$i}_image"] ?? '' )
+        );
+        update_post_meta( $post_id,
+            "ssd_card{$i}_link_url",
+            esc_url_raw( $_POST["ssd_card{$i}_link_url"] ?? '' )
+        );
+    }
 }
+add_action( 'save_post', 'ssd_save_card_grid_meta' );
+
+/**
+ * Register “Latest Section” meta box on Pages
+ */
+function ssd_add_latest_section_metabox() {
+    add_meta_box(
+        'ssd-latest-section',
+        __( 'Latest Section', 'so-so-def' ),
+        'ssd_latest_section_metabox_callback',
+        'page',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'ssd_add_latest_section_metabox' );
+
+/**
+ * Render the Latest Section meta box
+ */
+function ssd_latest_section_metabox_callback( $post ) {
+    wp_nonce_field( 'ssd_latest_section_nonce', 'ssd_latest_section_nonce_field' );
+
+    // Two cards
+    for ( $i = 1; $i <= 2; $i++ ) {
+        $title = get_post_meta( $post->ID, "ssd_latest_card{$i}_title", true );
+        $img   = get_post_meta( $post->ID, "ssd_latest_card{$i}_image", true );
+        $link  = get_post_meta( $post->ID, "ssd_latest_card{$i}_link", true );
+        ?>
+        <h4><?php printf( __( 'Card %d', 'so-so-def' ), $i ); ?></h4>
+        <p>
+          <label><?php _e( 'Title', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_latest_card<?php echo $i; ?>_title"
+                   value="<?php echo esc_attr( $title ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <p>
+          <label><?php _e( 'Image URL', 'so-so-def' ); ?><br>
+            <input type="text"
+                   id="ssd_latest_card<?php echo $i; ?>_image"
+                   name="ssd_latest_card<?php echo $i; ?>_image"
+                   value="<?php echo esc_attr( $img ); ?>"
+                   style="width:80%;" />
+            <button class="button upload_slide_image"
+                    data-target="ssd_latest_card<?php echo $i; ?>_image">
+              <?php _e( 'Upload', 'so-so-def' ); ?>
+            </button>
+          </label>
+        </p>
+        <p>
+          <label><?php _e( 'Link URL', 'so-so-def' ); ?><br>
+            <input type="text"
+                   name="ssd_latest_card<?php echo $i; ?>_link"
+                   value="<?php echo esc_attr( $link ); ?>"
+                   style="width:100%;" />
+          </label>
+        </p>
+        <hr>
+        <?php
+    }
+
+    // Song embed
+    $embed = get_post_meta( $post->ID, 'ssd_latest_song_embed', true );
+    ?>
+    <h4><?php _e( 'Song of the Week Embed', 'so-so-def' ); ?></h4>
+    <p>
+      <textarea name="ssd_latest_song_embed"
+                style="width:100%;height:100px;"><?php echo esc_textarea( $embed ); ?></textarea><br>
+      <small><?php _e( 'Paste your Spotify or Apple Music embed HTML here', 'so-so-def' ); ?></small>
+    </p>
+    <hr>
+    <?php
+
+    // Featured Event
+    $ev_heading = get_post_meta( $post->ID, 'ssd_latest_event_heading', true );
+    $ev_link    = get_post_meta( $post->ID, 'ssd_latest_event_link',    true );
+    $ev_img     = get_post_meta( $post->ID, 'ssd_latest_event_image',   true );
+    ?>
+    <h4><?php _e( 'Featured Event', 'so-so-def' ); ?></h4>
+    <p>
+      <label><?php _e( 'Heading', 'so-so-def' ); ?><br>
+        <input type="text"
+               name="ssd_latest_event_heading"
+               value="<?php echo esc_attr( $ev_heading ); ?>"
+               style="width:100%;" />
+      </label>
+    </p>
+    <p>
+      <label><?php _e( 'Link URL', 'so-so-def' ); ?><br>
+        <input type="text"
+               name="ssd_latest_event_link"
+               value="<?php echo esc_attr( $ev_link ); ?>"
+               style="width:100%;" />
+      </label>
+    </p>
+    <p>
+      <label><?php _e( 'Background Image URL', 'so-so-def' ); ?><br>
+        <input type="text"
+               id="ssd_latest_event_image"
+               name="ssd_latest_event_image"
+               value="<?php echo esc_attr( $ev_img ); ?>"
+               style="width:80%;" />
+        <button class="button upload_slide_image"
+                data-target="ssd_latest_event_image">
+          <?php _e( 'Upload', 'so-so-def' ); ?>
+        </button>
+      </label>
+    </p>
+    <hr>
+    <?php
+
+    // Featured Post Teaser
+    $t_img     = get_post_meta( $post->ID, 'ssd_latest_teaser_image',   true );
+    $t_head    = get_post_meta( $post->ID, 'ssd_latest_teaser_heading', true );
+    $t_link    = get_post_meta( $post->ID, 'ssd_latest_teaser_link',    true );
+    ?>
+    <h4><?php _e( 'Featured Post Teaser', 'so-so-def' ); ?></h4>
+    <p>
+      <label><?php _e( 'Image URL', 'so-so-def' ); ?><br>
+        <input type="text"
+               id="ssd_latest_teaser_image"
+               name="ssd_latest_teaser_image"
+               value="<?php echo esc_attr( $t_img ); ?>"
+               style="width:80%;" />
+        <button class="button upload_slide_image"
+                data-target="ssd_latest_teaser_image">
+          <?php _e( 'Upload', 'so-so-def' ); ?>
+        </button>
+      </label>
+    </p>
+    <p>
+      <label><?php _e( 'Heading', 'so-so-def' ); ?><br>
+        <input type="text"
+               name="ssd_latest_teaser_heading"
+               value="<?php echo esc_attr( $t_head ); ?>"
+               style="width:100%;" />
+      </label>
+    </p>
+    <p>
+      <label><?php _e( 'Link URL', 'so-so-def' ); ?><br>
+        <input type="text"
+               name="ssd_latest_teaser_link"
+               value="<?php echo esc_attr( $t_link ); ?>"
+               style="width:100%;" />
+      </label>
+    </p>
+    <hr>
+    <?php
+
+    // Social feed embed
+    $social = get_post_meta( $post->ID, 'ssd_latest_social_embed', true );
+    ?>
+    <h4><?php _e( 'Social Feed Embed (optional)', 'so-so-def' ); ?></h4>
+    <p>
+      <textarea name="ssd_latest_social_embed"
+                style="width:100%;height:100px;"><?php echo esc_textarea( $social ); ?></textarea><br>
+      <small><?php _e( 'Paste your social widget code here', 'so-so-def' ); ?></small>
+    </p>
+    <?php
+}
+
+/**
+ * Save Latest Section data
+ */
+function ssd_save_latest_section_meta( $post_id ) {
+    if ( ! isset( $_POST['ssd_latest_section_nonce_field'] ) ||
+         ! wp_verify_nonce( $_POST['ssd_latest_section_nonce_field'], 'ssd_latest_section_nonce' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( get_post_type( $post_id ) !== 'page' ) return;
+
+    // Two cards
+    for ( $i = 1; $i <= 2; $i++ ) {
+        update_post_meta( $post_id, "ssd_latest_card{$i}_title",
+            sanitize_text_field( $_POST["ssd_latest_card{$i}_title"] ?? '' ) );
+        update_post_meta( $post_id, "ssd_latest_card{$i}_image",
+            esc_url_raw( $_POST["ssd_latest_card{$i}_image"] ?? '' ) );
+        update_post_meta( $post_id, "ssd_latest_card{$i}_link",
+            esc_url_raw( $_POST["ssd_latest_card{$i}_link"] ?? '' ) );
+    }
+
+    // Song embed
+    update_post_meta( $post_id, 'ssd_latest_song_embed',
+        wp_kses_post( $_POST['ssd_latest_song_embed'] ?? '' ) );
+
+    // Featured Event
+    update_post_meta( $post_id, 'ssd_latest_event_heading',
+        sanitize_text_field( $_POST['ssd_latest_event_heading'] ?? '' ) );
+    update_post_meta( $post_id, 'ssd_latest_event_link',
+        esc_url_raw( $_POST['ssd_latest_event_link'] ?? '' ) );
+    update_post_meta( $post_id, 'ssd_latest_event_image',
+        esc_url_raw( $_POST['ssd_latest_event_image'] ?? '' ) );
+
+    // Featured Post Teaser
+    update_post_meta( $post_id, 'ssd_latest_teaser_image',
+        esc_url_raw( $_POST['ssd_latest_teaser_image'] ?? '' ) );
+    update_post_meta( $post_id, 'ssd_latest_teaser_heading',
+        sanitize_text_field( $_POST['ssd_latest_teaser_heading'] ?? '' ) );
+    update_post_meta( $post_id, 'ssd_latest_teaser_link',
+        esc_url_raw( $_POST['ssd_latest_teaser_link'] ?? '' ) );
+
+    // Social embed
+    update_post_meta( $post_id, 'ssd_latest_social_embed',
+        wp_kses_post( $_POST['ssd_latest_social_embed'] ?? '' ) );
+}
+add_action( 'save_post', 'ssd_save_latest_section_meta' );
+
+/**
+ * Enqueue the media uploader and admin script for image upload buttons
+ */
+function ssd_enqueue_admin_media_scripts( $hook ) {
+    if ( $hook !== 'post.php' && $hook !== 'post-new.php' ) {
+        return;
+    }
+    wp_enqueue_media();
+    wp_enqueue_script(
+        'ssd-admin-js',
+        get_template_directory_uri() . '/assets/js/admin.js',
+        [ 'jquery' ],
+        '1.0',
+        true
+    );
+}
+add_action( 'admin_enqueue_scripts', 'ssd_enqueue_admin_media_scripts' );

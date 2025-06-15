@@ -3,18 +3,47 @@
  * Enqueue theme assets and initialize AOS, Swiper & AWS IVS Player
  */
 function ssd_enqueue_assets() {
-    // Front-end styles & scripts
-    wp_enqueue_style( 'ssd-style',    get_stylesheet_uri() );
-    wp_enqueue_style( 'ssd-main-css', get_template_directory_uri() . '/assets/css/main.css', [], '1.0' );
-    wp_enqueue_script( 'ssd-scripts', get_template_directory_uri() . '/assets/js/scripts.js', [ 'jquery' ], '1.0', true );
+    // Base Underscores style.css (reset + base styles)
+    wp_enqueue_style(
+        'so-so-def-style',
+        get_stylesheet_uri()
+    );
+
+    // Main CSS (grid, typography, colors)
+    wp_enqueue_style(
+        'so-so-def-main',
+        get_template_directory_uri() . '/assets/css/main.css',
+        ['so-so-def-style'],
+        filemtime( get_template_directory() . '/assets/css/main.css' )
+    );
 
     // AOS animation library
-    wp_enqueue_script( 'aos',     'https://unpkg.com/aos@2.3.1/dist/aos.js', [], null, true );
-    wp_enqueue_style(  'aos-css','https://unpkg.com/aos@2.3.1/dist/aos.css' );
+    wp_enqueue_script(
+        'aos',
+        'https://unpkg.com/aos@2.3.1/dist/aos.js',
+        [],
+        null,
+        true
+    );
+    wp_enqueue_style(
+        'aos-css',
+        'https://unpkg.com/aos@2.3.1/dist/aos.css'
+    );
 
     // Swiper slider
-    wp_enqueue_style(  'swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css', [], null );
-    wp_enqueue_script( 'swiper-js',  'https://unpkg.com/swiper/swiper-bundle.min.js', [], null, true );
+    wp_enqueue_style(
+        'swiper-css',
+        'https://unpkg.com/swiper/swiper-bundle.min.css',
+        [],
+        null
+    );
+    wp_enqueue_script(
+        'swiper-js',
+        'https://unpkg.com/swiper/swiper-bundle.min.js',
+        [],
+        null,
+        true
+    );
 
     // AWS IVS player SDK
     wp_enqueue_script(
@@ -24,8 +53,18 @@ function ssd_enqueue_assets() {
         null,
         true
     );
+
+    // Front-end JS
+    wp_enqueue_script(
+        'so-so-def-scripts',
+        get_template_directory_uri() . '/assets/js/scripts.js',
+        ['jquery'],
+        filemtime( get_template_directory() . '/assets/js/scripts.js' ),
+        true
+    );
 }
 add_action( 'wp_enqueue_scripts', 'ssd_enqueue_assets' );
+
 
 /**
  * Theme setup: title tag, thumbnails, and menu

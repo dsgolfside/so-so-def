@@ -716,6 +716,26 @@ p { margin: 0 0 1rem; }
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Force complete fill - override any WordPress image sizing */
+.latest-grid__item img,
+.latest-grid__item .wp-post-image,
+.latest-grid__item .attachment-large {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  display: block !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
 }
 
 .card__image::before {
@@ -739,13 +759,15 @@ p { margin: 0 0 1rem; }
 .card__image img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover !important;
+  object-position: center !important;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
   display: block;
+  min-width: 100% !important;
+  min-height: 100% !important;
 }
 
 .card__inner {

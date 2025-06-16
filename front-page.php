@@ -7,7 +7,8 @@ get_header();
 
 <main id="content">
 
-  <!-- Hero Slider (IVS via shortcode) -->
+  <!-- Hero Slider (IVS via shortcode) - TEMPORARILY DISABLED FOR DEBUGGING -->
+  <?php /*
   <section class="hero home-slider swiper-container" data-aos="fade">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
@@ -33,6 +34,12 @@ get_header();
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
+  </section>
+  */ ?>
+  
+  <!-- Temporary placeholder for debugging -->
+  <section style="height: 200px; background: #333; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+    VIDEO PLAYER DISABLED FOR DEBUGGING
   </section>
 
   <!-- About Card Grid Section -->

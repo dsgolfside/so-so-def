@@ -25,6 +25,35 @@ jQuery(document).ready(function($){
     },
   });
 
+  // Initialize Products Carousel Swiper
+  const productsSwiper = new Swiper('.products-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    pagination: {
+      el: '.products-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.products-next',
+      prevEl: '.products-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+    },
+  });
+
   // Toggle header color on scroll - works on all devices
   const header = document.querySelector('.site-header');
   if (header) {

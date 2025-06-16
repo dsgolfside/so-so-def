@@ -46,11 +46,11 @@ get_header();
   <!-- Announcements Section - FIXED (Removed Swiper conflict) -->
   <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
 
+  <!-- Products Carousel Section -->
+  <?php get_template_part( 'template-parts/sections/section', 'products-carousel' ); ?>
+
   <!-- DISABLED SECTIONS -->
   <?php /*
-  <!-- Philanthropy Section -->
-  <?php get_template_part( 'template-parts/sections/section', 'philanthropy' ); ?>
-
   <!-- Talent Spotlight Section -->
   <?php get_template_part( 'template-parts/sections/section', 'talent-spotlight' ); ?>
   */ ?>

@@ -28,17 +28,11 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 
   <div class="section__main--full-bleed-small">
     <?php
-    // Query featured products
+    // Query products using simple WooCommerce query
     $products = new WP_Query([
       'post_type'      => 'product',
-      'posts_per_page' => 9, // Show more products for carousel pagination
-      'meta_query'     => [
-        [
-          'key'     => '_visibility',
-          'value'   => 'visible',
-          'compare' => '='
-        ]
-      ]
+      'post_status'    => 'publish',
+      'posts_per_page' => 9
     ]);
 
     if ( $products->have_posts() ) :
@@ -48,6 +42,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
           <?php while ( $products->have_posts() ) : $products->the_post(); ?>
             <?php 
             global $product;
+            $product = wc_get_product( get_the_ID() );
             if ( ! $product ) continue;
             ?>
             <div class="swiper-slide">

@@ -25,19 +25,27 @@ jQuery(document).ready(function($){
     },
   });
 
-  // Toggle header color on scroll
+  // Toggle header color on scroll - works on all devices
   const header = document.querySelector('.site-header');
-  $(window).on('scroll', function() {
-    header.classList.toggle('is-scrolled', window.scrollY > 50);
-  });
+  if (header) {
+    $(window).on('scroll', function() {
+      const scrolled = window.scrollY > 30;
+      header.classList.toggle('is-scrolled', scrolled);
+    });
+  }
 
   // Mobile menu toggle functionality
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
   const mobileOverlay = document.querySelector('.mobile-nav-overlay');
   const body = document.body;
 
+  console.log('Mobile toggle:', mobileToggle);
+  console.log('Mobile overlay:', mobileOverlay);
+
   if (mobileToggle && mobileOverlay) {
-    mobileToggle.addEventListener('click', function() {
+    mobileToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('Mobile menu clicked');
       mobileToggle.classList.toggle('active');
       mobileOverlay.classList.toggle('active');
       body.classList.toggle('mobile-menu-open');

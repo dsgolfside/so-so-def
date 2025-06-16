@@ -708,6 +708,16 @@ p { margin: 0 0 1rem; }
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+/* Ensure media-container classes don't add spacing */
+.card__image .media-container,
+.card__image .media-container__media {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
 .card__image::before {
   content: '';
   position: absolute;
@@ -727,11 +737,15 @@ p { margin: 0 0 1rem; }
 }
 
 .card__image img {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
   object-position: center;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  display: block;
 }
 
 .card__inner {

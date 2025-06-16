@@ -80,7 +80,19 @@ function ssd_theme_setup() {
     ) );
     register_nav_menu( 'primary', __( 'Primary Menu', 'so-so-def' ) );
 }
+
+/**
+ * Hide WordPress admin bar on frontend
+ */
+function ssd_hide_admin_bar() {
+    if ( ! current_user_can( 'administrator' ) ) {
+        show_admin_bar( false );
+    }
+    // Hide for everyone on frontend to see full header design
+    show_admin_bar( false );
+}
 add_action( 'after_setup_theme', 'ssd_theme_setup' );
+add_action( 'after_setup_theme', 'ssd_hide_admin_bar' );
 
 /**
  * Register the “Homepage Slides” meta box on Pages

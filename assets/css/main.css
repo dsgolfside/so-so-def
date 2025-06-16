@@ -148,13 +148,22 @@ p { margin: 0 0 1rem; }
 /* ——— Sticky Header ——— */
 .site-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0; 
+  left: 0; 
+  right: 0;
   background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  padding: 0;
+}
+
+.site-header__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 1rem 2rem;
-  z-index: 1000;
 }
 
 /* Site logo styling */
@@ -181,6 +190,9 @@ p { margin: 0 0 1rem; }
 /* Desktop Navigation */
 .desktop-nav {
   display: none;
+  flex: 1;
+  justify-content: center;
+  margin-left: 3rem;
 }
 
 .desktop-nav ul {
@@ -188,21 +200,24 @@ p { margin: 0 0 1rem; }
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  gap: 3rem;
 }
 
-.desktop-nav li + li {
-  margin-left: 2rem;
+.desktop-nav li {
+  position: relative;
 }
 
 .desktop-nav a {
   color: var(--color-white);
   font-family: var(--font-family-sans);
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   font-size: 0.875rem;
   text-decoration: none;
   padding: 0.5rem 0;
   transition: color 0.3s;
+  letter-spacing: 0.5px;
 }
 
 .desktop-nav a:hover {
@@ -290,7 +305,7 @@ p { margin: 0 0 1rem; }
 /* Desktop styles */
 @media (min-width: 769px) {
   .desktop-nav {
-    display: block;
+    display: flex;
   }
   
   .mobile-menu-toggle {

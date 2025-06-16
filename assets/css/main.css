@@ -874,6 +874,9 @@ p { margin: 0 0 1rem; }
 
 .product-card__action {
   margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-card__action .button {
@@ -890,7 +893,9 @@ p { margin: 0 0 1rem; }
   transition: background-color 0.3s ease;
   width: 100%;
   text-align: center;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
 }
 

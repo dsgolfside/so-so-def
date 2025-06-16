@@ -13,8 +13,8 @@
   /* Type scale */
   --font-base: 1rem;
   --font-scale-ratio: 1.25;
-  --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-family-serif: Georgia, "Times New Roman", Times, serif;
+  --font-family-sans: "quasimoda", sans-serif;
+  --font-family-serif: "interstate", sans-serif;
 }
 
 /* Reset & base */
@@ -26,6 +26,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-family-sans);
+  font-weight: 500;
   line-height: 1.6;
   color: var(--color-black);
   background-color: var(--color-white);
@@ -38,6 +39,12 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--color-black); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3, h4, h5, h6 { margin: 0 0 1rem; font-family: var(--font-family-serif); }
+h1 { font-weight: 700; }
+h2 { font-weight: 500; }
+h3 { font-weight: 500; }
+h4 { font-weight: 400; }
+h5 { font-weight: 400; }
+h6 { font-weight: 400; }
 p { margin: 0 0 1rem; }
 .button, .link { font-weight: 600; cursor: pointer; }
 

@@ -5,4 +5,29 @@ h4,
 h5,
 h6 {
 	clear: both;
+	font-family: $font__headings;
+}
+
+h1 {
+	font-weight: 700; /* Bold */
+}
+
+h2 {
+	font-weight: 500; /* Regular */
+}
+
+h3 {
+	font-weight: 500; /* Regular */
+}
+
+h4 {
+	font-weight: 400; /* Light */
+}
+
+h5 {
+	font-weight: 400; /* Light */
+}
+
+h6 {
+	font-weight: 400; /* Light */
 }

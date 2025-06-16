@@ -30,4 +30,36 @@ jQuery(document).ready(function($){
   $(window).on('scroll', function() {
     header.classList.toggle('is-scrolled', window.scrollY > 50);
   });
+
+  // Mobile menu toggle functionality
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+  const body = document.body;
+
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.addEventListener('click', function() {
+      mobileToggle.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close mobile menu when clicking overlay
+    mobileOverlay.addEventListener('click', function(e) {
+      if (e.target === mobileOverlay) {
+        mobileToggle.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+      }
+    });
+
+    // Close mobile menu when clicking menu links
+    const mobileLinks = mobileOverlay.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileToggle.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+      });
+    });
+  }
 });

@@ -30,6 +30,10 @@ body {
   color: var(--color-black);
   background-color: var(--color-white);
 }
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--color-black); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -157,6 +161,7 @@ p { margin: 0 0 1rem; }
 .site-header__logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .site-header__logo img {
@@ -173,26 +178,132 @@ p { margin: 0 0 1rem; }
   text-decoration: none;
 }
 
-.site-logo img {
-  height: 40px;
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
 }
 
-.site-navigation ul {
+.desktop-nav ul {
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.site-navigation li + li {
+.desktop-nav li + li {
   margin-left: 2rem;
 }
 
-.site-navigation a {
+.desktop-nav a {
   color: var(--color-white);
   font-family: var(--font-family-sans);
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.875rem;
   text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+  color: var(--color-accent);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-white);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  padding-top: 80px;
+}
+
+.mobile-nav-overlay.active {
+  transform: translateX(0);
+}
+
+.mobile-navigation ul {
+  list-style: none;
+  padding: 2rem;
+  margin: 0;
+}
+
+.mobile-navigation li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-navigation a {
+  display: block;
+  color: var(--color-white);
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  text-decoration: none;
+  padding: 1.5rem 0;
+  transition: color 0.3s;
+}
+
+.mobile-navigation a:hover {
+  color: var(--color-accent);
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: block;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .mobile-nav-overlay {
+    display: none;
+  }
+}
+
+.site-logo img {
+  height: 40px;
 }
 
 
@@ -261,9 +372,14 @@ p { margin: 0 0 1rem; }
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.site-header .site-logo a,
+/* Header scroll effect */
+.site-header {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
 .site-header .site-header__logo a,
-.site-header .site-navigation a {
+.site-header .desktop-nav a,
+.site-header .mobile-menu-toggle span {
   transition: color 0.3s;
 }
 
@@ -273,22 +389,22 @@ p { margin: 0 0 1rem; }
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.site-header.is-scrolled .site-logo a,
 .site-header.is-scrolled .site-header__logo a,
-.site-header.is-scrolled .site-navigation a {
+.site-header.is-scrolled .desktop-nav a {
   color: var(--color-black) !important;  /* switch links to dark */
 }
 
-.site-header.is-scrolled .site-navigation .current-menu-item > a {
-  color: var(--color-accent) !important; /* keep accent on current item */
-}
-/* ——— Primary Menu Hover & Active States ——— */
-.site-navigation a:hover {
-  color: var(--color-accent);
+.site-header.is-scrolled .mobile-menu-toggle span {
+  background-color: var(--color-black);
 }
 
-.site-navigation .current-menu-item > a,
-.site-navigation .current_page_item > a {
+.site-header.is-scrolled .desktop-nav .current-menu-item > a {
+  color: var(--color-accent) !important; /* keep accent on current item */
+}
+
+/* ——— Primary Menu Active States ——— */
+.desktop-nav .current-menu-item > a,
+.desktop-nav .current_page_item > a {
   color: var(--color-accent);
 }
 /* ——— Swiper Arrow Styling ——— */

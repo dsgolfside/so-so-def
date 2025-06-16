@@ -67,11 +67,17 @@ add_action( 'wp_enqueue_scripts', 'ssd_enqueue_assets' );
 
 
 /**
- * Theme setup: title tag, thumbnails, and menu
+ * Theme setup: title tag, thumbnails, menu, and custom logo
  */
 function ssd_theme_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'custom-logo', array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ) );
     register_nav_menu( 'primary', __( 'Primary Menu', 'so-so-def' ) );
 }
 add_action( 'after_setup_theme', 'ssd_theme_setup' );

@@ -11,9 +11,13 @@
   <div class="container">
     <div class="site-header__inner">
       <div class="site-header__logo">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-          <?php bloginfo( 'name' ); ?>
-        </a>
+        <?php if ( has_custom_logo() ) : ?>
+          <?php the_custom_logo(); ?>
+        <?php else : ?>
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <?php bloginfo( 'name' ); ?>
+          </a>
+        <?php endif; ?>
       </div>
       <nav class="site-navigation" role="navigation">
         <?php

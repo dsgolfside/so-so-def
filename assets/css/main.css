@@ -885,20 +885,7 @@ p { margin: 0 0 1rem; }
   transform: translateY(0);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-/* ——— Latest Grid: Make the "Song of the Week" embed span 2 cols on desktop ——— */
-.latest-grid__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-/* On screens ≥768px, span the embed item across 2 columns */
-@media (min-width: 768px) {
-  .latest-grid__embed {
-    grid-column: span 2;
-  }
-}
-/* ——— Latest Grid: Spotify embed ——— */
+/* ——— Latest Grid: Spotify embed styling ——— */
 .latest-grid__embed .audio-player {
   background: linear-gradient(135deg, var(--color-accent) 0%, #c41e3a 100%);
   padding: 2rem;
@@ -941,13 +928,6 @@ p { margin: 0 0 1rem; }
 /* remove any white flash behind the iframe */
 .latest-grid__embed .audio-player iframe {
   background: transparent;
-}
-
-/* ensure the embed still spans two columns on desktop */
-@media (min-width: 768px) {
-  .latest-grid__embed {
-    grid-column: span 2;
-  }
 }
 
 /* ——— Announcements Single Item (Fixed - No Swiper Conflict) ——— */

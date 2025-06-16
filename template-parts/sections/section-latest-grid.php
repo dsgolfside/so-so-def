@@ -4,7 +4,7 @@
  */
 $args = [
   'post_type'      => 'post',
-  'posts_per_page' => 6,
+  'posts_per_page' => 3,
 ];
 $latest_query = new WP_Query( $args );
 ?>

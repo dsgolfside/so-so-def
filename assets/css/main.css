@@ -156,36 +156,7 @@ p { margin: 0 0 1rem; }
   padding: 0;
 }
 
-.site-header__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-}
-
-/* Site logo styling */
-.site-header__logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.site-header__logo img {
-  height: 40px;
-  width: auto;
-}
-
-.site-header__logo a {
-  color: var(--color-white);
-  font-family: var(--font-family-sans);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 1.125rem;
-  text-decoration: none;
-}
+/* Old duplicate rules - replaced with consolidated version below */
 
 /* Desktop Navigation - hidden by default */
 .desktop-nav {
@@ -224,30 +195,7 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
-/* Mobile Menu Toggle - enhanced visibility */
-.mobile-menu-toggle {
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 1002;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.mobile-menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: var(--color-white);
-  transition: all 0.3s ease;
-  border-radius: 1px;
-  transform-origin: center;
-}
+/* Old mobile-menu-toggle rule - replaced with consolidated version below */
 
 .mobile-menu-toggle.active span:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
@@ -305,44 +253,82 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
-/* Mobile-first approach - hamburger visible by default */
-.mobile-menu-toggle {
-  display: flex !important;
+/* Reset and fix the header layout completely */
+.site-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
+}
+
+.site-header__logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.site-header__logo a {
+  color: var(--color-white);
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+
+/* Mobile hamburger - show on mobile, hide on desktop */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   z-index: 1002;
+  position: relative;
   /* Debugging: make it more visible */
-  background: rgba(255, 0, 0, 0.3) !important;
+  background: rgba(255, 0, 0, 0.5) !important;
   border: 2px solid red !important;
 }
 
-.desktop-nav {
-  display: none;
+.mobile-menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-white);
+  transition: all 0.3s ease;
+  border-radius: 1px;
+  transform-origin: center;
 }
 
-/* Mobile specific adjustments */
+.desktop-nav {
+  display: flex;
+}
+
+/* Mobile breakpoint */
 @media (max-width: 768px) {
   .site-header__container {
     padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .site-header__logo {
-    flex: 0 0 auto;
-    max-width: 200px;
   }
   
   .site-header__logo img {
     height: 35px;
-    width: auto;
   }
   
   .mobile-menu-toggle {
     display: flex !important;
-    flex: 0 0 auto;
-    margin-left: auto;
   }
   
   .desktop-nav {
@@ -350,22 +336,18 @@ p { margin: 0 0 1rem; }
   }
 }
 
-/* Desktop styles */
+/* Desktop breakpoint */  
 @media (min-width: 769px) {
-  .desktop-nav {
-    display: flex !important;
-  }
-  
   .mobile-menu-toggle {
     display: none !important;
   }
   
-  .mobile-nav-overlay {
-    display: none !important;
+  .desktop-nav {
+    display: flex !important;
   }
   
-  .site-header__logo img {
-    height: 40px;
+  .mobile-nav-overlay {
+    display: none !important;
   }
 }
 

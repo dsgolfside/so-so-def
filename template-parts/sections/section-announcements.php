@@ -23,10 +23,10 @@
 
       <div class="section__main section__main--full-bleed-small">
         <?php
-        // Query latest 3 posts from "news" category
+        // Query latest 1 post from "announcements" category
         $announcements = new WP_Query([
-          'posts_per_page' => 3,
-          'category_name'  => 'news',
+          'posts_per_page' => 1,
+          'category_name'  => 'announcements',
         ]);
         if ( $announcements->have_posts() ) :
         ?>

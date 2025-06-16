@@ -152,7 +152,7 @@ p { margin: 0 0 1rem; }
   left: 0; 
   right: 0;
   background: rgba(0, 0, 0, 0.85);
-  z-index: 1000;
+  z-index: 9999;
   padding: 0;
 }
 
@@ -296,7 +296,7 @@ p { margin: 0 0 1rem; }
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1002;
+  z-index: 10000;
   position: relative;
   /* Debugging: make it more visible */
   background: rgba(255, 0, 0, 0.5) !important;

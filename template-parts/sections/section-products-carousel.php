@@ -26,7 +26,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
     </div>
   </div>
 
-  <div class="section__main--full-bleed-small">
+  <div class="section__main section__main--full-bleed-small">
     <?php
     // Query products using simple WooCommerce query
     $products = new WP_Query([

@@ -807,6 +807,9 @@ p { margin: 0 0 1rem; }
 
 .products-swiper {
   padding: 0 2rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .product-card {

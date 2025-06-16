@@ -74,13 +74,21 @@ p { margin: 0 0 1rem; }
   margin-top: 2rem;
 }
 
-/* Latest Grid Section - Full Width, No Padding */
+/* Latest Grid Section - TRUE Full Width Edge-to-Edge */
 .latest-grid.section {
-  margin-top: 0;
+  margin: 0;
   padding: 0;
   background: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
+.latest-grid .container,
+.latest-grid .section__inner,
 .latest-grid .section__main {
   padding: 0;
   margin: 0;
@@ -606,29 +614,67 @@ p { margin: 0 0 1rem; }
     height: 60vh; /* mobile */
   }
 }
-/* ——— Latest Grid: RocNation Mosaic Style - No Gaps, Full Width ——— */
+/* ——— Latest Grid: Perfect Square Puzzle Mosaic ——— */
 .latest-grid__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
   width: 100%;
+  min-height: 100vh;
 }
 
 @media (min-width: 768px) {
   .latest-grid__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }
 
-/* Featured First Post - Spans 2 columns on desktop */
-.latest-grid__item:first-child {
-  grid-column: span 2;
+/* Mobile: All items are square */
+.latest-grid__item {
+  aspect-ratio: 1/1;
 }
 
+/* Desktop Puzzle Layout */
 @media (min-width: 768px) {
+  /* Featured First Post - Big 3x3 Square */
   .latest-grid__item:first-child {
+    grid-column: span 3;
+    grid-row: span 3;
+  }
+  
+  /* Posts 2-4: Regular squares */
+  .latest-grid__item:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .latest-grid__item:nth-child(3) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .latest-grid__item:nth-child(4) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  /* Posts 5-6: Wider rectangles */
+  .latest-grid__item:nth-child(5) {
     grid-column: span 2;
-    grid-row: span 2;
+    grid-row: span 1;
+  }
+  
+  .latest-grid__item:nth-child(6) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  /* Spotify Embed - Horizontal strip */
+  .latest-grid__embed {
+    grid-column: span 3;
+    grid-row: span 1;
+    aspect-ratio: 3/1 !important;
   }
 }
 
@@ -638,7 +684,8 @@ p { margin: 0 0 1rem; }
   background: var(--color-white);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
-  aspect-ratio: 4/3;
+  width: 100%;
+  height: 100%;
 }
 
 .card__anchor {
@@ -707,18 +754,36 @@ p { margin: 0 0 1rem; }
   transition: color 0.3s ease;
 }
 
-/* Featured First Post - Larger Text */
+/* Featured First Post - Hero Styling */
 .latest-grid__item:first-child .card__heading {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.latest-grid__item:first-child .card__inner {
+  padding: 2.5rem;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.3) 20%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
 }
 
 @media (min-width: 768px) {
   .card__heading {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
   
   .latest-grid__item:first-child .card__heading {
-    font-size: 2.25rem;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  
+  .latest-grid__item:first-child .card__inner {
+    padding: 4rem;
   }
 }
 
@@ -728,9 +793,16 @@ p { margin: 0 0 1rem; }
   }
 }
 
-/* Enhanced Hover Effects */
+/* Enhanced Hover Effects with Glow */
 .card:hover {
   transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(225, 6, 0, 0.3);
+  z-index: 10;
+}
+
+/* Special hover for featured post */
+.latest-grid__item:first-child .card:hover {
+  box-shadow: 0 0 50px rgba(225, 6, 0, 0.5);
 }
 
 .card:hover .card__image::before {
@@ -756,12 +828,19 @@ p { margin: 0 0 1rem; }
   outline-offset: 4px;
 }
 
-/* Enhanced Section header styling */
+/* Header positioned above the mosaic */
 .latest-grid .section__header {
-  margin-bottom: 2rem;
-  padding: 2rem 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin-bottom: 0;
+  padding: 2rem;
   text-align: center;
-  background: var(--color-white);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -770,7 +849,12 @@ p { margin: 0 0 1rem; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 2rem;
+    padding: 2rem 3rem;
+  }
+  
+  /* Add top margin to grid to account for fixed header */
+  .latest-grid__grid {
+    margin-top: 120px;
   }
 }
 

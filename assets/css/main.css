@@ -304,6 +304,37 @@ p { margin: 0 0 1rem; }
   background: rgba(255, 0, 0, 0.8) !important;
   border: 3px solid red !important;
   border-radius: 4px;
+  /* Animation to make it blink */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Force hamburger visibility - override any conflicting rules */
+.mobile-menu-toggle[class*="mobile-menu-toggle"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  top: 15px !important;
+  right: 15px !important;
+  z-index: 999999 !important;
+  background: rgba(255, 0, 0, 0.9) !important;
+  border: 4px solid yellow !important;
+}
+
+/* Override WordPress admin bar if present */
+.admin-bar .mobile-menu-toggle {
+  top: 47px !important;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .mobile-menu-toggle {
+    top: 47px !important;
+  }
 }
 
 .mobile-menu-toggle span {
@@ -335,6 +366,10 @@ p { margin: 0 0 1rem; }
   
   .mobile-menu-toggle {
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
   }
   
   .desktop-nav {

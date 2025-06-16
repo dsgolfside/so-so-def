@@ -37,14 +37,14 @@ get_header();
 
   <!-- DEBUGGING: Testing sections one by one -->
   
-  <!-- About Card Grid Section - ENABLED FOR TESTING -->
+  <!-- About Card Grid Section - ENABLED (WORKING) -->
   <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>
+
+  <!-- The Latest Section - ENABLED FOR TESTING -->
+  <?php get_template_part( 'template-parts/sections/section', 'latest-grid' ); ?>
 
   <!-- DISABLED SECTIONS -->
   <?php /*
-  <!-- The Latest Section -->
-  <?php get_template_part( 'template-parts/sections/section', 'latest-grid' ); ?>
-
   <!-- Announcements Section -->
   <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
 

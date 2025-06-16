@@ -74,11 +74,18 @@ p { margin: 0 0 1rem; }
   margin-top: 2rem;
 }
 
-/* Make sure latest-grid section doesn't overlap */
+/* Latest Grid Section - Full Width, No Padding */
 .latest-grid.section {
-  margin-top: 2rem;
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  margin-top: 0;
+  padding: 0;
+  background: none;
+}
+
+.latest-grid .section__main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
 }
 
 /* Talent Spotlight Section */
@@ -599,28 +606,39 @@ p { margin: 0 0 1rem; }
     height: 60vh; /* mobile */
   }
 }
-/* ——— Latest Grid: Enhanced RocNation-style Cards ——— */
+/* ——— Latest Grid: RocNation Mosaic Style - No Gaps, Full Width ——— */
 .latest-grid__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .latest-grid__grid {
-    padding: 0 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Featured First Post - Spans 2 columns on desktop */
+.latest-grid__item:first-child {
+  grid-column: span 2;
+}
+
+@media (min-width: 768px) {
+  .latest-grid__item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 }
 
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
   background: var(--color-white);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  aspect-ratio: 4/3;
 }
 
 .card__anchor {
@@ -632,7 +650,8 @@ p { margin: 0 0 1rem; }
 .card__image {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16/10;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -680,7 +699,7 @@ p { margin: 0 0 1rem; }
 .card__heading {
   margin: 0;
   font-family: var(--font-family-serif);
-  font-size: 1.375rem;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-white);
@@ -688,11 +707,22 @@ p { margin: 0 0 1rem; }
   transition: color 0.3s ease;
 }
 
-@media (max-width: 768px) {
+/* Featured First Post - Larger Text */
+.latest-grid__item:first-child .card__heading {
+  font-size: 1.75rem;
+}
+
+@media (min-width: 768px) {
   .card__heading {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
   
+  .latest-grid__item:first-child .card__heading {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
   .card__inner {
     padding: 1.5rem;
   }
@@ -700,8 +730,7 @@ p { margin: 0 0 1rem; }
 
 /* Enhanced Hover Effects */
 .card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
 }
 
 .card:hover .card__image::before {
@@ -729,8 +758,10 @@ p { margin: 0 0 1rem; }
 
 /* Enhanced Section header styling */
 .latest-grid .section__header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
+  background: var(--color-white);
 }
 
 @media (min-width: 768px) {
@@ -739,6 +770,7 @@ p { margin: 0 0 1rem; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 3rem 2rem;
   }
 }
 
@@ -813,18 +845,17 @@ p { margin: 0 0 1rem; }
     grid-column: span 2;
   }
 }
-/* ——— Latest Grid: Enhanced Spotify embed styling ——— */
+/* ——— Latest Grid: Spotify embed - No Rounded Corners ——— */
 .latest-grid__embed .audio-player {
   background: linear-gradient(135deg, var(--color-accent) 0%, #c41e3a 100%);
   padding: 2rem;
-  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 8px 25px rgba(225, 6, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .latest-grid__embed .audio-player::before {
@@ -844,8 +875,7 @@ p { margin: 0 0 1rem; }
 }
 
 .latest-grid__embed .audio-player:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(225, 6, 0, 0.4);
+  transform: scale(1.02);
 }
 
 .latest-grid__embed .audio-player:hover::before {
@@ -855,8 +885,6 @@ p { margin: 0 0 1rem; }
 /* remove any white flash behind the iframe */
 .latest-grid__embed .audio-player iframe {
   background: transparent;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ensure the embed still spans two columns on desktop */

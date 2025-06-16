@@ -290,27 +290,33 @@ p { margin: 0 0 1rem; }
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 24px;
+  width: 40px;
+  height: 30px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 10000;
-  position: relative;
+  padding: 5px;
+  z-index: 99999;
+  position: fixed;
+  top: 15px;
+  right: 15px;
   /* Debugging: make it more visible */
-  background: rgba(255, 0, 0, 0.5) !important;
-  border: 2px solid red !important;
+  background: rgba(255, 0, 0, 0.8) !important;
+  border: 3px solid red !important;
+  border-radius: 4px;
 }
 
 .mobile-menu-toggle span {
   display: block;
-  height: 3px;
+  height: 4px;
   width: 100%;
-  background-color: var(--color-white);
+  background-color: var(--color-white) !important;
   transition: all 0.3s ease;
-  border-radius: 1px;
+  border-radius: 2px;
   transform-origin: center;
+  /* Debug: make lines more visible */
+  background-color: yellow !important;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .desktop-nav {

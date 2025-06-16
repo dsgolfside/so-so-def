@@ -35,7 +35,7 @@ get_header();
     <div class="swiper-pagination"></div>
   </section>
 
-  <!-- DEBUGGING: Testing sections one by one -->
+  <!-- DEBUGGING: Announcements section BREAKS hamburger menu (Swiper conflict) -->
   
   <!-- About Card Grid Section - ENABLED (WORKING) -->
   <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>
@@ -43,7 +43,7 @@ get_header();
   <!-- The Latest Section - ENABLED (WORKING) -->
   <?php get_template_part( 'template-parts/sections/section', 'latest-grid' ); ?>
 
-  <!-- Announcements Section - ENABLED FOR TESTING -->
+  <!-- Announcements Section - FIXED (Removed Swiper conflict) -->
   <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
 
   <!-- DISABLED SECTIONS -->

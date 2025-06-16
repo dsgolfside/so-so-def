@@ -30,10 +30,10 @@
         ]);
         if ( $announcements->have_posts() ) :
         ?>
-          <div class="swiper-container announcements-swiper">
-            <div class="swiper-wrapper">
+          <div class="announcements-grid">
+            <div class="announcements-wrapper">
               <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
-                <div class="swiper-slide text-and-image__item">
+                <div class="announcement-item text-and-image__item">
                   <div class="text-and-image__item-inner">
                     <div class="media-container media-container--cover">
                       <?php if ( has_post_thumbnail() ) {
@@ -51,8 +51,6 @@
                 </div>
               <?php endwhile; wp_reset_postdata(); ?>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
           </div>
         <?php endif; ?>
       </div><!-- .section__main -->

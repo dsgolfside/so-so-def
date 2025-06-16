@@ -74,7 +74,7 @@ $latest_query = new WP_Query( $args );
 
           <!-- Spotify Embed: spans 2 cols on desktop, full width on mobile -->
           <div
-            class="latest-grid__embed latest-grid__item"
+            class="latest-grid__embed"
             data-aos="fade-up"
             data-aos-delay="<?php echo esc_attr( (++$i) * 100 ); ?>"
           >

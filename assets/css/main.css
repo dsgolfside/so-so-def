@@ -705,7 +705,7 @@ p { margin: 0 0 1rem; }
   overflow: hidden;
   width: 100%;
   height: 100%;
-  /* Fallback gradient only for posts without featured images */
+  /* Fallback gradient - will be covered by images when present */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -768,9 +768,6 @@ p { margin: 0 0 1rem; }
 }
 
 .card__image img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -782,7 +779,6 @@ p { margin: 0 0 1rem; }
   display: block;
   min-width: 100% !important;
   min-height: 100% !important;
-  z-index: 1;
 }
 
 .card__inner {

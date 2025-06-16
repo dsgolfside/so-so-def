@@ -224,19 +224,19 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
-/* Mobile Menu Toggle - visible by default, hidden on desktop */
+/* Mobile Menu Toggle - enhanced visibility */
 .mobile-menu-toggle {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 30px;
-  height: 30px;
+  height: 24px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 1001;
+  padding: 4px;
+  z-index: 1002;
   position: relative;
+  box-sizing: border-box;
 }
 
 .mobile-menu-toggle span {
@@ -244,9 +244,9 @@ p { margin: 0 0 1rem; }
   height: 3px;
   width: 100%;
   background-color: var(--color-white);
-  margin: 2px 0;
   transition: all 0.3s ease;
   border-radius: 1px;
+  transform-origin: center;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -305,19 +305,44 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
-/* Mobile styles - ensure hamburger is visible */
+/* Mobile-first approach - hamburger visible by default */
+.mobile-menu-toggle {
+  display: flex !important;
+  position: relative;
+  z-index: 1002;
+  /* Debugging: make it more visible */
+  background: rgba(255, 0, 0, 0.3) !important;
+  border: 2px solid red !important;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+/* Mobile specific adjustments */
 @media (max-width: 768px) {
   .site-header__container {
     padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .site-header__logo {
+    flex: 0 0 auto;
+    max-width: 200px;
+  }
+  
+  .site-header__logo img {
+    height: 35px;
+    width: auto;
   }
   
   .mobile-menu-toggle {
     display: flex !important;
-    order: 3;
-  }
-  
-  .site-header__logo {
-    order: 1;
+    flex: 0 0 auto;
+    margin-left: auto;
   }
   
   .desktop-nav {
@@ -328,21 +353,23 @@ p { margin: 0 0 1rem; }
 /* Desktop styles */
 @media (min-width: 769px) {
   .desktop-nav {
-    display: flex;
+    display: flex !important;
   }
   
   .mobile-menu-toggle {
-    display: none;
+    display: none !important;
   }
   
   .mobile-nav-overlay {
-    display: none;
+    display: none !important;
+  }
+  
+  .site-header__logo img {
+    height: 40px;
   }
 }
 
-.site-logo img {
-  height: 40px;
-}
+/* Legacy logo rule - handled in responsive sections now */
 
 
 /* ——— Home Hero ——— */
@@ -402,12 +429,6 @@ p { margin: 0 0 1rem; }
   margin-bottom: 1rem;
   font-size: calc(var(--font-base) * var(--font-scale-ratio));
   color: var(--color-white);
-}
-
-/* Header scroll effect */
-.site-header {
-  background: rgba(0, 0, 0, 0.85);    /* default dark */
-  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 /* Header scroll effect */

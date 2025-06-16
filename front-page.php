@@ -40,14 +40,14 @@ get_header();
   <!-- About Card Grid Section - ENABLED (WORKING) -->
   <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>
 
-  <!-- The Latest Section - ENABLED FOR TESTING -->
+  <!-- The Latest Section - ENABLED (WORKING) -->
   <?php get_template_part( 'template-parts/sections/section', 'latest-grid' ); ?>
+
+  <!-- Announcements Section - ENABLED FOR TESTING -->
+  <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
 
   <!-- DISABLED SECTIONS -->
   <?php /*
-  <!-- Announcements Section -->
-  <?php get_template_part( 'template-parts/sections/section', 'announcements' ); ?>
-
   <!-- Philanthropy Section -->
   <?php get_template_part( 'template-parts/sections/section', 'philanthropy' ); ?>
 

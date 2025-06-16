@@ -7,7 +7,7 @@ get_header();
 
 <main id="content">
 
-  <!-- Hero Slider (IVS via shortcode) - TEMPORARILY DISABLED FOR DEBUGGING -->
+  <!-- Hero Video Section - COMPLETELY DISABLED FOR DEBUGGING -->
   <?php /*
   <section class="hero home-slider swiper-container" data-aos="fade">
     <div class="swiper-wrapper">
@@ -20,27 +20,12 @@ get_header();
           ?>
         </div>
       </div>
-      <!-- add more slides like this if you want multiple IVS streams -->
-      <!--
-      <div class="swiper-slide">
-        <div class="slide-content" data-aos="fade-up" data-aos-delay="200">
-          <?php // echo do_shortcode( '[jj-aws-ivs id="another_stream"]' ); ?>
-        </div>
-      </div>
-      -->
     </div>
-
-    <!-- Swiper controls -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
   </section>
   */ ?>
-  
-  <!-- Temporary placeholder for debugging -->
-  <section style="height: 200px; background: #333; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
-    VIDEO PLAYER DISABLED FOR DEBUGGING
-  </section>
 
   <!-- About Card Grid Section -->
   <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>

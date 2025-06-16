@@ -1,49 +1,23 @@
 <?php
-// Card Grid Section
+// About Section - So So Def Bio
 ?>
-<section class="card-grid section">
-  <div class="container">
-    <div class="section__inner">
-      <header class="section__header">
-        <h2 class="section__header-heading"><?php esc_html_e( 'About', 'so-so-def' ); ?></h2>
-      </header>
-      <div class="card-grid__list">
-        <?php
-        for ( $i = 1; $i <= 3; $i++ ) {
-          $title   = get_post_meta( get_the_ID(), "ssd_card{$i}_title",    true );
-          $subtext = get_post_meta( get_the_ID(), "ssd_card{$i}_subtext",  true );
-          $img     = get_post_meta( get_the_ID(), "ssd_card{$i}_image",    true );
-          $link    = get_post_meta( get_the_ID(), "ssd_card{$i}_link_url", true );
-
-          if ( ! $title && ! $img ) {
-            continue;
-          }
-        ?>
-          <div class="card-grid__item">
-            <div class="card">
-              <?php if ( $img ) : ?>
-                <div class="card__image">
-                  <img src="<?php echo esc_url( $img ); ?>" alt="">
-                </div>
-              <?php endif; ?>
-
-              <div class="card__content">
-                <?php if ( $title ) : ?>
-                  <h3 class="card__heading"><?php echo esc_html( $title ); ?></h3>
-                <?php endif; ?>
-                <?php if ( $subtext ) : ?>
-                  <p class="card__text"><?php echo esc_html( $subtext ); ?></p>
-                <?php endif; ?>
-                <?php if ( $link ) : ?>
-                  <a class="link" href="<?php echo esc_url( $link ); ?>">
-                    <?php esc_html_e( 'Learn More', 'so-so-def' ); ?>
-                  </a>
-                <?php endif; ?>
-              </div>
-            </div>
-          </div>
-        <?php } ?>
-      </div><!-- .card-grid__list -->
-    </div><!-- .section__inner -->
-  </div><!-- .container -->
+<section class="about-section section">
+  <div class="about-section__container">
+    <div class="about-section__content">
+      <h2 class="about-section__heading">Welcome to So So Def Recordings</h2>
+      <div class="about-section__text">
+        <p>Founded by super-producer Jermaine Dupri in 1993, So So Def is a pioneering Atlanta-based label that helped define the sound of Southern hip-hop and R&B. With platinum-selling acts like Kris Kross, Xscape, Da Brat, Bow Wow, and Jagged Edge, So So Def became a cultural force — shaping a generation of music, style, and swagger.</p>
+        <p>Still pushing the sound forward, So So Def continues to break new ground while celebrating over 30 years of timeless music and global influence.</p>
+      </div>
+      <div class="about-section__cta">
+        <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="about-section__link">
+          <span>Learn More About Our Legacy</span>
+          <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
+            <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
+            <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>

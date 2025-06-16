@@ -7,8 +7,7 @@ get_header();
 
 <main id="content">
 
-  <!-- Hero Video Section - COMPLETELY DISABLED FOR DEBUGGING -->
-  <?php /*
+  <!-- Hero Slider (IVS via shortcode) -->
   <section class="hero home-slider swiper-container" data-aos="fade">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
@@ -20,13 +19,24 @@ get_header();
           ?>
         </div>
       </div>
+      <!-- add more slides like this if you want multiple IVS streams -->
+      <!--
+      <div class="swiper-slide">
+        <div class="slide-content" data-aos="fade-up" data-aos-delay="200">
+          <?php // echo do_shortcode( '[jj-aws-ivs id="another_stream"]' ); ?>
+        </div>
+      </div>
+      -->
     </div>
+
+    <!-- Swiper controls -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
   </section>
-  */ ?>
 
+  <!-- DEBUGGING: All content sections temporarily commented out -->
+  <?php /*
   <!-- About Card Grid Section -->
   <?php get_template_part( 'template-parts/sections/section', 'card-grid' ); ?>
 
@@ -41,6 +51,11 @@ get_header();
 
   <!-- Talent Spotlight Section -->
   <?php get_template_part( 'template-parts/sections/section', 'talent-spotlight' ); ?>
+  */ ?>
+  
+  <div style="height: 300px; background: #666; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+    CONTENT SECTIONS DISABLED FOR DEBUGGING
+  </div>
 
 </main>
 

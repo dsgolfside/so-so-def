@@ -4,3 +4,12 @@ package-lock.json
 composer.lock
 style.css.map
 .DS_Store
+
+# Dreamweaver project files
+*_notes/
+*.dwsftp.xml
+*.mno
+*.lck
+
+# Ignore all .map files
+*.map

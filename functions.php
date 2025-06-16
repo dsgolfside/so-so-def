@@ -95,7 +95,7 @@ add_action( 'after_setup_theme', 'ssd_theme_setup' );
 add_action( 'after_setup_theme', 'ssd_hide_admin_bar' );
 
 /**
- * Register the “Homepage Slides” meta box on Pages
+ * Register the "Homepage Slides" meta box on Pages
  */
 function ssd_add_homepage_slides_metabox() {
     add_meta_box(
@@ -193,7 +193,7 @@ function ssd_save_homepage_slides_meta( $post_id ) {
 add_action( 'save_post', 'ssd_save_homepage_slides_meta' );
 
 /**
- * Register a “Card Grid” meta box on Pages
+ * Register a "Card Grid" meta box on Pages
  */
 function ssd_add_card_grid_metabox() {
     add_meta_box(
@@ -298,7 +298,7 @@ function ssd_save_card_grid_meta( $post_id ) {
 add_action( 'save_post', 'ssd_save_card_grid_meta' );
 
 /**
- * Register “Latest Section” meta box on Pages
+ * Register "Latest Section" meta box on Pages
  */
 function ssd_add_latest_section_metabox() {
     add_meta_box(
@@ -522,3 +522,21 @@ function ssd_enqueue_admin_media_scripts( $hook ) {
     );
 }
 add_action( 'admin_enqueue_scripts', 'ssd_enqueue_admin_media_scripts' );
+
+/**
+ * Add proper referrer policy to fix console warnings
+ */
+function ssd_add_referrer_policy() {
+    echo '<meta name="referrer" content="strict-origin-when-cross-origin">' . "\n";
+}
+add_action( 'wp_head', 'ssd_add_referrer_policy', 1 );
+
+/**
+ * Also set the HTTP header for extra security
+ */
+function ssd_send_referrer_policy_header() {
+    if ( ! headers_sent() ) {
+        header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+    }
+}
+add_action( 'send_headers', 'ssd_send_referrer_policy_header' );

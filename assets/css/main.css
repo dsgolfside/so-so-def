@@ -33,18 +33,19 @@ body {
   background-color: var(--color-white);
 }
 
-/* Ensure main content starts directly under header */
+/* Ensure main content starts directly under header with NO OVERLAP */
 #content {
   margin: 0;
   padding: 0;
+  padding-top: 72px; /* Exact height of fixed header - no gap, no overlap */
 }
 
-/* Ensure hero section starts directly under the fixed header */
+/* Reset hero section - content padding handles the spacing */
 .hero.swiper-container,
 .hero.home-video-static {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  top: 0 !important;
+  margin: 0;
+  padding: 0;
+  top: 0;
 }
 
 body.mobile-menu-open {
@@ -648,22 +649,20 @@ p { margin: 0 0 1rem; }
 
 /* ——— Responsive Slider Height ——— */
 .hero.swiper-container {
-  height: 100vh; /* Full viewport height */
+  height: calc(100vh - 72px); /* Full viewport minus header height */
   position: relative;
   z-index: 1;
-  padding-top: 0; /* Remove padding - let header overlay */
-  margin: 0; /* No margins at all */
-  top: 0; /* Start at absolute top */
+  padding: 0;
+  margin: 0;
 }
 
 /* ——— Static Video Hero (No Swiper) ——— */
 .hero.home-video-static {
-  height: 100vh; /* Full viewport height */
+  height: calc(100vh - 72px); /* Full viewport minus header height */
   position: relative;
-  z-index: 1;
-  padding-top: 0; /* Remove padding - let header overlay */
-  margin: 0; /* No margins at all */
-  top: 0; /* Start at absolute top */
+  z-index: 1;  
+  padding: 0;
+  margin: 0;
 }
 
 .hero.home-video-static .video-content {
@@ -713,19 +712,23 @@ p { margin: 0 0 1rem; }
 }
 
 @media (max-width: 768px) {
+  #content {
+    padding-top: 70px; /* Smaller header on mobile */
+  }
+  
   .hero.swiper-container {
-    height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 0; /* Remove padding - let header overlay */
+    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    padding: 0;
   }
   
   .hero.home-video-static {
-    height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 0; /* Remove padding - let header overlay */
+    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    padding: 0;
   }
   
   .home-hero {
-    height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 0; /* Remove padding - let header overlay */
+    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    padding: 0;
   }
 }
 /* ——— ROC Nation Style Clean Grid ——— */

@@ -25,11 +25,12 @@ html {
 *, *::before, *::after { box-sizing: inherit; }
 body {
   margin: 0;
+  padding: 0;
   font-family: var(--font-family-sans);
   font-weight: 500;
   line-height: 1.6;
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-black); /* Change to black to match header */
 }
 
 body.mobile-menu-open {
@@ -495,13 +496,14 @@ p { margin: 0 0 1rem; }
 /* ——— Home Hero ——— */
 .home-hero {
   background: url('../images/GENERAL-scaled.jpg') center/cover no-repeat;
-  height: 80vh;
+  height: calc(80vh + 80px); /* Add header height to total height */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 80px 1rem 0 1rem; /* Push content below fixed header */
+  margin-top: 0; /* Ensure no gap at top */
 }
 
 .home-hero h1 {
@@ -631,18 +633,20 @@ p { margin: 0 0 1rem; }
 
 /* ——— Responsive Slider Height ——— */
 .hero.swiper-container {
-  height: 80vh; /* desktop */
+  height: calc(80vh + 80px); /* desktop - add header height to total height */
   position: relative;
   z-index: 1;
   padding-top: 80px; /* Push content below fixed header */
+  margin-top: 0; /* Ensure no gap at top */
 }
 
 /* ——— Static Video Hero (No Swiper) ——— */
 .hero.home-video-static {
-  height: 80vh; /* desktop */
+  height: calc(80vh + 80px); /* desktop - add header height to total height */
   position: relative;
   z-index: 1;
   padding-top: 80px; /* Push content below fixed header */
+  margin-top: 0; /* Ensure no gap at top */
 }
 
 .hero.home-video-static .video-content {
@@ -693,15 +697,17 @@ p { margin: 0 0 1rem; }
 
 @media (max-width: 768px) {
   .hero.swiper-container {
-    height: 60vh; /* mobile */
+    height: calc(60vh + 70px); /* mobile - add header height */
     padding-top: 70px; /* Smaller header on mobile */
   }
   
   .hero.home-video-static {
+    height: calc(60vh + 70px); /* mobile - add header height */
     padding-top: 70px; /* Smaller header on mobile */
   }
   
   .home-hero {
+    height: calc(60vh + 70px); /* mobile - add header height */
     padding-top: 70px; /* Smaller header on mobile */
   }
 }

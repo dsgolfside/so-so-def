@@ -540,3 +540,112 @@ function ssd_send_referrer_policy_header() {
     }
 }
 add_action( 'send_headers', 'ssd_send_referrer_policy_header' );
+
+/* this stuff below is to hide certain things from non -admins in the wordpress admin */
+
+// this hides nags in admin from everyone but admins
+add_action('admin_head', function() {
+  if (!current_user_can('administrator')) {
+    echo '<style>
+      .notice,
+      .update-nag,
+      .updated,
+      .error,
+      .is-dismissible {
+        display: none !important;
+      }
+    </style>';
+  }
+});
+
+//this should redirect away from the profile page especially useful since it defaults to here if you disable the dashboard with adminimize
+add_action('admin_init', function() {
+  if (current_user_can('author') && !current_user_can('administrator')) {
+    $request = $_SERVER['REQUEST_URI'];
+    if (strpos($request, 'profile.php') !== false || rtrim($request, '/') === '/wp-admin') {
+      wp_redirect(admin_url('edit.php'));
+      exit;
+    }
+  }
+});
+
+//remove profile menu for non admins
+add_action('admin_menu', function() {
+  if (!current_user_can('administrator')) {
+    remove_menu_page('profile.php');
+  }
+});
+
+// hide yoast seo stuff from admin post list for non admins
+add_filter('manage_edit-post_columns', function($columns) {
+  if (!current_user_can('administrator')) {
+    unset($columns['wpseo-score']);              // SEO score
+    unset($columns['wpseo-score-readability']);  // Readability
+    unset($columns['wpseo-title']);              // SEO title
+    unset($columns['wpseo-metadesc']);           // Meta description
+    unset($columns['wpseo-focuskw']);            // Focus keyphrase
+    unset($columns['wpseo-links']);              // Outgoing internal links ✅
+  }
+  return $columns;
+});
+//Restrict Classic Editor to Authors Only (optional)
+add_filter('use_block_editor_for_post', function($use_block_editor, $post) {
+  // Disable block editor for all non-admins
+  return current_user_can('administrator');
+}, 10, 2);
+//Hide Unnecessary Metaboxes for Authors
+add_action('admin_head', function() {
+  if (current_user_can('author') && !current_user_can('administrator')) {
+    echo '<style>
+      #yoast-seo-meta-box,  /* Yoast SEO */
+      #astra_settings_meta_box,  /* Astra settings */
+      #spectra-page-settings,  /* Spectra settings */
+      #postexcerpt,  /* Excerpt box */
+      #trackbacksdiv,  /* Trackbacks */
+      #postcustom,  /* Custom Fields */
+      #slugdiv,     /* Slug */
+      #commentstatusdiv,  /* Discussion */
+      #commentsdiv { display: none !important; }
+    </style>';
+  }
+});
+// remove format box for authors
+add_action('admin_menu', function() {
+  if (current_user_can('author') && !current_user_can('administrator')) {
+    remove_meta_box('formatdiv', 'post', 'side');
+  }
+});
+// hide screen options for non admins
+add_action('admin_head', function() {
+  if (!current_user_can('administrator')) {
+    echo '<style>
+      #screen-meta-links {
+        display: none !important;
+      }
+    </style>';
+  }
+});
+// remove categories box for authors
+add_action('admin_menu', function() {
+  if (!current_user_can('editor')) {
+    remove_meta_box('categorydiv', 'post', 'side');
+  }
+});
+// remove tags box from post editing for authors
+add_action('admin_menu', function() {
+  if (current_user_can('author') && !current_user_can('administrator')) {
+    remove_meta_box('tagsdiv-post_tag', 'post', 'side');
+  }
+});
+// hide footer for authors
+add_action('admin_head', function() {
+  if (current_user_can('author') && !current_user_can('administrator')) {
+    echo '<style>#wpfooter { display: none !important; }</style>';
+  }
+});
+function jj_remove_edit_profile_link_for_non_admins($wp_admin_bar) {
+  if (!current_user_can('manage_options')) {
+    $wp_admin_bar->remove_node('edit-profile');
+  }
+}
+add_action('admin_bar_menu', 'jj_remove_edit_profile_link_for_non_admins', 999);

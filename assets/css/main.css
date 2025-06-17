@@ -33,6 +33,20 @@ body {
   background-color: var(--color-white);
 }
 
+/* Ensure main content starts directly under header */
+#content {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure hero section starts directly under the fixed header */
+.hero.swiper-container,
+.hero.home-video-static {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  top: 0 !important;
+}
+
 body.mobile-menu-open {
   overflow: hidden;
 }
@@ -637,7 +651,7 @@ p { margin: 0 0 1rem; }
   height: 100vh; /* Full viewport height */
   position: relative;
   z-index: 1;
-  padding-top: 80px; /* Push content below fixed header */
+  padding-top: 0; /* Remove padding - let header overlay */
   margin: 0; /* No margins at all */
   top: 0; /* Start at absolute top */
 }
@@ -647,7 +661,7 @@ p { margin: 0 0 1rem; }
   height: 100vh; /* Full viewport height */
   position: relative;
   z-index: 1;
-  padding-top: 80px; /* Push content below fixed header */
+  padding-top: 0; /* Remove padding - let header overlay */
   margin: 0; /* No margins at all */
   top: 0; /* Start at absolute top */
 }
@@ -701,17 +715,17 @@ p { margin: 0 0 1rem; }
 @media (max-width: 768px) {
   .hero.swiper-container {
     height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 70px; /* Smaller header on mobile */
+    padding-top: 0; /* Remove padding - let header overlay */
   }
   
   .hero.home-video-static {
     height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 70px; /* Smaller header on mobile */
+    padding-top: 0; /* Remove padding - let header overlay */
   }
   
   .home-hero {
     height: 100vh; /* Full viewport height on mobile too */
-    padding-top: 70px; /* Smaller header on mobile */
+    padding-top: 0; /* Remove padding - let header overlay */
   }
 }
 /* ——— ROC Nation Style Clean Grid ——— */

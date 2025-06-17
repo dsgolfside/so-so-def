@@ -424,30 +424,6 @@ p { margin: 0 0 1rem; }
   position: fixed;
   top: 15px;
   right: 15px;
-  /* Debugging: make it more visible */
-  background: rgba(255, 0, 0, 0.8) !important;
-  border: 3px solid red !important;
-  border-radius: 4px;
-  /* Animation to make it blink */
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.3; }
-}
-
-/* Force hamburger visibility - override any conflicting rules */
-.mobile-menu-toggle[class*="mobile-menu-toggle"] {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: fixed !important;
-  top: 15px !important;
-  right: 15px !important;
-  z-index: 999999 !important;
-  background: rgba(255, 0, 0, 0.9) !important;
-  border: 4px solid yellow !important;
 }
 
 /* Override WordPress admin bar if present */
@@ -465,13 +441,10 @@ p { margin: 0 0 1rem; }
   display: block;
   height: 4px;
   width: 100%;
-  background-color: var(--color-white) !important;
+  background-color: var(--color-white);
   transition: all 0.3s ease;
   border-radius: 2px;
   transform-origin: center;
-  /* Debug: make lines more visible */
-  background-color: yellow !important;
-  box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .desktop-nav {

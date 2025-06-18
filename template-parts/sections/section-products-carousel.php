@@ -20,9 +20,15 @@ if ( ! class_exists( 'WooCommerce' ) ) {
   <div class="section__container">
     <div class="section__header" data-aos="fade-up">
       <h2 class="section__header-heading"><?php esc_html_e( 'Shop', 'so-so-def' ); ?></h2>
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="section__header-link">
-        <?php esc_html_e( 'Shop All', 'so-so-def' ); ?> →
-      </a>
+      <div class="section__header-link">
+        <a class="link" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+          <span><?php esc_html_e( 'Shop All', 'so-so-def' ); ?></span>
+          <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
+            <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
+            <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 

@@ -11,7 +11,7 @@
       </div>
       <div class="about-section__cta">
         <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="about-section__link">
-          <span>Learn More About Our Legacy</span>
+          <span>learn more</span>
           <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
             <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
             <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>

@@ -154,11 +154,13 @@ p { margin: 0 0 1rem; }
   text-decoration: none;
 }
 
-.about-section__link:hover {
-  background: var(--color-white);
-  color: var(--color-black);
+.about-section__link:hover,
+.about-section__link:visited {
+  background: transparent;
+  color: #ff0000;
+  border-color: #ff0000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
   text-decoration: none;
 }
 

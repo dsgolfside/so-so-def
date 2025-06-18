@@ -99,4 +99,49 @@ jQuery(document).ready(function($){
       });
     });
   }
+
+  // Archive Page Filtering
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const archiveItems = document.querySelectorAll('.archive-grid__item');
+
+  if (filterTabs.length > 0 && archiveItems.length > 0) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Update active tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter items
+        archiveItems.forEach(item => {
+          if (filter === 'all' || item.classList.contains(filter)) {
+            item.classList.remove('hidden');
+            item.style.display = 'block';
+          } else {
+            item.classList.add('hidden');
+            setTimeout(() => {
+              if (item.classList.contains('hidden')) {
+                item.style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+        
+        // Refresh AOS animations for visible items
+        setTimeout(() => {
+          AOS.refresh();
+        }, 350);
+      });
+    });
+  }
+
+  // Load More functionality (if using AJAX in the future)
+  const loadMoreBtn = document.querySelector('.load-more-btn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function() {
+      // Placeholder for future AJAX load more functionality
+      console.log('Load more clicked');
+    });
+  }
 });

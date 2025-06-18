@@ -1553,37 +1553,12 @@ p { margin: 0 0 1rem; }
 
 /* ——— Archive Page Styles ——— */
 
-/* Archive Simple Header */
-.archive-simple-header {
-  text-align: center;
-  padding: 2rem 0;
-  max-width: 800px;
-  margin: 0 auto;
-}
 
-.archive-simple-title {
-  font-family: var(--font-family-serif);
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--color-black);
-}
-
-@media (max-width: 768px) {
-  .archive-simple-header {
-    padding: 1rem 0;
-  }
-  
-  .archive-simple-title {
-    font-size: 2rem;
-  }
-}
 
 /* Archive Grid */
 .archive-grid {
-  padding: 2rem 0;
+  padding: 0;
+  background: var(--color-white);
 }
 
 .archive-grid__grid {
@@ -1595,17 +1570,29 @@ p { margin: 0 0 1rem; }
 /* Featured post takes full width */
 .archive-grid__item--featured {
   grid-column: 1 / -1;
+  margin-bottom: 3rem;
 }
 
-/* Regular posts in grid layout */
+/* Regular posts in grid layout with proper container spacing */
+.archive-grid__grid {
+  padding: 0;
+}
+
+/* Add padding only for the grid posts, not the featured post */
+.archive-grid__item:not(.archive-grid__item--featured) {
+  padding: 0 1rem;
+}
+
 @media (min-width: 768px) {
   .archive-grid__grid {
     grid-template-columns: repeat(3, 1fr);
+    padding: 0 2rem 2rem;
   }
   
   .archive-grid__item--featured {
     grid-column: 1 / -1;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    padding: 0;
   }
 }
 
@@ -1675,14 +1662,16 @@ p { margin: 0 0 1rem; }
   position: relative;
   display: block;
   margin-bottom: 3rem;
+  background: var(--color-white);
 }
 
+/* Mobile: Square aspect ratio */
 .archive-card--featured .archive-card__image {
-  aspect-ratio: unset;
-  height: 50vh;
-  min-height: 400px;
-  max-height: 600px;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: auto;
   position: relative;
+  overflow: hidden;
 }
 
 .archive-card--featured .archive-card__image img {
@@ -1697,24 +1686,24 @@ p { margin: 0 0 1rem; }
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   color: white;
-  padding: 3rem 2rem 2rem;
+  padding: 2rem 1.5rem 1.5rem;
   height: auto;
 }
 
 .archive-card--featured .archive-card__category {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .archive-card--featured .archive-card__title {
-  font-size: 2.5rem;
-  line-height: 1.1;
+  font-size: 1.75rem;
+  line-height: 1.2;
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
@@ -1737,30 +1726,33 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
+/* Desktop: 16:9 aspect ratio */
 @media (min-width: 768px) {
   .archive-card--featured .archive-card__image {
-    height: 60vh;
-    min-height: 500px;
+    aspect-ratio: 16/9;
   }
   
+  .archive-card--featured .archive-card__content {
+    padding: 3rem 2.5rem 2.5rem;
+  }
+  
+  .archive-card--featured .archive-card__title {
+    font-size: 2.5rem;
+    max-width: 70%;
+  }
+  
+  .archive-card--featured .archive-card__category {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1200px) {
   .archive-card--featured .archive-card__content {
     padding: 4rem 3rem 3rem;
   }
   
   .archive-card--featured .archive-card__title {
-    font-size: 3.5rem;
-    max-width: 70%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .archive-card--featured .archive-card__image {
-    height: 70vh;
-    min-height: 600px;
-  }
-  
-  .archive-card--featured .archive-card__title {
-    font-size: 4rem;
+    font-size: 3rem;
     max-width: 60%;
   }
 }

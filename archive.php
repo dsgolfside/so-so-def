@@ -18,14 +18,6 @@ get_header();
 		<section class="archive-grid section" data-aos="fade-up">
 			<div class="container">
 				<div class="archive-grid__inner">
-					
-					<!-- Archive Title (Simple) -->
-					<header class="archive-simple-header">
-						<?php
-						$archive_title = get_the_archive_title();
-						?>
-						<h1 class="archive-simple-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-					</header>
 
 					<div class="archive-grid__grid">
 						<?php

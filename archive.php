@@ -22,7 +22,6 @@ get_header();
 					<div class="archive-grid__grid">
 						<?php
 						$post_count = 0;
-						$is_first_post = true;
 						while ( have_posts() ) :
 							the_post();
 							$post_count++;
@@ -34,17 +33,17 @@ get_header();
 							}
 						?>
 							<article 
-								class="archive-grid__item <?php echo esc_attr( $category_classes ); ?> <?php echo $is_first_post ? 'archive-grid__item--featured' : ''; ?>"
+								class="archive-grid__item <?php echo esc_attr( $category_classes ); ?>"
 								data-aos="fade-up"
 								data-aos-delay="<?php echo esc_attr( ( $post_count % 6 ) * 50 ); ?>"
 							>
-								<div class="archive-card <?php echo $is_first_post ? 'archive-card--featured' : ''; ?>">
+								<div class="archive-card">
 									<a class="archive-card__anchor" href="<?php the_permalink(); ?>">
 										
 										<?php if ( has_post_thumbnail() ) : ?>
 											<div class="archive-card__image media-container media-container--cover">
 												<?php the_post_thumbnail(
-													$is_first_post ? 'full' : 'large',
+													'large',
 													[ 'class' => 'media-container__media', 'alt' => get_the_title() ]
 												); ?>
 											</div>
@@ -59,11 +58,11 @@ get_header();
 
 											<h2 class="archive-card__title"><?php the_title(); ?></h2>
 
-											<?php if ( !$is_first_post ) : ?>
+											<?php if ( $post_count > 1 ) : ?>
 												<div class="archive-card__excerpt">
 													<?php 
 													$excerpt = get_the_excerpt();
-													echo wp_trim_words( $excerpt, 20, '...' );
+													echo wp_trim_words( $excerpt, 15, '...' );
 													?>
 												</div>
 											<?php endif; ?>
@@ -84,9 +83,7 @@ get_header();
 									</a>
 								</div>
 							</article>
-						<?php 
-							$is_first_post = false;
-						endwhile; ?>
+						<?php endwhile; ?>
 					</div>
 
 					<!-- Load More Button -->

@@ -154,8 +154,13 @@ p { margin: 0 0 1rem; }
   text-decoration: none;
 }
 
-.about-section__link:hover,
 .about-section__link:visited {
+  color: var(--color-white);
+  border-color: var(--color-white);
+  text-decoration: none;
+}
+
+.about-section__link:hover {
   background: transparent;
   color: #ff0000;
   border-color: #ff0000;

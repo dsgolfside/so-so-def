@@ -14,55 +14,23 @@ get_header();
 
 	<?php if ( have_posts() ) : ?>
 
-		<!-- Archive Hero Section -->
-		<section class="archive-hero" data-aos="fade-up">
-			<div class="container">
-				<div class="archive-hero__inner">
-					<header class="archive-hero__header">
-						<?php
-						$archive_title = get_the_archive_title();
-						$archive_description = get_the_archive_description();
-						?>
-						<h1 class="archive-hero__title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-						<?php if ( $archive_description ) : ?>
-							<div class="archive-hero__description">
-								<?php echo wp_kses_post( $archive_description ); ?>
-							</div>
-						<?php endif; ?>
-					</header>
-				</div>
-			</div>
-		</section>
-
-		<!-- Archive Filter Section -->
-		<section class="archive-filters" data-aos="fade-up" data-aos-delay="100">
-			<div class="container">
-				<div class="archive-filters__inner">
-					<div class="archive-filters__tabs">
-						<button class="filter-tab active" data-filter="all">
-							<?php esc_html_e( 'All', 'so-so-def' ); ?>
-						</button>
-						<?php
-						// Get categories for filter tabs
-						$categories = get_categories( array( 'hide_empty' => true ) );
-						foreach ( $categories as $category ) :
-						?>
-							<button class="filter-tab" data-filter="<?php echo esc_attr( $category->slug ); ?>">
-								<?php echo esc_html( $category->name ); ?>
-							</button>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Archive Grid Section -->
-		<section class="archive-grid section" data-aos="fade-up" data-aos-delay="200">
+		<!-- Archive Grid Section - Roc Nation Style -->
+		<section class="archive-grid section" data-aos="fade-up">
 			<div class="container">
 				<div class="archive-grid__inner">
+					
+					<!-- Archive Title (Simple) -->
+					<header class="archive-simple-header">
+						<?php
+						$archive_title = get_the_archive_title();
+						?>
+						<h1 class="archive-simple-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
+					</header>
+
 					<div class="archive-grid__grid">
 						<?php
 						$post_count = 0;
+						$is_first_post = true;
 						while ( have_posts() ) :
 							the_post();
 							$post_count++;
@@ -74,17 +42,17 @@ get_header();
 							}
 						?>
 							<article 
-								class="archive-grid__item <?php echo esc_attr( $category_classes ); ?>"
+								class="archive-grid__item <?php echo esc_attr( $category_classes ); ?> <?php echo $is_first_post ? 'archive-grid__item--featured' : ''; ?>"
 								data-aos="fade-up"
 								data-aos-delay="<?php echo esc_attr( ( $post_count % 6 ) * 50 ); ?>"
 							>
-								<div class="archive-card">
+								<div class="archive-card <?php echo $is_first_post ? 'archive-card--featured' : ''; ?>">
 									<a class="archive-card__anchor" href="<?php the_permalink(); ?>">
 										
 										<?php if ( has_post_thumbnail() ) : ?>
 											<div class="archive-card__image media-container media-container--cover">
 												<?php the_post_thumbnail(
-													'large',
+													$is_first_post ? 'full' : 'large',
 													[ 'class' => 'media-container__media', 'alt' => get_the_title() ]
 												); ?>
 											</div>
@@ -99,12 +67,14 @@ get_header();
 
 											<h2 class="archive-card__title"><?php the_title(); ?></h2>
 
-											<div class="archive-card__excerpt">
-												<?php 
-												$excerpt = get_the_excerpt();
-												echo wp_trim_words( $excerpt, 20, '...' );
-												?>
-											</div>
+											<?php if ( !$is_first_post ) : ?>
+												<div class="archive-card__excerpt">
+													<?php 
+													$excerpt = get_the_excerpt();
+													echo wp_trim_words( $excerpt, 20, '...' );
+													?>
+												</div>
+											<?php endif; ?>
 
 											<div class="archive-card__meta">
 												<time class="archive-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
@@ -122,7 +92,9 @@ get_header();
 									</a>
 								</div>
 							</article>
-						<?php endwhile; ?>
+						<?php 
+							$is_first_post = false;
+						endwhile; ?>
 					</div>
 
 					<!-- Load More Button -->

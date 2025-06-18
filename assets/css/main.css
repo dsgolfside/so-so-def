@@ -1728,6 +1728,13 @@ p { margin: 0 0 1rem; }
   font-family: var(--font-family-serif);
 }
 
+.archive-grid__item:nth-child(1) .archive-card__excerpt {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
 .archive-grid__item:nth-child(1) .archive-card__meta {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 1rem;
@@ -1800,6 +1807,10 @@ p { margin: 0 0 1rem; }
   
   .archive-grid__item:nth-child(1) .archive-card__title {
     font-size: 2.5rem;
+  }
+  
+  .archive-grid__item:nth-child(1) .archive-card__excerpt {
+    font-size: 1.125rem;
   }
   
   .archive-grid__item:nth-child(2) .archive-card__image,

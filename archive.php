@@ -58,14 +58,14 @@ get_header();
 
 											<h2 class="archive-card__title"><?php the_title(); ?></h2>
 
-											<?php if ( $post_count > 1 ) : ?>
-												<div class="archive-card__excerpt">
-													<?php 
-													$excerpt = get_the_excerpt();
-													echo wp_trim_words( $excerpt, 15, '...' );
-													?>
-												</div>
-											<?php endif; ?>
+											<div class="archive-card__excerpt">
+												<?php 
+												$excerpt = get_the_excerpt();
+												// Show more words for the featured post (first post)
+												$word_count = ( $post_count === 1 ) ? 25 : 15;
+												echo wp_trim_words( $excerpt, $word_count, '...' );
+												?>
+											</div>
 
 											<div class="archive-card__meta">
 												<time class="archive-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">

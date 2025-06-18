@@ -25,7 +25,6 @@ $latest_query = new WP_Query( $args );
         <div class="section__header-link">
           <a class="link" href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ); ?>">
             <span><?php esc_html_e( 'View All', 'so-so-def' ); ?></span>
-            <span class="u-hidden-visually"><?php esc_html_e( 'Latest News', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
               <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>

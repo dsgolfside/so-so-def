@@ -1718,11 +1718,11 @@ p { margin: 0 0 1rem; }
   color: rgba(255, 255, 255, 0.7);
 }
 
-.archive-grid__item:nth-child(1) .archive-card__learn-more {
+.archive-grid__item:nth-child(1) .archive-card__read-more {
   color: white;
 }
 
-.archive-grid__item:nth-child(1):hover .archive-card__learn-more {
+.archive-grid__item:nth-child(1):hover .archive-card__read-more {
   color: var(--color-accent);
 }
 
@@ -1803,7 +1803,7 @@ p { margin: 0 0 1rem; }
   font-weight: 500;
 }
 
-.archive-card__learn-more {
+.archive-card__read-more {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1821,7 +1821,7 @@ p { margin: 0 0 1rem; }
   transition: transform 0.3s ease;
 }
 
-.archive-card:hover .archive-card__learn-more {
+.archive-card:hover .archive-card__read-more {
   color: var(--color-accent);
 }
 

@@ -71,8 +71,8 @@ get_header();
 												<time class="archive-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
 													<?php echo esc_html( get_the_date() ); ?>
 												</time>
-												<span class="archive-card__learn-more">
-													<?php esc_html_e( 'Learn More', 'so-so-def' ); ?>
+												<span class="archive-card__read-more">
+													<?php esc_html_e( 'Read More', 'so-so-def' ); ?>
 													<svg aria-hidden="true" class="archive-card__icon" viewBox="0 0 11 8">
 														<line stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
 														<polyline stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>

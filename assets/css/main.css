@@ -1773,7 +1773,7 @@ p { margin: 0 0 1rem; }
 .archive-grid__item:nth-child(2) .archive-card__image,
 .archive-grid__item:nth-child(3) .archive-card__image {
   aspect-ratio: 4/3;
-  height: 180px;
+  height: 220px;
   width: 100%;
 }
 
@@ -1804,7 +1804,7 @@ p { margin: 0 0 1rem; }
   
   .archive-grid__item:nth-child(2) .archive-card__image,
   .archive-grid__item:nth-child(3) .archive-card__image {
-    height: 220px;
+    height: 260px;
   }
 }
 

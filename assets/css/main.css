@@ -818,6 +818,14 @@ p { margin: 0 0 1rem; }
   aspect-ratio: 1/1;
 }
 
+/* Mobile: Audio player positioning */
+.latest-grid__embed {
+  position: relative;
+  overflow: hidden;
+  background: #eee;
+  aspect-ratio: 1/1;
+}
+
 /* Desktop 2-Row Layout - 3 posts + Spotify */
 @media (min-width: 768px) {
   .latest-grid__grid {
@@ -1129,6 +1137,13 @@ p { margin: 0 0 1rem; }
   overflow: hidden;
 }
 
+/* Mobile: Smaller padding for audio player */
+@media (max-width: 768px) {
+  .latest-grid__embed .audio-player {
+    padding: 1rem;
+  }
+}
+
 .latest-grid__embed .audio-player::before {
   content: '';
   position: absolute;
@@ -1156,6 +1171,19 @@ p { margin: 0 0 1rem; }
 /* remove any white flash behind the iframe */
 .latest-grid__embed .audio-player iframe {
   background: transparent;
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+  min-height: 152px;
+}
+
+/* Mobile: Responsive iframe */
+@media (max-width: 768px) {
+  .latest-grid__embed .audio-player iframe {
+    width: 100%;
+    height: 152px;
+    max-width: none;
+  }
 }
 
 /* ——— Announcements Single Item (Fixed - No Swiper Conflict) ——— */

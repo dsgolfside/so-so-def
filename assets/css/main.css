@@ -1024,8 +1024,9 @@ p { margin: 0 0 1rem; }
   .latest-grid .section__header {
     padding: 1.5rem 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
   }
 }
@@ -1052,7 +1053,8 @@ p { margin: 0 0 1rem; }
 /* Mobile: Smaller heading with no bottom margin */
 @media (max-width: 767px) {
   .latest-grid .section__header-heading {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 0;
     line-height: 1.1;
   }

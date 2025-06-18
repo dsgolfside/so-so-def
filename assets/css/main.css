@@ -279,6 +279,28 @@ p { margin: 0 0 1rem; }
   max-width: none;
 }
 
+/* Announcements Section - TRUE Full Width Edge-to-Edge */
+.announcements-section.section {
+  margin: 0;
+  padding: 0;
+  background: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.announcements-section .container,
+.announcements-section .section__inner,
+.announcements-section .section__main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
 /* Talent Spotlight Section */
 .talent-spotlight {
   padding: 4rem 0;
@@ -1311,15 +1333,21 @@ p { margin: 0 0 1rem; }
   
   .announcement-item .media-container {
     flex: none;
-    width: 100%;
-    max-width: 350px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: none;
     height: 350px;
-    aspect-ratio: 1/1;
-    margin: 0 auto;
+    aspect-ratio: auto;
   }
   
   .announcement-item .text-and-image__content {
     padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .announcement-item .text-and-image__heading {

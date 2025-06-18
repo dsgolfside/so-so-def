@@ -5,7 +5,7 @@
  * Displays the Announcements section on the homepage.
  */
 ?>
-<section class="section text-and-image text-and-image--twenty-five-seventy-five" data-aos="fade-up">
+<section class="section announcements-section text-and-image text-and-image--twenty-five-seventy-five" data-aos="fade-up">
   <div class="container">
     <div class="section__inner">
       <header class="section__header">

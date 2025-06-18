@@ -54,10 +54,6 @@ get_header();
   <!-- Talent Spotlight Section -->
   <?php get_template_part( 'template-parts/sections/section', 'talent-spotlight' ); ?>
   */ ?>
-  
-  <div style="height: 300px; background: #666; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px;">
-    CONTENT SECTIONS DISABLED FOR DEBUGGING
-  </div>
 
 </main>
 

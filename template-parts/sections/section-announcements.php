@@ -11,7 +11,12 @@
       <header class="section__header">
         <h2 class="section__header-heading"><?php esc_html_e( 'Announcements', 'so-so-def' ); ?></h2>
         <div class="section__header-link">
-          <a class="link" href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ); ?>">
+          <?php
+          // Try to link to 'announcements' category, fallback to general post archive
+          $announcements_category = get_category_by_slug('announcements');
+          $archive_link = $announcements_category ? get_category_link($announcements_category->term_id) : get_post_type_archive_link('post');
+          ?>
+          <a class="link" href="<?php echo esc_url( $archive_link ); ?>">
             <span><?php esc_html_e( 'Read All', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="#000" stroke-width="0.5" stroke-linecap="round" x1="1" x2="10" y1="3.5" y2="3.5"/>

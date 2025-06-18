@@ -1593,12 +1593,14 @@ p { margin: 0 0 1rem; }
   .archive-grid__item:nth-child(2) {
     grid-column: 3;
     grid-row: 1;
+    width: 100%;
   }
   
   /* Third post: Small on bottom right */
   .archive-grid__item:nth-child(3) {
     grid-column: 3;
     grid-row: 2;
+    width: 100%;
   }
   
   /* Fourth post and beyond: Continue in 3-column grid */
@@ -1765,12 +1767,20 @@ p { margin: 0 0 1rem; }
 .archive-grid__item:nth-child(2) .archive-card,
 .archive-grid__item:nth-child(3) .archive-card {
   height: 100%;
+  width: 100%;
 }
 
 .archive-grid__item:nth-child(2) .archive-card__image,
 .archive-grid__item:nth-child(3) .archive-card__image {
   aspect-ratio: 4/3;
   height: 180px;
+  width: 100%;
+}
+
+.archive-grid__item:nth-child(2) .archive-card__image img,
+.archive-grid__item:nth-child(3) .archive-card__image img {
+  width: 100%;
+  object-fit: cover;
 }
 
 .archive-grid__item:nth-child(2) .archive-card__title,

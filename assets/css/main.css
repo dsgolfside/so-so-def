@@ -683,22 +683,22 @@ p { margin: 0 0 1rem; }
 }
 
 /* ——— Logo Switching for Header States ——— */
-/* Default state: show black logo, hide white logo */
+/* Default state: show white logo, hide black logo */
 .site-header .logo-default {
-  display: block;
+  display: none;
 }
 
 .site-header .logo-white {
-  display: none;
+  display: block;
 }
 
-/* Scrolled/dark state: hide black logo, show white logo */
+/* Scrolled/light state: hide white logo, show black logo */
 .site-header.is-scrolled .logo-default {
-  display: none;
+  display: block;
 }
 
 .site-header.is-scrolled .logo-white {
-  display: block;
+  display: none;
 }
 
 /* Ensure both logos have same styling */

@@ -12,7 +12,18 @@
   <div class="site-header__container">
     <div class="site-header__logo">
       <?php if ( has_custom_logo() ) : ?>
-        <?php the_custom_logo(); ?>
+        <!-- Default logo for light header -->
+        <div class="logo-default">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo.png" alt="<?php bloginfo( 'name' ); ?>" />
+          </a>
+        </div>
+        <!-- White logo for dark/scrolled header -->
+        <div class="logo-white">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo-white.png" alt="<?php bloginfo( 'name' ); ?>" />
+          </a>
+        </div>
       <?php else : ?>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
           <?php bloginfo( 'name' ); ?>

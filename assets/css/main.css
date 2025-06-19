@@ -682,6 +682,34 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent) !important; /* keep accent on current item */
 }
 
+/* ——— Logo Switching for Header States ——— */
+/* Default state: show black logo, hide white logo */
+.site-header .logo-default {
+  display: block;
+}
+
+.site-header .logo-white {
+  display: none;
+}
+
+/* Scrolled/dark state: hide black logo, show white logo */
+.site-header.is-scrolled .logo-default {
+  display: none;
+}
+
+.site-header.is-scrolled .logo-white {
+  display: block;
+}
+
+/* Ensure both logos have same styling */
+.logo-default img,
+.logo-white img {
+  height: auto;
+  max-height: 40px;
+  width: auto;
+  transition: opacity 0.3s ease;
+}
+
 /* ——— Primary Menu Active States ——— */
 .desktop-nav .current-menu-item > a,
 .desktop-nav .current_page_item > a {
@@ -862,18 +890,18 @@ p { margin: 0 0 1rem; }
     aspect-ratio: 2/1;
   }
   
-  /* Row 1: Post 2 - Square card */
+  /* Row 1: Post 2 - Taller card with more image space */
   .latest-grid__item:nth-child(2) {
     grid-column: 3;
     grid-row: 1;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
   }
   
-  /* Row 2: Post 3 - Square card */
+  /* Row 2: Post 3 - Taller card with more image space */
   .latest-grid__item:nth-child(3) {
     grid-column: 1;
     grid-row: 2;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
   }
   
   /* Row 2: Spotify Embed - Wide card (spans 2 columns) */
@@ -886,6 +914,12 @@ p { margin: 0 0 1rem; }
   /* Hide posts 4, 5 and beyond on desktop */
   .latest-grid__item:nth-child(n+4) {
     display: none;
+  }
+
+  /* Reduce bottom padding for posts 2 and 3 to minimize white space */
+  .latest-grid__item:nth-child(2) .card__inner,
+  .latest-grid__item:nth-child(3) .card__inner {
+    padding: 1.5rem;
   }
 }
 

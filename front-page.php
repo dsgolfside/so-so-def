@@ -12,15 +12,18 @@ get_header();
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="slide-content" data-aos="fade-up" data-aos-delay="200">
-          <!-- Desktop version - hidden on mobile -->
-          <div class="video-desktop">
-            <?php echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/20/31/zfb2FrETaHor/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" controls="false"]' ); ?>
-          </div>
+          <?php
+          // Enhanced device detection for better DevTools testing
+          $is_mobile = wp_is_mobile() || (isset($_GET['mobile']) && $_GET['mobile'] == '1');
           
-          <!-- Mobile version - hidden on desktop -->
-          <div class="video-mobile">
-            <?php echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/21/49/eAqzFZva07R3/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" controls="false"]' ); ?>
-          </div>
+          if ( $is_mobile ) {
+            // Mobile version - 1080x1080 square format
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/21/49/eAqzFZva07R3/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" controls="false"]' );
+          } else {
+            // Desktop version - 1920x1080 widescreen format
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/20/31/zfb2FrETaHor/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" controls="false"]' );
+          }
+          ?>
         </div>
       </div>
       <!-- add more slides like this if you want multiple IVS streams -->

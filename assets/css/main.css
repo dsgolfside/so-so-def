@@ -793,15 +793,6 @@ p { margin: 0 0 1rem; }
   margin-top: 0;
 }
 
-/* Responsive Video Switching */
-.video-desktop {
-  display: block;
-}
-
-.video-mobile {
-  display: none;
-}
-
 @media (max-width: 768px) {
   #content {
     padding-top: 70px; /* Smaller header on mobile */
@@ -820,15 +811,6 @@ p { margin: 0 0 1rem; }
   .home-hero {
     height: calc(100vh - 70px); /* Full viewport minus mobile header height */
     padding: 0;
-  }
-  
-  /* Switch videos on mobile */
-  .video-desktop {
-    display: none;
-  }
-  
-  .video-mobile {
-    display: block;
   }
 }
 /* ——— ROC Nation Style Clean Grid ——— */

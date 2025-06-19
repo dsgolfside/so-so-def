@@ -890,18 +890,18 @@ p { margin: 0 0 1rem; }
     aspect-ratio: 2/1;
   }
   
-  /* Row 1: Post 2 - Taller card with more image space */
+  /* Row 1: Post 2 - Square card */
   .latest-grid__item:nth-child(2) {
     grid-column: 3;
     grid-row: 1;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
   }
   
-  /* Row 2: Post 3 - Taller card with more image space */
+  /* Row 2: Post 3 - Square card */
   .latest-grid__item:nth-child(3) {
     grid-column: 1;
     grid-row: 2;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
   }
   
   /* Row 2: Spotify Embed - Wide card (spans 2 columns) */
@@ -1623,18 +1623,20 @@ p { margin: 0 0 1rem; }
     grid-row: 1 / 3;
   }
   
-  /* Second post: Bigger on top right */
+  /* Second post: Bigger on top right - Taller card with more image space */
   .archive-grid__item:nth-child(2) {
     grid-column: 2;
     grid-row: 1;
     width: 100%;
+    aspect-ratio: 3/4;
   }
   
-  /* Third post: Bigger on bottom right */
+  /* Third post: Bigger on bottom right - Taller card with more image space */
   .archive-grid__item:nth-child(3) {
     grid-column: 2;
     grid-row: 2;
     width: 100%;
+    aspect-ratio: 3/4;
   }
   
   /* Fourth post and beyond: Continue in 3-column grid */
@@ -1829,6 +1831,12 @@ p { margin: 0 0 1rem; }
 .archive-grid__item:nth-child(3) .archive-card__title {
   font-size: 1.125rem;
   line-height: 1.3;
+}
+
+/* Reduce bottom padding for posts 2 and 3 to minimize white space */
+.archive-grid__item:nth-child(2) .archive-card__content,
+.archive-grid__item:nth-child(3) .archive-card__content {
+  padding: 1rem 1.5rem 1.5rem;
 }
 
 @media (min-width: 1200px) {

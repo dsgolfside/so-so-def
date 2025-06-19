@@ -13,9 +13,14 @@ get_header();
       <div class="swiper-slide">
         <div class="slide-content" data-aos="fade-up" data-aos-delay="200">
           <?php
-          // IVS video via your shortcode
-          // echo do_shortcode( '[jj-aws-ivs]' );
-          echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/1/19/6/hQbR2qT7rAje/media/hls/master.m3u8" aspect_ratio="1/1" mobile_aspect_ratio="1/1" autoplay="true" loop="true"]' );
+          // Conditional IVS video based on device type
+          if ( wp_is_mobile() ) {
+            // Mobile version - 1080x1080 square format
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/21/49/eAqzFZva07R3/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" controls="false"]' );
+          } else {
+            // Desktop version - 1920x1080 widescreen format
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/19/20/31/zfb2FrETaHor/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" controls="false"]' );
+          }
           ?>
         </div>
       </div>

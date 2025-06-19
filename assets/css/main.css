@@ -795,21 +795,21 @@ p { margin: 0 0 1rem; }
 
 @media (max-width: 768px) {
   #content {
-    padding-top: 70px; /* Smaller header on mobile */
+    padding-top: 67px; /* Adjusted to match mobile header height exactly */
   }
   
   .hero.swiper-container {
-    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    height: calc(100vh - 67px); /* Full viewport minus mobile header height */
     padding: 0;
   }
   
   .hero.home-video-static {
-    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    height: calc(100vh - 67px); /* Full viewport minus mobile header height */
     padding: 0;
   }
   
   .home-hero {
-    height: calc(100vh - 70px); /* Full viewport minus mobile header height */
+    height: calc(100vh - 67px); /* Full viewport minus mobile header height */
     padding: 0;
   }
 }

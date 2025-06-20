@@ -1067,6 +1067,15 @@ p { margin: 0 0 1rem; }
   .home .latest-grid .card__inner {
     background: var(--color-black);
   }
+  
+  /* Front page mobile: show native image ratios instead of cropping */
+  .home .latest-grid__item img,
+  .home .latest-grid__item .wp-post-image,
+  .home .latest-grid__item .attachment-large,
+  .home .latest-grid .card__image img {
+    object-fit: contain !important;
+    height: auto !important;
+  }
 }
 
 /* Enhanced Hover Effects with Glow */

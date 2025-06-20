@@ -1612,64 +1612,25 @@ p { margin: 0 0 1rem; }
 @media (min-width: 768px) {
   .archive-grid__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    grid-auto-rows: minmax(300px, auto);
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(450px, auto);
     gap: 2rem;
   }
   
-  /* First post: Large featured on left, spans 2 rows */
+  /* First post: Full width featured */
   .archive-grid__item:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1 / 3;
+    grid-column: 1 / 3;
   }
   
-  /* Second post: Bigger on top right - Taller card with more image space */
-  .archive-grid__item:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-    width: 100%;
+  /* Posts 2+: Regular 2-column flow with alternating sizes */
+  /* Small posts: 2,4,6,8,10... (even numbers after 1) */
+  .archive-grid__item:nth-child(even):nth-child(n+2) {
+    /* These will be small posts */
   }
   
-  /* Third post: Bigger on bottom right - Taller card with more image space */
-  .archive-grid__item:nth-child(3) {
-    grid-column: 2;
-    grid-row: 2;
-    width: 100%;
-  }
-  
-  /* Posts 4 and beyond: Alternating 2-column layout */
-  .archive-grid__item:nth-child(n+4) {
-    grid-column: span 1;
-  }
-  
-  /* Row 2: Post 4 (small), Post 5 (big) */
-  .archive-grid__item:nth-child(4) {
-    grid-column: 1;
-  }
-  .archive-grid__item:nth-child(5) {
-    grid-column: 2;
-  }
-  
-  /* Row 3: Post 6 (big), Post 7 (small) */
-  .archive-grid__item:nth-child(6) {
-    grid-column: 1;
-  }
-  .archive-grid__item:nth-child(7) {
-    grid-column: 2;
-  }
-  
-  /* Pattern repeats: small posts on alternating sides */
-  .archive-grid__item:nth-child(4n) {
-    grid-column: 1; /* Posts 4,8,12,16... - small posts */
-  }
-  .archive-grid__item:nth-child(4n+1):nth-child(n+5) {
-    grid-column: 2; /* Posts 5,9,13,17... - big posts */
-  }
-  .archive-grid__item:nth-child(4n+2):nth-child(n+6) {
-    grid-column: 1; /* Posts 6,10,14,18... - big posts */
-  }
-  .archive-grid__item:nth-child(4n+3):nth-child(n+7) {
-    grid-column: 2; /* Posts 7,11,15,19... - small posts */
+  /* Big posts: 3,5,7,9,11... (odd numbers after 1) */
+  .archive-grid__item:nth-child(odd):nth-child(n+3) {
+    /* These will be big posts */
   }
 }
 
@@ -1835,66 +1796,50 @@ p { margin: 0 0 1rem; }
   transform: translateX(3px);
 }
 
-/* Smaller side posts (2nd and 3rd) */
-.archive-grid__item:nth-child(2) .archive-card,
-.archive-grid__item:nth-child(3) .archive-card {
+/* All posts except first one */
+.archive-grid__item:nth-child(n+2) .archive-card {
   height: 100%;
   width: 100%;
 }
 
-/* Big posts in alternating rows - Posts 5,6,9,10,13,14... */
-.archive-grid__item:nth-child(4n+1):nth-child(n+5) .archive-card,
-.archive-grid__item:nth-child(4n+2):nth-child(n+6) .archive-card {
-  height: 100%;
-  width: 100%;
-}
-
-/* Small posts in alternating rows - Posts 4,7,8,11,12,15... */
-.archive-grid__item:nth-child(4n):nth-child(n+4) .archive-card,
-.archive-grid__item:nth-child(4n+3):nth-child(n+7) .archive-card {
-  height: 100%;
-  width: 100%;
-}
-
-.archive-grid__item:nth-child(2) .archive-card__image,
-.archive-grid__item:nth-child(3) .archive-card__image {
+/* Small posts - even numbers after first post (2,4,6,8...) */
+.archive-grid__item:nth-child(even):nth-child(n+2) .archive-card__image {
   aspect-ratio: 3/2;
-  height: 320px;
+  height: 280px;
   width: 100%;
 }
 
-/* Big posts in alternating rows - larger images */
-.archive-grid__item:nth-child(4n+1):nth-child(n+5) .archive-card__image,
-.archive-grid__item:nth-child(4n+2):nth-child(n+6) .archive-card__image {
+/* Big posts - odd numbers after first post (3,5,7,9...) */
+.archive-grid__item:nth-child(odd):nth-child(n+3) .archive-card__image {
   aspect-ratio: 3/2;
-  height: 320px;
+  height: 400px;
   width: 100%;
 }
 
-/* Small posts in alternating rows - smaller images */
-.archive-grid__item:nth-child(4n):nth-child(n+4) .archive-card__image,
-.archive-grid__item:nth-child(4n+3):nth-child(n+7) .archive-card__image {
-  aspect-ratio: 3/2;
-  height: 240px;
-  width: 100%;
-}
-
-.archive-grid__item:nth-child(2) .archive-card__image img,
-.archive-grid__item:nth-child(3) .archive-card__image img {
+/* All regular posts (not the first featured one) */
+.archive-grid__item:nth-child(n+2) .archive-card__image img {
   width: 100%;
   object-fit: cover;
 }
 
-.archive-grid__item:nth-child(2) .archive-card__title,
-.archive-grid__item:nth-child(3) .archive-card__title {
+/* Small posts styling */
+.archive-grid__item:nth-child(even):nth-child(n+2) .archive-card__title {
   font-size: 1.125rem;
   line-height: 1.3;
 }
 
-/* Reduce bottom padding for posts 2 and 3 to minimize white space */
-.archive-grid__item:nth-child(2) .archive-card__content,
-.archive-grid__item:nth-child(3) .archive-card__content {
+.archive-grid__item:nth-child(even):nth-child(n+2) .archive-card__content {
   padding: 1rem 1.5rem 1rem;
+}
+
+/* Big posts styling */
+.archive-grid__item:nth-child(odd):nth-child(n+3) .archive-card__title {
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+
+.archive-grid__item:nth-child(odd):nth-child(n+3) .archive-card__content {
+  padding: 1.5rem 1.5rem 1rem;
 }
 
 @media (min-width: 1200px) {
@@ -1914,21 +1859,14 @@ p { margin: 0 0 1rem; }
     font-size: 1.125rem;
   }
   
-  .archive-grid__item:nth-child(2) .archive-card__image,
-  .archive-grid__item:nth-child(3) .archive-card__image {
-    height: 360px;
+  /* Small posts - desktop sizes */
+  .archive-grid__item:nth-child(even):nth-child(n+2) .archive-card__image {
+    height: 320px;
   }
   
-  /* Big posts in alternating rows - desktop sizes */
-  .archive-grid__item:nth-child(4n+1):nth-child(n+5) .archive-card__image,
-  .archive-grid__item:nth-child(4n+2):nth-child(n+6) .archive-card__image {
-    height: 360px;
-  }
-  
-  /* Small posts in alternating rows - desktop sizes */
-  .archive-grid__item:nth-child(4n):nth-child(n+4) .archive-card__image,
-  .archive-grid__item:nth-child(4n+3):nth-child(n+7) .archive-card__image {
-    height: 280px;
+  /* Big posts - desktop sizes */
+  .archive-grid__item:nth-child(odd):nth-child(n+3) .archive-card__image {
+    height: 450px;
   }
 }
 

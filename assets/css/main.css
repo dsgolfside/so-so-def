@@ -1076,6 +1076,23 @@ p { margin: 0 0 1rem; }
     object-fit: contain !important;
     height: auto !important;
   }
+  
+  /* Front page mobile: remove fixed aspect ratios to auto-fit image content */
+  .home .latest-grid__item,
+  .home .latest-grid__embed {
+    aspect-ratio: auto !important;
+  }
+  
+  /* Front page mobile: make card containers fit content height */
+  .home .latest-grid .card {
+    position: relative !important;
+    height: auto !important;
+  }
+  
+  /* Front page mobile: make image containers fit content */
+  .home .latest-grid .card__image {
+    height: auto !important;
+  }
 }
 
 /* Enhanced Hover Effects with Glow */

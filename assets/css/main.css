@@ -1430,8 +1430,43 @@ p { margin: 0 0 1rem; }
 }
 
 /* ——— Products Carousel Section ——— */
-.products-carousel {
-  padding: 4rem 0;
+.products-carousel.section {
+  margin: 0;
+  padding: 0;
+  background: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.products-carousel .container,
+.products-carousel .section__inner,
+.products-carousel .section__main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* Products carousel header - match announcements spacing */
+.products-carousel .section__header {
+  margin-bottom: 0;
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .products-carousel .section__header {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+  }
 }
 
 .products-swiper .swiper-slide {

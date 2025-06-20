@@ -1083,15 +1083,17 @@ p { margin: 0 0 1rem; }
     aspect-ratio: auto !important;
   }
   
-  /* Front page mobile: make card containers fit content height */
+  /* Front page mobile: ensure minimum height for image + text overlay */
   .home .latest-grid .card {
     position: relative !important;
+    min-height: 300px !important;
     height: auto !important;
   }
   
-  /* Front page mobile: make image containers fit content */
+  /* Front page mobile: make image containers fit content but leave room for text */
   .home .latest-grid .card__image {
     height: auto !important;
+    min-height: 250px !important;
   }
 }
 

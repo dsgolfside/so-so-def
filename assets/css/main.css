@@ -1062,6 +1062,11 @@ p { margin: 0 0 1rem; }
   .card__inner {
     padding: 1.5rem;
   }
+  
+  /* Front page mobile: solid black background for latest news cards */
+  .home .latest-grid .card__inner {
+    background: var(--color-black);
+  }
 }
 
 /* Enhanced Hover Effects with Glow */

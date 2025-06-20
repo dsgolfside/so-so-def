@@ -1628,7 +1628,6 @@ p { margin: 0 0 1rem; }
     grid-column: 2;
     grid-row: 1;
     width: 100%;
-    aspect-ratio: 3/4;
   }
   
   /* Third post: Bigger on bottom right - Taller card with more image space */
@@ -1636,7 +1635,6 @@ p { margin: 0 0 1rem; }
     grid-column: 2;
     grid-row: 2;
     width: 100%;
-    aspect-ratio: 3/4;
   }
   
   /* Fourth post and beyond: Continue in 3-column grid */
@@ -1817,7 +1815,7 @@ p { margin: 0 0 1rem; }
 .archive-grid__item:nth-child(2) .archive-card__image,
 .archive-grid__item:nth-child(3) .archive-card__image {
   aspect-ratio: 3/2;
-  height: 240px;
+  height: 320px;
   width: 100%;
 }
 
@@ -1836,7 +1834,7 @@ p { margin: 0 0 1rem; }
 /* Reduce bottom padding for posts 2 and 3 to minimize white space */
 .archive-grid__item:nth-child(2) .archive-card__content,
 .archive-grid__item:nth-child(3) .archive-card__content {
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 1rem 1.5rem 1rem;
 }
 
 @media (min-width: 1200px) {
@@ -1858,7 +1856,7 @@ p { margin: 0 0 1rem; }
   
   .archive-grid__item:nth-child(2) .archive-card__image,
   .archive-grid__item:nth-child(3) .archive-card__image {
-    height: 280px;
+    height: 360px;
   }
 }
 

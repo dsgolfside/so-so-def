@@ -1335,6 +1335,8 @@ p { margin: 0 0 1rem; }
 .announcement-item .text-and-image__content {
   flex: 1;
   padding: 3rem;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 .announcement-item .eyebrow {
@@ -1351,7 +1353,7 @@ p { margin: 0 0 1rem; }
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 2rem;
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 .announcement-item .link {
@@ -1362,8 +1364,8 @@ p { margin: 0 0 1rem; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-black);
-  border: 2px solid var(--color-black);
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
   padding: 1rem 2rem;
   border-radius: 50px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1384,12 +1386,13 @@ p { margin: 0 0 1rem; }
 }
 
 .announcement-item .link:hover {
-  background: var(--color-black);
+  background: var(--color-accent);
   color: var(--color-white);
+  border-color: var(--color-accent);
   transform: translateY(-4px) scale(1.05);
   box-shadow: 
-    0 12px 35px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(0, 0, 0, 0.1);
+    0 12px 35px rgba(225, 6, 0, 0.3),
+    0 0 0 1px rgba(225, 6, 0, 0.1);
   text-decoration: none;
   letter-spacing: 1px;
 }

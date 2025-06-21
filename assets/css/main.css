@@ -1799,13 +1799,15 @@ p { margin: 0 0 1rem; }
 
 /* Logo styling when in third column */
 .footer-column:nth-child(3) .footer-logo-section {
-  margin-top: 1.5rem;
-  text-align: right;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .footer-column:nth-child(3) .footer-logo-large {
   height: 40px;
   opacity: 0.6;
+  display: block;
 }
 
 /* Footer Social Links */

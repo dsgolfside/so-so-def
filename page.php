@@ -11,15 +11,6 @@ get_header(); ?>
 		
 				<!-- Page Hero Section -->
 		<section class="page-hero">
-			<!-- Breadcrumb Navigation -->
-			<div class="page-breadcrumb">
-				<nav class="breadcrumb-nav" aria-label="Breadcrumb">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
-					<span class="breadcrumb-separator">›</span>
-					<span class="breadcrumb-current"><?php the_title(); ?></span>
-				</nav>
-			</div>
-			
 			<div class="page-hero__content">
 				<div class="page-hero__image">
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -35,6 +26,15 @@ get_header(); ?>
 						<h1 class="page-hero__title"><?php the_title(); ?></h1>
 					</div>
 				</div>
+			</div>
+			
+			<!-- Breadcrumb Navigation -->
+			<div class="page-breadcrumb">
+				<nav class="breadcrumb-nav" aria-label="Breadcrumb" role="navigation">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Back to home">Home</a>
+					<span class="breadcrumb-separator" aria-hidden="true">›</span>
+					<span class="breadcrumb-current"><?php the_title(); ?></span>
+				</nav>
 			</div>
 		</section>
 

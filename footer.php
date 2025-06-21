@@ -47,17 +47,6 @@
             <div class="footer-logo-section">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo-white.png" alt="So So Def" class="footer-logo-large">
             </div>
-            
-            <!-- Mini Email Signup -->
-            <div class="mini-signup">
-              <h5 class="mini-signup-heading">Get on the List</h5>
-              <form class="mini-signup-form" action="#" method="post">
-                <div class="mini-form-group">
-                  <input type="email" name="email" placeholder="Enter email" class="mini-email-input" required>
-                  <button type="submit" class="mini-submit-btn">→</button>
-                </div>
-              </form>
-            </div>
           </div>
 
           <!-- Quick Links Column -->
@@ -73,6 +62,17 @@
               ));
               ?>
             </nav>
+          </div>
+
+          <!-- Email Signup Column -->
+          <div class="footer-column">
+            <h4 class="footer-heading">Get on the List</h4>
+            <form class="footer-signup-form" action="#" method="post">
+              <div class="footer-form-group">
+                <input type="email" name="email" placeholder="Enter your email address" class="footer-email-input" required>
+                <button type="submit" class="footer-submit-btn">→</button>
+              </div>
+            </form>
           </div>
 
         </div>

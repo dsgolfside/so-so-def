@@ -44,9 +44,6 @@
           <div class="footer-column">
             <h4 class="footer-heading">About So So Def</h4>
             <p class="footer-text">Founded by Jermaine Dupri, So So Def Recordings has been a cornerstone of hip-hop and R&B music since 1993, launching the careers of countless artists and shaping the sound of Atlanta.</p>
-            <div class="footer-logo-section">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo-white.png" alt="So So Def" class="footer-logo-large">
-            </div>
           </div>
 
           <!-- Quick Links Column -->
@@ -73,6 +70,9 @@
                 <button type="submit" class="footer-submit-btn">→</button>
               </div>
             </form>
+            <div class="footer-logo-section">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo-white.png" alt="So So Def" class="footer-logo-large">
+            </div>
           </div>
 
         </div>

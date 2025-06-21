@@ -1789,6 +1789,17 @@ p { margin: 0 0 1rem; }
   opacity: 0.8;
 }
 
+/* Logo styling when in third column */
+.footer-column:nth-child(3) .footer-logo-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.footer-column:nth-child(3) .footer-logo-large {
+  height: 40px;
+  opacity: 0.6;
+}
+
 /* Footer Email Signup */
 .footer-signup-form {
   margin-top: 1rem;

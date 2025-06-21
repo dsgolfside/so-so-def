@@ -1859,16 +1859,25 @@ p { margin: 0 0 1rem; }
   flex: 1;
   background: transparent;
   border: none;
-  color: #fff;
+  color: #fff !important;
   padding: 1rem 0;
   font-size: 0.9rem;
   outline: none;
 }
 
 .footer-email-input::placeholder {
-  color: #666;
+  color: #666 !important;
   font-size: 0.9rem;
 }
+
+.footer-email-input:focus {
+  color: #fff !important;
+}
+
+.footer-email-input::-webkit-input-placeholder { color: #666 !important; }
+.footer-email-input::-moz-placeholder { color: #666 !important; }
+.footer-email-input:-ms-input-placeholder { color: #666 !important; }
+.footer-email-input:-moz-placeholder { color: #666 !important; }
 
 .footer-submit-btn {
   background: transparent;

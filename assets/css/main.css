@@ -1490,16 +1490,13 @@ p { margin: 0 0 1rem; }
 .featured-slider {
   position: relative;
   width: 100%;
-  overflow: visible;
-  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
 }
 
 .featured-slider .swiper-slide {
   height: auto;
-}
-
-.featured-slider .swiper-slide:not(:last-child) .featured-product {
-  border-right: 1px solid #e5e5e5;
 }
 
 /* Featured product cards */
@@ -1512,6 +1509,8 @@ p { margin: 0 0 1rem; }
   height: 100%;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .featured-product:hover {

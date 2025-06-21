@@ -78,7 +78,16 @@
             <h4 class="footer-heading">Get on the List</h4>
             <form class="footer-signup-form" id="custom-mailing-form" action="#" method="post">
               <div class="footer-form-group">
+                <!-- First Name and Last Name on same row -->
+                <div class="name-fields">
+                  <input type="text" name="first_name" id="first-name-input" placeholder="First Name" class="footer-name-input" required>
+                  <input type="text" name="last_name" id="last-name-input" placeholder="Last Name" class="footer-name-input" required>
+                </div>
+                
+                <!-- Email field -->
                 <input type="email" name="email" id="email-input" placeholder="Enter your email address" class="footer-email-input" required>
+                
+                <!-- Submit button -->
                 <button type="submit" class="footer-submit-btn">→</button>
               </div>
             </form>

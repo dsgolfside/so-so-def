@@ -1754,7 +1754,7 @@ p { margin: 0 0 1rem; }
 /* Main Footer Grid */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1787,6 +1787,63 @@ p { margin: 0 0 1rem; }
   height: 60px;
   width: auto;
   opacity: 0.8;
+}
+
+/* Mini Email Signup */
+.mini-signup {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.mini-signup-heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.mini-form-group {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid #333;
+  transition: border-color 0.3s ease;
+}
+
+.mini-form-group:focus-within {
+  border-bottom-color: #fff;
+}
+
+.mini-email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.mini-email-input::placeholder {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.mini-submit-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 0.75rem 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.mini-submit-btn:hover {
+  color: #fff;
 }
 
 /* Footer Navigation */

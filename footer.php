@@ -47,10 +47,22 @@
             <div class="footer-logo-section">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/so-so-def-logo-white.png" alt="So So Def" class="footer-logo-large">
             </div>
+            
+            <!-- Mini Email Signup -->
+            <div class="mini-signup">
+              <h5 class="mini-signup-heading">Get on the List</h5>
+              <form class="mini-signup-form" action="#" method="post">
+                <div class="mini-form-group">
+                  <input type="email" name="email" placeholder="Enter email" class="mini-email-input" required>
+                  <button type="submit" class="mini-submit-btn">→</button>
+                </div>
+              </form>
+            </div>
           </div>
 
-          <!-- Footer Menu Column -->
+          <!-- Quick Links Column -->
           <div class="footer-column">
+            <h4 class="footer-heading">Quick Links</h4>
             <nav class="footer-nav">
               <?php
               wp_nav_menu(array(
@@ -61,24 +73,6 @@
               ));
               ?>
             </nav>
-          </div>
-
-          <!-- Contact Column -->
-          <div class="footer-column">
-            <h4 class="footer-heading">Contact</h4>
-            <div class="contact-info">
-              <p><strong>Atlanta Headquarters</strong><br>
-              123 Music Row<br>
-              Atlanta, GA 30309</p>
-              
-              <p><strong>New York Office</strong><br>
-              456 Broadway<br>
-              New York, NY 10013</p>
-              
-              <p><strong>Los Angeles Office</strong><br>
-              789 Sunset Blvd<br>
-              Los Angeles, CA 90028</p>
-            </div>
           </div>
 
         </div>

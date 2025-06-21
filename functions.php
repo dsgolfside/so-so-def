@@ -113,6 +113,21 @@ function ssd_add_homepage_slides_metabox() {
 add_action( 'add_meta_boxes', 'ssd_add_homepage_slides_metabox' );
 
 /**
+ * Register the "Page Hero Slides" meta box on Pages
+ */
+function ssd_add_page_hero_slides_metabox() {
+    add_meta_box(
+        'ssd-page-hero-slides',
+        __( 'Page Hero Slides', 'so-so-def' ),
+        'ssd_page_hero_slides_metabox_callback',
+        'page',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'ssd_add_page_hero_slides_metabox' );
+
+/**
  * Render the meta box fields (3 slides)
  */
 function ssd_homepage_slides_metabox_callback( $post ) {
@@ -194,6 +209,184 @@ function ssd_save_homepage_slides_meta( $post_id ) {
     }
 }
 add_action( 'save_post', 'ssd_save_homepage_slides_meta' );
+
+/**
+ * Render the Page Hero Slides meta box fields
+ */
+function ssd_page_hero_slides_metabox_callback( $post ) {
+    wp_nonce_field( 'ssd_page_hero_slides_nonce', 'ssd_page_hero_slides_nonce_field' );
+    
+    echo '<p><strong>Note:</strong> The first slide will always be your page\'s featured image with title. Add additional slides below.</p>';
+    
+    for ( $i = 1; $i <= 5; $i++ ) {
+        $slide_type = get_post_meta( $post->ID, "slide_{$i}_type", true );
+        $slide_title = get_post_meta( $post->ID, "slide_{$i}_title", true );
+        $slide_subtitle = get_post_meta( $post->ID, "slide_{$i}_subtitle", true );
+        $slide_image = get_post_meta( $post->ID, "slide_{$i}_image", true );
+        $slide_youtube = get_post_meta( $post->ID, "slide_{$i}_youtube", true );
+        
+        // Social media fields
+        $slide_instagram = get_post_meta( $post->ID, "slide_{$i}_instagram", true );
+        $slide_spotify = get_post_meta( $post->ID, "slide_{$i}_spotify", true );
+        $slide_youtube_social = get_post_meta( $post->ID, "slide_{$i}_youtube", true );
+        $slide_twitter = get_post_meta( $post->ID, "slide_{$i}_twitter", true );
+        $slide_tiktok = get_post_meta( $post->ID, "slide_{$i}_tiktok", true );
+        $slide_soundcloud = get_post_meta( $post->ID, "slide_{$i}_soundcloud", true );
+        $slide_apple_music = get_post_meta( $post->ID, "slide_{$i}_apple_music", true );
+        $slide_website = get_post_meta( $post->ID, "slide_{$i}_website", true );
+        ?>
+        <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+            <h4><?php printf( __( 'Additional Slide %d', 'so-so-def' ), $i ); ?></h4>
+            
+            <p>
+                <label>
+                    <?php _e( 'Slide Type', 'so-so-def' ); ?><br>
+                    <select name="slide_<?php echo $i; ?>_type" style="width: 200px;">
+                        <option value=""><?php _e( 'Select slide type...', 'so-so-def' ); ?></option>
+                        <option value="image" <?php selected( $slide_type, 'image' ); ?>><?php _e( 'Image Slide', 'so-so-def' ); ?></option>
+                        <option value="youtube" <?php selected( $slide_type, 'youtube' ); ?>><?php _e( 'YouTube Video', 'so-so-def' ); ?></option>
+                        <option value="artist" <?php selected( $slide_type, 'artist' ); ?>><?php _e( 'Artist (with social icons)', 'so-so-def' ); ?></option>
+                    </select>
+                </label>
+            </p>
+            
+            <p>
+                <label>
+                    <?php _e( 'Slide Title', 'so-so-def' ); ?><br>
+                    <input type="text" name="slide_<?php echo $i; ?>_title" value="<?php echo esc_attr( $slide_title ); ?>" style="width: 100%;" />
+                </label>
+            </p>
+            
+            <p>
+                <label>
+                    <?php _e( 'Slide Subtitle', 'so-so-def' ); ?><br>
+                    <input type="text" name="slide_<?php echo $i; ?>_subtitle" value="<?php echo esc_attr( $slide_subtitle ); ?>" style="width: 100%;" />
+                </label>
+            </p>
+            
+            <div class="slide-type-fields">
+                <!-- Image/Artist Image Field -->
+                <p class="image-field artist-field" style="display: <?php echo in_array( $slide_type, ['image', 'artist'] ) ? 'block' : 'none'; ?>;">
+                    <label>
+                        <?php _e( 'Background Image URL', 'so-so-def' ); ?><br>
+                        <input type="text" name="slide_<?php echo $i; ?>_image" value="<?php echo esc_attr( $slide_image ); ?>" style="width: 80%;" />
+                        <button type="button" class="button upload_slide_image" data-target="slide_<?php echo $i; ?>_image">
+                            <?php _e( 'Upload', 'so-so-def' ); ?>
+                        </button>
+                    </label>
+                </p>
+                
+                <!-- YouTube Field -->
+                <p class="youtube-field" style="display: <?php echo ( $slide_type == 'youtube' ) ? 'block' : 'none'; ?>;">
+                    <label>
+                        <?php _e( 'YouTube Embed URL', 'so-so-def' ); ?><br>
+                        <input type="url" name="slide_<?php echo $i; ?>_youtube" value="<?php echo esc_attr( $slide_youtube ); ?>" style="width: 100%;" />
+                        <small>Example: https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&controls=0</small>
+                    </label>
+                </p>
+                
+                <!-- Social Media Fields (for Artist type) -->
+                <div class="social-fields" style="display: <?php echo ( $slide_type == 'artist' ) ? 'block' : 'none'; ?>;">
+                    <h5><?php _e( 'Social Media Links (optional)', 'so-so-def' ); ?></h5>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <label>
+                            Instagram<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_instagram" value="<?php echo esc_attr( $slide_instagram ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            Spotify<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_spotify" value="<?php echo esc_attr( $slide_spotify ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            YouTube<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_youtube" value="<?php echo esc_attr( $slide_youtube_social ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            Twitter<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_twitter" value="<?php echo esc_attr( $slide_twitter ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            TikTok<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_tiktok" value="<?php echo esc_attr( $slide_tiktok ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            SoundCloud<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_soundcloud" value="<?php echo esc_attr( $slide_soundcloud ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            Apple Music<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_apple_music" value="<?php echo esc_attr( $slide_apple_music ); ?>" style="width: 100%;" />
+                        </label>
+                        <label>
+                            Website<br>
+                            <input type="url" name="slide_<?php echo $i; ?>_website" value="<?php echo esc_attr( $slide_website ); ?>" style="width: 100%;" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideTypeSelect = document.querySelector('select[name="slide_<?php echo $i; ?>_type"]');
+            const slideContainer = slideTypeSelect.closest('.slide-type-fields').parentNode;
+            
+            slideTypeSelect.addEventListener('change', function() {
+                const selectedType = this.value;
+                const container = slideContainer;
+                
+                // Hide all type-specific fields
+                container.querySelectorAll('.image-field, .youtube-field, .artist-field, .social-fields').forEach(field => {
+                    field.style.display = 'none';
+                });
+                
+                // Show relevant fields
+                if (selectedType === 'image') {
+                    container.querySelector('.image-field').style.display = 'block';
+                } else if (selectedType === 'youtube') {
+                    container.querySelector('.youtube-field').style.display = 'block';
+                } else if (selectedType === 'artist') {
+                    container.querySelector('.artist-field').style.display = 'block';
+                    container.querySelector('.social-fields').style.display = 'block';
+                }
+            });
+        });
+        </script>
+        <?php
+    }
+}
+
+/**
+ * Save the Page Hero Slides meta box data
+ */
+function ssd_save_page_hero_slides_meta( $post_id ) {
+    if ( ! isset( $_POST['ssd_page_hero_slides_nonce_field'] ) ||
+         ! wp_verify_nonce( $_POST['ssd_page_hero_slides_nonce_field'], 'ssd_page_hero_slides_nonce' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( get_post_type( $post_id ) !== 'page' ) return;
+
+    $fields = [
+        'type', 'title', 'subtitle', 'image', 'youtube', 
+        'instagram', 'spotify', 'twitter', 'tiktok', 
+        'soundcloud', 'apple_music', 'website'
+    ];
+
+    for ( $i = 1; $i <= 5; $i++ ) {
+        foreach ( $fields as $field ) {
+            $field_name = "slide_{$i}_{$field}";
+            if ( isset( $_POST[$field_name] ) ) {
+                if ( in_array( $field, ['youtube', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
+                    update_post_meta( $post_id, $field_name, esc_url_raw( $_POST[$field_name] ) );
+                } else {
+                    update_post_meta( $post_id, $field_name, sanitize_text_field( $_POST[$field_name] ) );
+                }
+            }
+        }
+    }
+}
+add_action( 'save_post', 'ssd_save_page_hero_slides_meta' );
 
 /**
  * Register a "Card Grid" meta box on Pages

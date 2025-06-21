@@ -78,7 +78,10 @@ function ssd_theme_setup() {
         'flex-height' => true,
         'flex-width'  => true,
     ) );
-    register_nav_menu( 'primary', __( 'Primary Menu', 'so-so-def' ) );
+    register_nav_menus( array(
+        'primary' => __( 'Primary Menu', 'so-so-def' ),
+        'footer'  => __( 'Footer Menu', 'so-so-def' ),
+    ) );
 }
 
 /**

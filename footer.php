@@ -76,9 +76,9 @@
           <!-- Email Signup Column -->
           <div class="footer-column">
             <h4 class="footer-heading">Get on the List</h4>
-            <form class="footer-signup-form" action="#" method="post">
+            <form class="footer-signup-form" id="custom-mailing-form" action="#" method="post">
               <div class="footer-form-group">
-                <input type="email" name="email" placeholder="Enter your email address" class="footer-email-input" required>
+                <input type="email" name="email" id="email-input" placeholder="Enter your email address" class="footer-email-input" required>
                 <button type="submit" class="footer-submit-btn">→</button>
               </div>
             </form>

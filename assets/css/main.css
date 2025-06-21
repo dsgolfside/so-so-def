@@ -1520,7 +1520,6 @@ p { margin: 0 0 1rem; }
   aspect-ratio: 1/1;
   overflow: hidden;
   background: #f8f8f8;
-  border-bottom: 1px solid #e5e5e5;
   margin-bottom: 0;
 }
 
@@ -1541,6 +1540,7 @@ p { margin: 0 0 1rem; }
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-top: 1px solid #e5e5e5;
 }
 
 .featured-product .product-card__title {

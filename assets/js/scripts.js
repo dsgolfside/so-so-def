@@ -144,4 +144,63 @@ jQuery(document).ready(function($){
       console.log('Load more clicked');
     });
   }
+
+  // Sticky Footer Functionality
+  const footer = document.querySelector('.site-footer');
+  let lastScrollY = window.scrollY;
+  let isScrolling = false;
+
+  if (footer) {
+    $(window).on('scroll', function() {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+      
+      // Only apply compact mode if user has scrolled more than 100px from top
+      if (currentScrollY > 100) {
+        footer.classList.add('compact');
+      } else {
+        footer.classList.remove('compact');
+      }
+      
+      lastScrollY = currentScrollY;
+    });
+  }
+
+  // Search Modal Functionality
+  const searchTrigger = document.querySelector('.search-trigger');
+  const searchModal = document.querySelector('#search-modal');
+  const searchClose = document.querySelector('.search-close');
+  const searchInput = document.querySelector('.search-input');
+
+  if (searchTrigger && searchModal) {
+    // Open search modal
+    searchTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      searchModal.classList.add('active');
+      if (searchInput) {
+        setTimeout(() => searchInput.focus(), 100);
+      }
+    });
+
+    // Close search modal
+    if (searchClose) {
+      searchClose.addEventListener('click', function() {
+        searchModal.classList.remove('active');
+      });
+    }
+
+    // Close modal when clicking outside
+    searchModal.addEventListener('click', function(e) {
+      if (e.target === searchModal) {
+        searchModal.classList.remove('active');
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+        searchModal.classList.remove('active');
+      }
+    });
+  }
 });

@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
   // Initialize Featured Releases Swiper
   const featuredSwiper = new Swiper('.featured-slider', {
     slidesPerView: 1.2,
-    spaceBetween: 20,
+    spaceBetween: 0,
     loop: false,
     centeredSlides: false,
     navigation: {
@@ -38,19 +38,19 @@ jQuery(document).ready(function($){
     breakpoints: {
       480: {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 0,
       },
       768: {
         slidesPerView: 3,
-        spaceBetween: 24,
+        spaceBetween: 0,
       },
       1024: {
         slidesPerView: 4,
-        spaceBetween: 32,
+        spaceBetween: 0,
       },
       1200: {
         slidesPerView: 4,
-        spaceBetween: 40,
+        spaceBetween: 0,
       },
     },
   });

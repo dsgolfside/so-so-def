@@ -813,22 +813,7 @@ textarea {
 	}
 }
 
-.page-hero__excerpt {
-	font-size: 1.2rem;
-	line-height: 1.6;
-	opacity: 0.9;
-	margin-top: 1.5rem;
-}
 
-@media (max-width: 768px) {
-	.page-hero__excerpt {
-		font-size: 1.1rem;
-	}
-}
-
-.page-hero__excerpt p {
-	margin: 0;
-}
 
 /* Page Content Section */
 .page-content {

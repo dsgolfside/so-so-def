@@ -22,14 +22,9 @@ get_header(); ?>
 					<?php endif; ?>
 				</div>
 				<div class="page-hero__text">
-					<div class="page-hero__text-content">
-						<h1 class="page-hero__title"><?php the_title(); ?></h1>
-						<?php if ( get_the_excerpt() ) : ?>
-							<div class="page-hero__excerpt">
-								<?php the_excerpt(); ?>
-							</div>
-						<?php endif; ?>
-					</div>
+									<div class="page-hero__text-content">
+					<h1 class="page-hero__title"><?php the_title(); ?></h1>
+				</div>
 				</div>
 			</div>
 		</section>

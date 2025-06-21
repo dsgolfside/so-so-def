@@ -1627,11 +1627,6 @@ p { margin: 0 0 1rem; }
   .featured-releases .section__header-heading {
     font-size: 2rem;
   }
-  
-  .featured-slider .products-prev,
-  .featured-slider .products-next {
-    display: none !important;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1651,6 +1646,22 @@ p { margin: 0 0 1rem; }
   
   .featured-product .product-card__price {
     font-size: 0.875rem;
+  }
+  
+  /* Mobile navigation arrows - smaller and better positioned */
+  .featured-slider .products-prev,
+  .featured-slider .products-next {
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+  }
+  
+  .featured-slider .products-prev {
+    left: 5px;
+  }
+  
+  .featured-slider .products-next {
+    right: 5px;
   }
 }
 

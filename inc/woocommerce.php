@@ -141,6 +141,66 @@ if ( ! function_exists( '_s_woocommerce_wrapper_after' ) ) {
 add_action( 'woocommerce_after_main_content', '_s_woocommerce_wrapper_after' );
 
 /**
+ * Add custom external URL meta box to products.
+ */
+function so_so_def_add_external_url_meta_box() {
+	add_meta_box(
+		'external_shop_url',
+		__( 'External Shop URL', 'so-so-def' ),
+		'so_so_def_external_url_meta_box_callback',
+		'product',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'so_so_def_add_external_url_meta_box' );
+
+/**
+ * External URL meta box callback.
+ */
+function so_so_def_external_url_meta_box_callback( $post ) {
+	wp_nonce_field( 'external_url_meta_box', 'external_url_meta_box_nonce' );
+	$value = get_post_meta( $post->ID, '_external_shop_url', true );
+	?>
+	<table class="form-table">
+		<tr>
+			<th><label for="external_shop_url"><?php _e( 'External Shop URL', 'so-so-def' ); ?></label></th>
+			<td>
+				<input type="url" id="external_shop_url" name="external_shop_url" value="<?php echo esc_attr( $value ); ?>" class="regular-text" />
+				<p class="description"><?php _e( 'Enter the external URL where customers can buy this product. Leave blank to use the default shop collection URL.', 'so-so-def' ); ?></p>
+			</td>
+		</tr>
+	</table>
+	<?php
+}
+
+/**
+ * Save external URL meta box data.
+ */
+function so_so_def_save_external_url_meta_box( $post_id ) {
+	if ( ! isset( $_POST['external_url_meta_box_nonce'] ) ) {
+		return;
+	}
+	
+	if ( ! wp_verify_nonce( $_POST['external_url_meta_box_nonce'], 'external_url_meta_box' ) ) {
+		return;
+	}
+	
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+	
+	if ( isset( $_POST['external_shop_url'] ) ) {
+		update_post_meta( $post_id, '_external_shop_url', sanitize_url( $_POST['external_shop_url'] ) );
+	}
+}
+add_action( 'save_post', 'so_so_def_save_external_url_meta_box' );
+
+/**
  * Sample implementation of the WooCommerce Mini Cart.
  *
  * You can add the WooCommerce Mini Cart to header.php like so ...

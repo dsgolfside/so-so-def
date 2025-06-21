@@ -16,14 +16,14 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 }
 ?>
 
-<section class="section products-carousel" data-aos="fade-up">
+<section class="section products-carousel featured-releases" data-aos="fade-up">
   <div class="container">
     <div class="section__inner">
       <header class="section__header" data-aos="fade-up">
-        <h2 class="section__header-heading"><?php esc_html_e( 'Shop', 'so-so-def' ); ?></h2>
+        <h2 class="section__header-heading"><?php esc_html_e( 'Featured Releases', 'so-so-def' ); ?></h2>
         <div class="section__header-link">
           <a class="link" href="https://shop.kt8merch.com/collections/so-so-def" target="_blank" rel="noopener noreferrer">
-            <span><?php esc_html_e( 'Shop All', 'so-so-def' ); ?></span>
+            <span><?php esc_html_e( 'shop all', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
               <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>
@@ -38,23 +38,30 @@ if ( ! class_exists( 'WooCommerce' ) ) {
     $products = new WP_Query([
       'post_type'      => 'product',
       'post_status'    => 'publish',
-      'posts_per_page' => 9
+      'posts_per_page' => 8
     ]);
 
     if ( $products->have_posts() ) :
     ?>
-      <div class="swiper-container products-swiper">
+      <div class="swiper-container products-swiper featured-slider">
         <div class="swiper-wrapper">
           <?php while ( $products->have_posts() ) : $products->the_post(); ?>
             <?php 
             global $product;
             $product = wc_get_product( get_the_ID() );
             if ( ! $product ) continue;
+            
+            // Get external URL - check if product has custom external URL field
+            $external_url = get_post_meta( get_the_ID(), '_external_shop_url', true );
+            if ( empty( $external_url ) ) {
+                // Fallback to main shop collection if no specific URL is set
+                $external_url = 'https://shop.kt8merch.com/collections/so-so-def';
+            }
             ?>
             <div class="swiper-slide">
-              <div class="product-card" data-aos="fade-up">
+              <div class="product-card featured-product" data-aos="fade-up">
                 <div class="product-card__image">
-                  <a href="<?php the_permalink(); ?>">
+                  <a href="<?php echo esc_url( $external_url ); ?>" target="_blank" rel="noopener noreferrer">
                     <?php if ( has_post_thumbnail() ) : ?>
                       <?php the_post_thumbnail( 'woocommerce_thumbnail', ['class' => 'product-card__img'] ); ?>
                     <?php else : ?>
@@ -64,27 +71,10 @@ if ( ! class_exists( 'WooCommerce' ) ) {
                 </div>
                 <div class="product-card__content">
                   <h3 class="product-card__title">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    <a href="<?php echo esc_url( $external_url ); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a>
                   </h3>
                   <div class="product-card__price">
                     <?php echo $product->get_price_html(); ?>
-                  </div>
-                  <div class="product-card__action">
-                    <?php
-                    echo apply_filters(
-                      'woocommerce_loop_add_to_cart_link',
-                      sprintf(
-                        '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-                        esc_url( $product->add_to_cart_url() ),
-                        esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-                        esc_attr( isset( $args['class'] ) ? $args['class'] : 'button product_type_' . $product->get_type() ),
-                        isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-                        esc_html( $product->add_to_cart_text() )
-                      ),
-                      $product,
-                      $args ?? []
-                    );
-                    ?>
                   </div>
                 </div>
               </div>
@@ -93,9 +83,16 @@ if ( ! class_exists( 'WooCommerce' ) ) {
         </div>
 
         <!-- Swiper controls -->
-        <div class="swiper-button-prev products-prev"></div>
-        <div class="swiper-button-next products-next"></div>
-        <div class="swiper-pagination products-pagination"></div>
+        <div class="swiper-button-prev products-prev">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M7.5 9L4.5 6L7.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="swiper-button-next products-next">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
       
     <?php else : ?>

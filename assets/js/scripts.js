@@ -25,30 +25,31 @@ jQuery(document).ready(function($){
     },
   });
 
-  // Initialize Products Carousel Swiper
-  const productsSwiper = new Swiper('.products-swiper', {
-    slidesPerView: 1,
+  // Initialize Featured Releases Swiper
+  const featuredSwiper = new Swiper('.featured-slider', {
+    slidesPerView: 1.2,
     spaceBetween: 20,
-    loop: true,
-    pagination: {
-      el: '.products-pagination',
-      clickable: true,
-    },
+    loop: false,
+    centeredSlides: false,
     navigation: {
       nextEl: '.products-next',
       prevEl: '.products-prev',
     },
     breakpoints: {
-      640: {
+      480: {
         slidesPerView: 2,
         spaceBetween: 20,
       },
       768: {
         slidesPerView: 3,
-        spaceBetween: 30,
+        spaceBetween: 24,
       },
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 4,
+        spaceBetween: 32,
+      },
+      1200: {
+        slidesPerView: 4,
         spaceBetween: 40,
       },
     },

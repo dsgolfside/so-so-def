@@ -17,7 +17,7 @@
           $archive_link = $announcements_category ? get_category_link($announcements_category->term_id) : get_post_type_archive_link('post');
           ?>
           <a class="link" href="<?php echo esc_url( $archive_link ); ?>">
-            <span><?php esc_html_e( 'Read All', 'so-so-def' ); ?></span>
+            <span><?php esc_html_e( 'View All', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="#000" stroke-width="0.5" stroke-linecap="round" x1="1" x2="10" y1="3.5" y2="3.5"/>
               <polyline fill="none" stroke="#000" stroke-width="0.5" stroke-linecap="round" points="7,0 10,3.5 7,7"/>

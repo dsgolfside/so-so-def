@@ -271,12 +271,12 @@ p { margin: 0 0 1rem; }
   margin: 0;
   padding: 0;
   background: none;
-  width: 100vw;
+  width: calc(100vw - (100vw - 100%));
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(-50vw + (100vw - 100%) / 2);
+  margin-right: calc(-50vw + (100vw - 100%) / 2);
 }
 
 .latest-grid .container,
@@ -293,12 +293,12 @@ p { margin: 0 0 1rem; }
   margin: 0;
   padding: 0;
   background: none;
-  width: 100vw;
+  width: calc(100vw - (100vw - 100%));
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(-50vw + (100vw - 100%) / 2);
+  margin-right: calc(-50vw + (100vw - 100%) / 2);
 }
 
 .announcements-section .container,
@@ -1443,12 +1443,12 @@ p { margin: 0 0 1rem; }
   margin: 0;
   padding: 0;
   background: none;
-  width: 100vw;
+  width: calc(100vw - (100vw - 100%));
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(-50vw + (100vw - 100%) / 2);
+  margin-right: calc(-50vw + (100vw - 100%) / 2);
 }
 
 .products-carousel .container,
@@ -1809,13 +1809,10 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   background: transparent;
-  border-bottom: 1px solid #333;
   transition: border-color 0.3s ease;
 }
 
-.footer-form-group:focus-within {
-  border-bottom-color: #fff;
-}
+
 
 .footer-email-input {
   flex: 1;

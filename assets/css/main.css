@@ -1317,11 +1317,12 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   min-height: 500px;
+  flex-direction: row-reverse; /* Image on right, text on left for desktop */
 }
 
 .announcement-item .media-container {
-  flex: 0 0 500px;
-  width: 500px;
+  flex: 0 0 50vw; /* 50% of viewport width */
+  width: 50vw;
   height: 500px;
   aspect-ratio: 1/1;
 }
@@ -1420,7 +1421,7 @@ p { margin: 0 0 1rem; }
 
 @media (max-width: 768px) {
   .announcement-item .text-and-image__item-inner {
-    flex-direction: column;
+    flex-direction: column; /* Image on top, text below for mobile */
     min-height: auto;
   }
   

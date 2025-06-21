@@ -113,7 +113,7 @@
   <div class="search-modal-content">
     <button class="search-close" aria-label="Close search">&times;</button>
     <form class="search-form" role="search" action="<?php echo home_url('/'); ?>">
-      <input type="search" name="s" placeholder="Enter a Label, Artist, or Business Need..." class="search-input" autofocus>
+      <input type="search" name="s" placeholder="Enter search term..." class="search-input" autofocus>
       <button type="submit" class="search-submit" aria-label="Search">
         <svg viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/>

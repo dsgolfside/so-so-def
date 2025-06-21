@@ -1984,6 +1984,7 @@ p { margin: 0 0 1rem; }
   width: 90%;
   max-width: 600px;
   position: relative;
+  padding-right: 4rem; /* Add space for close button */
 }
 
 .search-close {
@@ -2008,6 +2009,7 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: 0.5rem; /* Add top margin for better spacing */
 }
 
 .search-input {
@@ -2082,6 +2084,7 @@ p { margin: 0 0 1rem; }
   .search-modal-content {
     margin: 1rem;
     padding: 1.5rem;
+    padding-right: 3rem; /* Adjust for mobile */
   }
   
   .search-form {

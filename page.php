@@ -9,8 +9,17 @@ get_header(); ?>
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		
-		<!-- Page Hero Section -->
+				<!-- Page Hero Section -->
 		<section class="page-hero">
+			<!-- Breadcrumb Navigation -->
+			<div class="page-breadcrumb">
+				<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+					<span class="breadcrumb-separator">›</span>
+					<span class="breadcrumb-current"><?php the_title(); ?></span>
+				</nav>
+			</div>
+			
 			<div class="page-hero__content">
 				<div class="page-hero__image">
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -22,9 +31,9 @@ get_header(); ?>
 					<?php endif; ?>
 				</div>
 				<div class="page-hero__text">
-									<div class="page-hero__text-content">
-					<h1 class="page-hero__title"><?php the_title(); ?></h1>
-				</div>
+					<div class="page-hero__text-content">
+						<h1 class="page-hero__title"><?php the_title(); ?></h1>
+					</div>
 				</div>
 			</div>
 		</section>

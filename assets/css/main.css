@@ -2021,6 +2021,8 @@ p { margin: 0 0 1rem; }
   font-size: 1rem;
   border-radius: 4px;
   outline: none;
+  height: 52px; /* Match search button height */
+  box-sizing: border-box;
 }
 
 .search-input::placeholder {
@@ -2043,6 +2045,9 @@ p { margin: 0 0 1rem; }
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease;
+  height: 52px; /* Match search input height */
+  width: 52px; /* Make it square */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .search-submit:hover {

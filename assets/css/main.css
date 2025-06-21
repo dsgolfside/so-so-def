@@ -1662,47 +1662,45 @@ p { margin: 0 0 1rem; }
   color: #666;
 }
 
-/* ——— Footer Styles - Sticky Modern Design ——— */
-.site-footer {
+/* ——— Footer Styles - Sticky + Main Footer ——— */
+
+/* Sticky Social Icons Bar */
+.sticky-footer-bar {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: #000;
   z-index: 1000;
   transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 25px 25px 0 0;
+  border: 1px solid #333;
+  border-bottom: none;
 }
 
-.footer-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* Footer Left - Logo */
-.footer-left {
-  flex: 1;
-}
-
-.footer-logo {
-  height: 30px;
-  width: auto;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.footer-logo:hover {
+.sticky-footer-bar.visible {
   opacity: 1;
+  visibility: visible;
 }
 
-/* Footer Center - Social Icons */
-.footer-center {
-  flex: 0 0 auto;
+/* Main Footer Content */
+.site-footer {
+  background: #000;
+  color: #fff;
+  margin-top: 4rem;
 }
 
+.footer-content {
+  padding: 4rem 0 2rem;
+}
+
+.footer-main {
+  margin-bottom: 3rem;
+}
+
+/* Social Icons Styling */
 .social-icons {
   display: flex;
   gap: 0;
@@ -1726,6 +1724,11 @@ p { margin: 0 0 1rem; }
 
 .social-icon:first-child {
   border-left: 1px solid #333;
+  border-radius: 25px 0 0 0;
+}
+
+.social-icon:last-child {
+  border-radius: 0 25px 0 0;
 }
 
 .social-icon:hover {
@@ -1748,21 +1751,102 @@ p { margin: 0 0 1rem; }
   stroke-linejoin: round;
 }
 
-/* Footer Right - Legal & Copyright */
-.footer-right {
-  flex: 1;
-  text-align: right;
-  font-size: 0.75rem;
-  color: #666;
+/* Main Footer Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  color: #fff;
+}
+
+.footer-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.footer-text {
+  color: #999;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.footer-logo-section {
+  margin-top: 2rem;
+}
+
+.footer-logo-large {
+  height: 60px;
+  width: auto;
+  opacity: 0.8;
+}
+
+/* Footer Navigation */
+.footer-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-menu a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.footer-menu a:hover {
+  color: #fff;
+}
+
+/* Contact Info */
+.contact-info p {
+  color: #999;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.contact-info strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .legal-links {
-  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .legal-links a {
   color: #666;
   text-decoration: none;
+  font-size: 0.875rem;
   transition: color 0.3s ease;
 }
 
@@ -1771,13 +1855,13 @@ p { margin: 0 0 1rem; }
 }
 
 .legal-links span {
-  margin: 0 0.5rem;
   color: #333;
 }
 
-.copyright {
-  font-size: 0.7rem;
-  color: #444;
+.copyright p {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0;
 }
 
 /* Search Modal */
@@ -1878,60 +1962,26 @@ p { margin: 0 0 1rem; }
   stroke-linejoin: round;
 }
 
-/* Compact Mode - When scrolled */
-.site-footer.compact .footer-left,
-.site-footer.compact .footer-right {
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
-}
-
-.site-footer.compact .footer-bar {
-  justify-content: center;
-  padding: 0.75rem 2rem;
-}
-
-.site-footer.compact .social-icons {
-  gap: 0;
-}
-
-.site-footer.compact .social-icon {
-  width: 45px;
-  height: 45px;
-}
-
-/* Add bottom padding to body to account for fixed footer */
-body {
-  padding-bottom: 70px;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-  .footer-bar {
-    padding: 1rem;
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
   
-  .footer-left {
-    display: none;
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
   
-  .footer-center {
-    flex: 1;
-    display: flex;
+  .legal-links {
     justify-content: center;
-  }
-  
-  .footer-right {
-    display: none;
   }
   
   .social-icon {
     width: 45px;
     height: 45px;
-  }
-  
-  body {
-    padding-bottom: 65px;
   }
   
   .search-modal-content {

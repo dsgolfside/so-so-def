@@ -145,24 +145,26 @@ jQuery(document).ready(function($){
     });
   }
 
-  // Sticky Footer Functionality
-  const footer = document.querySelector('.site-footer');
-  let lastScrollY = window.scrollY;
-  let isScrolling = false;
-
-  if (footer) {
+  // Sticky Footer Bar Functionality
+  const stickyFooterBar = document.querySelector('.sticky-footer-bar');
+  const mainFooter = document.querySelector('.site-footer');
+  
+  if (stickyFooterBar && mainFooter) {
     $(window).on('scroll', function() {
-      const currentScrollY = window.scrollY;
-      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.offsetHeight;
+      const footerTop = mainFooter.offsetTop;
       
-      // Only apply compact mode if user has scrolled more than 100px from top
-      if (currentScrollY > 100) {
-        footer.classList.add('compact');
+      // Show sticky bar when scrolled past 100px
+      // Hide it when the main footer is visible
+      const shouldShowSticky = scrollY > 100 && (scrollY + windowHeight) < footerTop + 100;
+      
+      if (shouldShowSticky) {
+        stickyFooterBar.classList.add('visible');
       } else {
-        footer.classList.remove('compact');
+        stickyFooterBar.classList.remove('visible');
       }
-      
-      lastScrollY = currentScrollY;
     });
   }
 

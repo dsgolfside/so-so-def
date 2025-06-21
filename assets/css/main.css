@@ -1800,7 +1800,7 @@ p { margin: 0 0 1rem; }
 /* Logo styling when in third column */
 .footer-column:nth-child(3) .footer-logo-section {
   margin-top: 1.5rem;
-  text-align: center;
+  text-align: right;
 }
 
 .footer-column:nth-child(3) .footer-logo-large {

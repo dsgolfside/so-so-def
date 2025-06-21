@@ -16,14 +16,22 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 }
 ?>
 
-<section class="section products-carousel featured-releases" data-aos="fade-up">
+<section
+  class="section products-carousel"
+  data-aos="fade-up"
+  data-aos-once="true"
+  data-aos-offset="200"
+>
   <div class="container">
     <div class="section__inner">
-      <header class="section__header" data-aos="fade-up">
-        <h2 class="section__header-heading"><?php esc_html_e( 'Featured Releases', 'so-so-def' ); ?></h2>
+
+      <header class="section__header">
+        <h2 class="section__header-heading">
+          <?php esc_html_e( 'SHOP', 'so-so-def' ); ?>
+        </h2>
         <div class="section__header-link">
           <a class="link" href="https://shop.kt8merch.com/collections/so-so-def" target="_blank" rel="noopener noreferrer">
-            <span><?php esc_html_e( 'shop all', 'so-so-def' ); ?></span>
+            <span><?php esc_html_e( 'SHOP ALL', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>
               <polyline fill="none" stroke="currentColor" stroke-width="0.5" points="7,0 10,3.5 7,7"></polyline>
@@ -32,7 +40,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
         </div>
       </header>
 
-  <div class="section__main section__main--full-bleed-small">
+      <div class="section__main section__main--full-bleed-small">
     <?php
     // Query products using simple WooCommerce query
     $products = new WP_Query([

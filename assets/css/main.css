@@ -1446,66 +1446,51 @@ p { margin: 0 0 1rem; }
   }
 }
 
-/* ——— Featured Releases Section ——— */
-.featured-releases.section {
-  margin: 4rem 0;
+/* ——— Products Carousel Section - FULL WIDTH LIKE OTHER SECTIONS ——— */
+.products-carousel.section {
+  margin: 0;
   padding: 0;
+  background: none;
+  width: calc(100vw - (100vw - 100%));
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: calc(-50vw + (100vw - 100%) / 2);
+  margin-right: calc(-50vw + (100vw - 100%) / 2);
+}
+
+.products-carousel .container,
+.products-carousel .section__inner,
+.products-carousel .section__main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* Products carousel header - match latest news and announcements */
+.products-carousel .section__header {
+  margin-bottom: 0;
+  padding: 2rem;
+  text-align: center;
   background: var(--color-white);
 }
 
-.featured-releases .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
+@media (min-width: 768px) {
+  .products-carousel .section__header {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+  }
 }
 
-.featured-releases .section__inner {
-  padding: 0;
-}
-
-/* Featured releases header */
-.featured-releases .section__header {
-  margin-bottom: 3rem;
-  padding: 0;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.featured-releases .section__header-heading {
-  font-family: var(--font-family-serif);
-  font-size: 2.5rem;
-  font-weight: 400;
-  margin: 0;
-  color: var(--color-black);
-}
-
-.featured-releases .section__header-link .link {
-  font-family: var(--font-family-sans);
-  font-size: 0.875rem;
-  color: var(--color-black);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: opacity 0.3s ease;
-}
-
-.featured-releases .section__header-link .link:hover {
-  opacity: 0.7;
-}
-
-.featured-releases .section__header-link .link__icon {
-  width: 12px;
-  height: 12px;
-  stroke-width: 1;
-}
-
-/* Featured slider */
+/* Featured slider - full width */
 .featured-slider {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  padding: 0;
 }
 
 .featured-slider .swiper-slide {
@@ -1535,8 +1520,8 @@ p { margin: 0 0 1rem; }
   aspect-ratio: 1/1;
   overflow: hidden;
   background: #f8f8f8;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0;
 }
 
 .featured-product .product-card__image img {
@@ -1551,7 +1536,7 @@ p { margin: 0 0 1rem; }
 }
 
 .featured-product .product-card__content {
-  padding: 0;
+  padding: 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1585,39 +1570,45 @@ p { margin: 0 0 1rem; }
   margin: 0;
 }
 
-/* Swiper navigation for featured releases */
+/* Products navigation - positioned within slider */
 .featured-slider .products-prev,
 .featured-slider .products-next {
-  background: var(--color-white) !important;
-  color: var(--color-black) !important;
-  border: 1px solid #e5e5e5 !important;
-  border-radius: 50% !important;
-  width: 44px !important;
-  height: 44px !important;
-  margin-top: calc(-22px) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  transition: all 0.3s ease !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: var(--color-white);
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  color: var(--color-black);
+  margin-top: 0;
+}
+
+.featured-slider .products-prev {
+  left: 10px;
+}
+
+.featured-slider .products-next {
+  right: 10px;
 }
 
 .featured-slider .products-prev:hover,
 .featured-slider .products-next:hover {
-  background: var(--color-black) !important;
-  color: var(--color-white) !important;
-  border-color: var(--color-black) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
 }
 
 .featured-slider .products-prev::after,
 .featured-slider .products-next::after {
-  display: none !important;
-}
-
-.featured-slider .products-prev {
-  left: -22px !important;
-}
-
-.featured-slider .products-next {
-  right: -22px !important;
+  display: none;
 }
 
 /* Responsive breakpoints for featured releases */

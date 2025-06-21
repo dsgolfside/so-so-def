@@ -37,6 +37,11 @@ body {
   min-height: 100vh;
 }
 
+/* Fix white bar at bottom - override WordPress default post/page margins */
+.post, .page {
+  margin-bottom: 0;
+}
+
 /* Ensure main content starts directly under header with NO OVERLAP */
 #content {
   margin: 0;

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
       <header class="section__header" data-aos="fade-up">
         <h2 class="section__header-heading"><?php esc_html_e( 'Shop', 'so-so-def' ); ?></h2>
         <div class="section__header-link">
-          <a class="link" href="https://shop.kt8merch.com/" target="_blank" rel="noopener noreferrer">
+          <a class="link" href="https://shop.kt8merch.com/collections/so-so-def" target="_blank" rel="noopener noreferrer">
             <span><?php esc_html_e( 'Shop All', 'so-so-def' ); ?></span>
             <svg aria-hidden="true" focusable="false" class="link__icon" viewBox="0 0 11 8">
               <line fill="none" stroke="currentColor" stroke-width="0.5" x1="1" x2="10" y1="3.5" y2="3.5"></line>

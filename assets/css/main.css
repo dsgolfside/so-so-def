@@ -2016,7 +2016,7 @@ p { margin: 0 0 1rem; }
   flex: 1;
   background: #000;
   border: 1px solid #555;
-  color: #fff;
+  color: #fff !important;
   padding: 1rem;
   font-size: 1rem;
   border-radius: 4px;
@@ -2032,7 +2032,13 @@ p { margin: 0 0 1rem; }
 
 .search-input:focus {
   border-color: #fff;
+  color: #fff !important;
 }
+
+.search-input::-webkit-input-placeholder { color: #999 !important; }
+.search-input::-moz-placeholder { color: #999 !important; }
+.search-input:-ms-input-placeholder { color: #999 !important; }
+.search-input:-moz-placeholder { color: #999 !important; }
 
 .search-submit {
   background: #fff;

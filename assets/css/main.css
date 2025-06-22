@@ -1756,8 +1756,8 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #000;
   color: #fff;
   text-decoration: none;
@@ -1797,6 +1797,11 @@ p { margin: 0 0 1rem; }
   stroke-linejoin: round;
   width: 20px;
   height: 20px;
+}
+
+/* Remove default button padding that shrinks the search icon */
+button.social-icon {
+  padding: 0;
 }
 
 

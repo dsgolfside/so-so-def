@@ -523,7 +523,8 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 0 1.5rem 2rem;
+  padding: 1.5rem 0;
+  margin-left: 2rem;
   color: #fff;
   text-decoration: none;
   font-family: var(--font-family-sans);

@@ -585,6 +585,63 @@ p { margin: 0 0 1rem; }
   display: flex;
 }
 
+/* Header Instagram Icon Styles */
+.header-social-icon {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .header-social-icon {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+.header-instagram-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header-instagram-icon:hover {
+  background: #dc3545;
+  transform: translateY(-2px);
+}
+
+.header-instagram-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: #fff;
+}
+
+/* Header styling for scrolled state */
+.site-header.is-scrolled .header-instagram-icon {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.site-header.is-scrolled .header-instagram-icon svg {
+  color: #333;
+}
+
+.site-header.is-scrolled .header-instagram-icon:hover {
+  background: #dc3545;
+}
+
+.site-header.is-scrolled .header-instagram-icon:hover svg {
+  color: #fff;
+}
+
 /* Mobile breakpoint */
 @media (max-width: 768px) {
   .site-header__container {

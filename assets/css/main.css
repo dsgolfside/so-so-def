@@ -1756,8 +1756,8 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #000;
   color: #fff;
   text-decoration: none;
@@ -1783,8 +1783,8 @@ p { margin: 0 0 1rem; }
 }
 
 .social-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
   stroke: none;
 }
@@ -1795,8 +1795,8 @@ p { margin: 0 0 1rem; }
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Specific alignment fix for search icon */
@@ -2182,13 +2182,13 @@ p { margin: 0 0 1rem; }
   }
   
   .social-icon {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
   
   .social-icon svg[viewBox*="24"] {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
   }
   
   /* Ensure search icon is properly centered on mobile */

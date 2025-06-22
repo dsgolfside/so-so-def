@@ -1498,6 +1498,18 @@ p { margin: 0 0 1rem; }
   object-fit: cover;
 }
 
+/* Make featured image link display properly */
+.announcement-item .media-container__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.announcement-item .media-container__link:hover {
+  opacity: 0.9;
+}
+
 .announcement-item .text-and-image__content {
   flex: 1;
   padding: 3rem;

@@ -41,9 +41,11 @@
                 <div class="announcement-item text-and-image__item">
                   <div class="text-and-image__item-inner">
                     <div class="media-container media-container--cover">
-                      <?php if ( has_post_thumbnail() ) {
-                        the_post_thumbnail( 'large' );
-                      } ?>
+                      <a href="<?php the_permalink(); ?>" class="media-container__link">
+                        <?php if ( has_post_thumbnail() ) {
+                          the_post_thumbnail( 'large' );
+                        } ?>
+                      </a>
                     </div>
                     <div class="text-and-image__content">
                       <div class="eyebrow"><?php esc_html_e( 'New Updates!', 'so-so-def' ); ?></div>

@@ -24,8 +24,8 @@ get_header(); ?>
 					}
 				}
 				
-				// Only show default slide if no additional slides, or always show but without text if it's just fallback
-				if ( !$has_additional_slides || has_post_thumbnail() ) : ?>
+				// Only show default slide if no additional slides exist
+				if ( !$has_additional_slides ) : ?>
 					<!-- Default/Fallback slide -->
 					<div class="swiper-slide">
 						<div class="slide-content">
@@ -74,7 +74,14 @@ get_header(); ?>
 									<?php $youtube_url = get_post_meta( get_the_ID(), "slide_{$i}_youtube", true ); ?>
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
-											<iframe src="<?php echo esc_url( $youtube_url ); ?>&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=<?php echo esc_attr( substr( strrchr( $youtube_url, '/' ), 1 ) ); ?>" 
+											<?php
+											// Extract video ID for playlist parameter
+											$video_id = '';
+											if ( preg_match( '/\/embed\/([a-zA-Z0-9_-]+)/', $youtube_url, $matches ) ) {
+												$video_id = $matches[1];
+											}
+											?>
+											<iframe src="<?php echo esc_url( $youtube_url ); ?>?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
 													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
@@ -155,8 +162,8 @@ get_header(); ?>
 			<?php 
 			$total_slides = 0;
 			
-			// Count default slide (if no additional slides OR has featured image)
-			if ( !$has_additional_slides || has_post_thumbnail() ) {
+			// Count default slide (only if no additional slides)
+			if ( !$has_additional_slides ) {
 				$total_slides++;
 			}
 			

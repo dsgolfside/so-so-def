@@ -13,32 +13,48 @@ get_header(); ?>
 		<section class="hero page-hero-swiper swiper-container" data-aos="fade">
 			<div class="swiper-wrapper">
 				
-				<!-- Default slide with featured image or fallback -->
-				<div class="swiper-slide">
-					<div class="slide-content">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<!-- Featured Image Background -->
-							<div class="slide-background">
-								<?php the_post_thumbnail( 'full', array( 'class' => 'slide-bg-image' ) ); ?>
-							</div>
-						<?php else : ?>
-							<!-- Fallback Background -->
-							<div class="slide-background">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/GENERAL-scaled.jpg" alt="Default background" class="slide-bg-image" />
-							</div>
-						<?php endif; ?>
-						
-						<!-- Slide Overlay Content -->
-						<div class="slide-overlay">
-							<div class="slide-text-content">
-								<h1 class="slide-title"><?php the_title(); ?></h1>
-								<?php if ( get_the_excerpt() ) : ?>
-									<p class="slide-subtitle"><?php the_excerpt(); ?></p>
-								<?php endif; ?>
-							</div>
+				<?php
+				// Check if there are any additional slides first
+				$has_additional_slides = false;
+				for ( $i = 1; $i <= 5; $i++ ) {
+					$slide_type = get_post_meta( get_the_ID(), "slide_{$i}_type", true );
+					if ( $slide_type ) {
+						$has_additional_slides = true;
+						break;
+					}
+				}
+				
+				// Only show default slide if no additional slides, or always show but without text if it's just fallback
+				if ( !$has_additional_slides || has_post_thumbnail() ) : ?>
+					<!-- Default/Fallback slide -->
+					<div class="swiper-slide">
+						<div class="slide-content">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<!-- Featured Image Background -->
+								<div class="slide-background">
+									<?php the_post_thumbnail( 'full', array( 'class' => 'slide-bg-image' ) ); ?>
+								</div>
+							<?php else : ?>
+								<!-- Fallback Background -->
+								<div class="slide-background">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/GENERAL-scaled.jpg" alt="Default background" class="slide-bg-image" />
+								</div>
+							<?php endif; ?>
+							
+							<?php if ( !$has_additional_slides ) : ?>
+								<!-- Only show text if this is the primary slide (no additional slides) -->
+								<div class="slide-overlay">
+									<div class="slide-text-content">
+										<h1 class="slide-title"><?php the_title(); ?></h1>
+										<?php if ( get_the_excerpt() ) : ?>
+											<p class="slide-subtitle"><?php the_excerpt(); ?></p>
+										<?php endif; ?>
+									</div>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 				
 				<!-- Additional slides via WordPress Custom Fields -->
 				<?php
@@ -58,7 +74,7 @@ get_header(); ?>
 									<?php $youtube_url = get_post_meta( get_the_ID(), "slide_{$i}_youtube", true ); ?>
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
-											<iframe src="<?php echo esc_url( $youtube_url ); ?>" 
+											<iframe src="<?php echo esc_url( $youtube_url ); ?>&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=<?php echo esc_attr( substr( strrchr( $youtube_url, '/' ), 1 ) ); ?>" 
 													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
@@ -97,28 +113,31 @@ get_header(); ?>
 										
 										<!-- Social Icons (for artist slides) -->
 										<?php if ( $slide_type == 'artist' ) : ?>
-											<div class="slide-social-icons">
-												<?php 
-												$social_links = array(
-													'instagram' => array('icon' => 'fab fa-instagram', 'label' => 'Instagram'),
-													'spotify' => array('icon' => 'fab fa-spotify', 'label' => 'Spotify'),
-													'youtube' => array('icon' => 'fab fa-youtube', 'label' => 'YouTube'),
-													'twitter' => array('icon' => 'fab fa-twitter', 'label' => 'Twitter'),
-													'tiktok' => array('icon' => 'fab fa-tiktok', 'label' => 'TikTok'),
-													'soundcloud' => array('icon' => 'fab fa-soundcloud', 'label' => 'SoundCloud'),
-													'apple_music' => array('icon' => 'fab fa-apple', 'label' => 'Apple Music'),
-													'website' => array('icon' => 'fas fa-globe', 'label' => 'Website')
-												);
-												
-												foreach ( $social_links as $platform => $data ) {
-													$social_url = get_post_meta( get_the_ID(), "slide_{$i}_{$platform}", true );
-													if ( $social_url ) : ?>
-														<a href="<?php echo esc_url( $social_url ); ?>" target="_blank" rel="noopener" class="social-icon" title="<?php echo esc_attr( $data['label'] ); ?>">
-															<i class="<?php echo esc_attr( $data['icon'] ); ?>"></i>
-														</a>
-													<?php endif;
-												}
-												?>
+											<div class="artist-social-section">
+												<div class="social-heading">Follow Artist</div>
+												<div class="slide-social-icons">
+													<?php 
+													$social_links = array(
+														'instagram' => array('icon' => 'fab fa-instagram', 'label' => 'Instagram'),
+														'tiktok' => array('icon' => 'fab fa-tiktok', 'label' => 'TikTok'),
+														'twitter' => array('icon' => 'fab fa-twitter', 'label' => 'Twitter'),
+														'website' => array('icon' => 'fas fa-globe', 'label' => 'Website'),
+														'spotify' => array('icon' => 'fab fa-spotify', 'label' => 'Spotify'),
+														'youtube' => array('icon' => 'fab fa-youtube', 'label' => 'YouTube'),
+														'apple_music' => array('icon' => 'fab fa-apple', 'label' => 'Apple Music'),
+														'soundcloud' => array('icon' => 'fab fa-soundcloud', 'label' => 'SoundCloud')
+													);
+													
+													foreach ( $social_links as $platform => $data ) {
+														$social_url = get_post_meta( get_the_ID(), "slide_{$i}_{$platform}", true );
+														if ( $social_url ) : ?>
+															<a href="<?php echo esc_url( $social_url ); ?>" target="_blank" rel="noopener" class="social-icon" title="<?php echo esc_attr( $data['label'] ); ?>">
+																<i class="<?php echo esc_attr( $data['icon'] ); ?>"></i>
+															</a>
+														<?php endif;
+													}
+													?>
+												</div>
 											</div>
 										<?php endif; ?>
 									</div>
@@ -134,7 +153,12 @@ get_header(); ?>
 
 			<!-- Swiper controls (only show if more than 1 slide) -->
 			<?php 
-			$total_slides = 1; // Default slide with featured image
+			$total_slides = 0;
+			
+			// Count default slide (if no additional slides OR has featured image)
+			if ( !$has_additional_slides || has_post_thumbnail() ) {
+				$total_slides++;
+			}
 			
 			// Count additional slides
 			for ( $i = 1; $i <= 5; $i++ ) {

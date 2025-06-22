@@ -1804,10 +1804,11 @@ p { margin: 0 0 1rem; }
 button.social-icon.search-trigger svg {
   transform: translate(0, 0) !important;
   vertical-align: middle !important;
-  width: 28px !important;
-  height: 28px !important;
-  max-width: 28px !important;
-  max-height: 28px !important;
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  stroke-width: 3 !important;
 }
 
 /* Main Footer Grid */
@@ -2202,10 +2203,11 @@ button.social-icon.search-trigger svg {
     transform: translate(0, 0) !important;
     display: block !important;
     margin: auto !important;
-    width: 28px !important;
-    height: 28px !important;
-    max-width: 28px !important;
-    max-height: 28px !important;
+    width: 36px !important;
+    height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    stroke-width: 3 !important;
   }
   
   .name-fields {

@@ -213,16 +213,18 @@ get_header(); ?>
 		<section class="page-content">
 			<div class="page-content__container">
 				<div class="page-content__wrapper">
-					<?php the_content(); ?>
-					
-					<?php
-					wp_link_pages(
-						array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'so-so-def' ),
-							'after'  => '</div>',
-						)
-					);
-					?>
+					<div class="entry-content">
+						<?php the_content(); ?>
+						
+						<?php
+						wp_link_pages(
+							array(
+								'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'so-so-def' ),
+								'after'  => '</div>',
+							)
+						);
+						?>
+					</div>
 				</div>
 			</div>
 		</section>

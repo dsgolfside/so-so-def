@@ -2844,3 +2844,553 @@ p { margin: 0 0 1rem; }
 
 /* Old page hero styles removed - using new swiper instead */
 
+/* ——— ROC NATION INSPIRED PAGE CONTENT LAYOUT ——— */
+
+/* Page Content Container - Grey Background */
+.page-content {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 4rem 0;
+  position: relative;
+}
+
+.page-content__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-content__wrapper {
+  max-width: 680px; /* Narrow column like Roc Nation */
+  margin: 0 auto;
+  background: white;
+  border-radius: 0; /* Clean rectangular box */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Content Inside the White Box */
+.page-content__wrapper .entry-content,
+.page-content__wrapper > * {
+  padding: 3rem 3rem;
+}
+
+/* Page Title Styling */
+.page-content__wrapper h1 {
+  font-family: var(--font-family-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-black);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+}
+
+/* Typography inside content box */
+.page-content__wrapper p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.page-content__wrapper h2 {
+  font-family: var(--font-family-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 2.5rem 0 1.5rem 0;
+  line-height: 1.3;
+}
+
+.page-content__wrapper h3 {
+  font-family: var(--font-family-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-black);
+  margin: 2rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.page-content__wrapper h4,
+.page-content__wrapper h5,
+.page-content__wrapper h6 {
+  font-family: var(--font-family-serif);
+  font-weight: 500;
+  color: var(--color-black);
+  margin: 1.5rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+/* Links styling */
+.page-content__wrapper a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.page-content__wrapper a:hover {
+  border-bottom-color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* Lists styling */
+.page-content__wrapper ul,
+.page-content__wrapper ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.page-content__wrapper li {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Images inside content */
+.page-content__wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Blockquotes */
+.page-content__wrapper blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: #f9f9f9;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: #555;
+}
+
+/* Tables */
+.page-content__wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.page-content__wrapper th,
+.page-content__wrapper td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.page-content__wrapper th {
+  background: #f9f9f9;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+/* Code blocks */
+.page-content__wrapper pre,
+.page-content__wrapper code {
+  background: #f5f5f5;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+}
+
+.page-content__wrapper pre {
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.page-content__wrapper code {
+  padding: 0.2rem 0.4rem;
+}
+
+/* WordPress alignments */
+.page-content__wrapper .alignleft {
+  float: left;
+  margin: 0 2rem 1rem 0;
+}
+
+.page-content__wrapper .alignright {
+  float: right;
+  margin: 0 0 1rem 2rem;
+}
+
+.page-content__wrapper .aligncenter {
+  display: block;
+  margin: 2rem auto;
+}
+
+/* WordPress galleries */
+.page-content__wrapper .gallery {
+  margin: 2rem 0;
+}
+
+.page-content__wrapper .gallery-item {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 2rem 0;
+  }
+  
+  .page-content__container {
+    padding: 0 1rem;
+  }
+  
+  .page-content__wrapper {
+    max-width: 100%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .page-content__wrapper .entry-content,
+  .page-content__wrapper > * {
+    padding: 2rem 1.5rem;
+  }
+  
+  .page-content__wrapper h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-content__wrapper h2 {
+    font-size: 1.5rem;
+  }
+  
+  .page-content__wrapper h3 {
+    font-size: 1.25rem;
+  }
+  
+  .page-content__wrapper p,
+  .page-content__wrapper li {
+    font-size: 1rem;
+  }
+  
+  .page-content__wrapper .alignleft,
+  .page-content__wrapper .alignright {
+    float: none;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content__wrapper .entry-content,
+  .page-content__wrapper > * {
+    padding: 1.5rem 1rem;
+  }
+  
+  .page-content__wrapper h1 {
+    font-size: 1.75rem;
+  }
+  
+  .page-content__wrapper blockquote {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .page-content__wrapper table {
+    font-size: 0.9rem;
+  }
+  
+  .page-content__wrapper th,
+  .page-content__wrapper td {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Page Links (pagination) */
+.page-content__wrapper .page-links {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.page-content__wrapper .page-links a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.page-content__wrapper .page-links a:hover {
+  background: #c50500;
+}
+
+.page-content__wrapper .page-links > span {
+  margin-right: 0.5rem;
+  font-weight: 600;
+  color: #666;
+}
+
+/* ——— END ROC NATION INSPIRED LAYOUT ——— */
+
+/* ——— SINGLE POST ADDITIONAL STYLING ——— */
+
+/* Entry Meta (date, author) */
+.page-content__wrapper .entry-meta {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.page-content__wrapper .entry-meta a {
+  color: #666;
+  text-decoration: none;
+}
+
+.page-content__wrapper .entry-meta a:hover {
+  color: var(--color-accent);
+}
+
+.page-content__wrapper .entry-meta .byline {
+  margin-left: 1rem;
+}
+
+/* Entry Footer (categories, tags, edit link) */
+.page-content__wrapper .entry-footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.page-content__wrapper .entry-footer span {
+  display: inline-block;
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-content__wrapper .entry-footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+.page-content__wrapper .entry-footer a:hover {
+  color: var(--color-accent);
+}
+
+/* Post Navigation */
+.post-navigation {
+  background: #f5f5f5;
+  padding: 3rem 0;
+  margin-top: 0;
+}
+
+.post-navigation .nav-links {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+  flex: 1;
+  max-width: 45%;
+}
+
+.post-navigation .nav-next {
+  text-align: right;
+}
+
+.post-navigation a {
+  display: block;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: var(--color-black);
+  transition: all 0.3s ease;
+}
+
+.post-navigation a:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.post-navigation .nav-subtitle {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.post-navigation .nav-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-black);
+}
+
+/* Comments Section */
+.comments-area {
+  background: #f5f5f5;
+  padding: 3rem 0;
+}
+
+.comments-area .comments-title,
+.comments-area .comment-reply-title {
+  font-family: var(--font-family-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--color-black);
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-list .comment {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.comment-list .comment-author {
+  margin-bottom: 1rem;
+}
+
+.comment-list .comment-author .fn {
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.comment-list .comment-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.comment-list .comment-content p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.comment-form {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+.comment-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus,
+.comment-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.comment-form .form-submit {
+  margin-top: 1rem;
+}
+
+.comment-form .submit {
+  background: var(--color-accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comment-form .submit:hover {
+  background: #c50500;
+}
+
+/* Mobile responsiveness for posts */
+@media (max-width: 768px) {
+  .post-navigation .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .post-navigation .nav-previous,
+  .post-navigation .nav-next {
+    max-width: 100%;
+  }
+  
+  .post-navigation .nav-next {
+    text-align: left;
+  }
+  
+  .post-navigation a {
+    padding: 1rem 1.5rem;
+  }
+  
+  .comments-area {
+    padding: 2rem 0;
+  }
+  
+  .comment-list .comment,
+  .comment-form {
+    padding: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .page-content__wrapper .entry-meta .byline {
+    margin-left: 0;
+    display: block;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ——— END SINGLE POST STYLING ——— */
+

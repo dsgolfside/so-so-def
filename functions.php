@@ -216,7 +216,7 @@ add_action( 'save_post', 'ssd_save_homepage_slides_meta' );
 function ssd_page_hero_slides_metabox_callback( $post ) {
     wp_nonce_field( 'ssd_page_hero_slides_nonce', 'ssd_page_hero_slides_nonce_field' );
     
-    echo '<p><strong>Note:</strong> The first slide will always be your page\'s featured image with title. Add additional slides below.</p>';
+    echo '<p><strong>Note:</strong> If you add slides below, your featured image becomes a fallback. If no slides are added, your featured image will show with the page title.</p>';
     
     for ( $i = 1; $i <= 5; $i++ ) {
         $slide_type = get_post_meta( $post->ID, "slide_{$i}_type", true );
@@ -326,34 +326,52 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
             </div>
         </div>
         
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slideTypeSelect = document.querySelector('select[name="slide_<?php echo $i; ?>_type"]');
-            const slideContainer = slideTypeSelect.closest('.slide-type-fields').parentNode;
-            
-            slideTypeSelect.addEventListener('change', function() {
-                const selectedType = this.value;
-                const container = slideContainer;
-                
-                // Hide all type-specific fields
-                container.querySelectorAll('.image-field, .youtube-field, .artist-field, .social-fields').forEach(field => {
-                    field.style.display = 'none';
-                });
-                
-                // Show relevant fields
-                if (selectedType === 'image') {
-                    container.querySelector('.image-field').style.display = 'block';
-                } else if (selectedType === 'youtube') {
-                    container.querySelector('.youtube-field').style.display = 'block';
-                } else if (selectedType === 'artist') {
-                    container.querySelector('.artist-field').style.display = 'block';
-                    container.querySelector('.social-fields').style.display = 'block';
-                }
-            });
-        });
-        </script>
+        
         <?php
     }
+    ?>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle all slide type dropdowns
+        document.querySelectorAll('select[name^="slide_"]').forEach(function(select) {
+            if (select.name.includes('_type')) {
+                const slideContainer = select.closest('div[style*="border"]'); // The slide container div
+                
+                function toggleFields() {
+                    const selectedType = select.value;
+                    
+                    // Hide all type-specific fields
+                    slideContainer.querySelectorAll('.image-field, .youtube-field, .artist-field, .social-fields').forEach(field => {
+                        field.style.display = 'none';
+                    });
+                    
+                    // Show relevant fields based on selection
+                    if (selectedType === 'image') {
+                        const imageField = slideContainer.querySelector('.image-field');
+                        if (imageField) imageField.style.display = 'block';
+                    } else if (selectedType === 'youtube') {
+                        const youtubeField = slideContainer.querySelector('.youtube-field');
+                        if (youtubeField) youtubeField.style.display = 'block';
+                    } else if (selectedType === 'artist') {
+                        const artistField = slideContainer.querySelector('.artist-field');
+                        const socialFields = slideContainer.querySelector('.social-fields');
+                        if (artistField) artistField.style.display = 'block';
+                        if (socialFields) socialFields.style.display = 'block';
+                    }
+                }
+                
+                // Set initial state
+                toggleFields();
+                
+                // Handle changes
+                select.addEventListener('change', toggleFields);
+            }
+        });
+    });
+    </script>
+    
+    <?php
 }
 
 /**

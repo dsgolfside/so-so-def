@@ -15,7 +15,7 @@
       </svg>
     </a>
     
-    <a href="mailto:info@sosodef.com" aria-label="Email" class="social-icon">
+    <a href="/contact" aria-label="Contact" class="social-icon">
       <svg viewBox="0 0 24 24">
         <rect x="2" y="4" width="20" height="16" rx="2"/>
         <path d="m22 7-10 5L2 7"/>

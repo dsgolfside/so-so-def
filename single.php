@@ -14,6 +14,13 @@ get_header();
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		
+		<!-- Featured Image - Full Width -->
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="single-post-featured-image">
+				<?php the_post_thumbnail( 'full' ); ?>
+			</div>
+		<?php endif; ?>
+
 		<!-- Single Post Content -->
 		<section class="page-content">
 			<div class="page-content__container">
@@ -45,14 +52,6 @@ get_header();
 									);
 
 									echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
-
-									$byline = sprintf(
-										/* translators: %s: post author. */
-										esc_html_x( 'by %s', 'post author', '_s' ),
-										'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-									);
-
-									echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 									?>
 								</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->

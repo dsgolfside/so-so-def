@@ -150,6 +150,23 @@ p { margin: 0 0 1rem; }
   clear: both;
 }
 
+/* Single Post Featured Image - Full Width */
+.single-post-featured-image {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+.single-post-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
 /* ——— About Section - Black Background Bio ——— */
 .about-section {
   background: var(--color-black);

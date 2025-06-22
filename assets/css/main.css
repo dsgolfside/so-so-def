@@ -1765,6 +1765,7 @@ p { margin: 0 0 1rem; }
   cursor: pointer;
   transition: all 0.3s ease;
   border-right: 1px solid #333;
+  position: relative;
 }
 
 .social-icon:first-child {
@@ -1794,6 +1795,14 @@ p { margin: 0 0 1rem; }
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  width: 28px;
+  height: 28px;
+}
+
+/* Specific alignment fix for search icon */
+.social-icon.search-trigger svg {
+  transform: translate(0, 0);
+  vertical-align: middle;
 }
 
 /* Main Footer Grid */
@@ -2175,6 +2184,18 @@ p { margin: 0 0 1rem; }
   .social-icon {
     width: 45px;
     height: 45px;
+  }
+  
+  .social-icon svg[viewBox*="24"] {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Ensure search icon is properly centered on mobile */
+  .social-icon.search-trigger svg {
+    transform: translate(0, 0);
+    display: block;
+    margin: auto;
   }
   
   .name-fields {

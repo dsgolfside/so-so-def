@@ -2910,20 +2910,20 @@ p { margin: 0 0 1rem; }
   gap: 0;
 }
 
-/* Large Simple Turntable - Fills Most of Content Area */
+/* Massive Diamond Turntable - Stretches Beyond Div */
 .page-content__wrapper::after {
   content: '';
   position: absolute;
-  right: -200px; /* Positioned so right side gets cut off */
-  bottom: -200px; /* Positioned so bottom gets cut off */
-  width: 800px; /* Large enough to fill most of the area */
-  height: 800px; /* Large enough to fill most of the area */
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none"><g stroke="%23e0e0e0" stroke-width="3" opacity="0.35"><rect x="50" y="200" width="700" height="400" rx="20" fill="none"/><circle cx="300" cy="400" r="180" fill="none"/><circle cx="300" cy="400" r="160" fill="none"/><circle cx="300" cy="400" r="15" fill="none"/><circle cx="300" cy="400" r="8" fill="%23e0e0e0"/><line x1="450" y1="250" x2="580" y2="350" stroke-width="8" stroke-linecap="round"/><circle cx="580" cy="350" r="12" fill="none"/><rect x="600" y="280" width="80" height="40" rx="8" fill="none"/><rect x="100" y="240" width="60" height="30" rx="4" fill="none"/><rect x="100" y="280" width="60" height="30" rx="4" fill="none"/><rect x="100" y="320" width="60" height="30" rx="4" fill="none"/><line x1="300" y1="220" x2="300" y2="240" stroke-width="2"/><line x1="300" y1="560" x2="300" y2="580" stroke-width="2"/><line x1="120" y1="400" x2="140" y2="400" stroke-width="2"/><line x1="460" y1="400" x2="480" y2="400" stroke-width="2"/></g></svg>');
+  right: -600px; /* Way off screen so tonearm is hidden */
+  top: -400px; /* Center it vertically but extend beyond */
+  width: 1400px; /* Massive size to stretch beyond div */
+  height: 1400px; /* Massive size to stretch beyond div */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" fill="none"><g stroke="%23e0e0e0" stroke-width="3" opacity="0.25"><rect x="100" y="400" width="1200" height="600" rx="30" fill="none"/><circle cx="500" cy="700" r="300" fill="none"/><circle cx="500" cy="700" r="280" fill="none"/><circle cx="500" cy="700" r="260" fill="none"/><circle cx="500" cy="700" r="25" fill="none"/><circle cx="500" cy="700" r="15" fill="%23e0e0e0"/><line x1="750" y1="500" x2="1000" y2="650" stroke-width="12" stroke-linecap="round"/><circle cx="1000" cy="650" r="18" fill="none"/><rect x="1050" y="600" width="120" height="60" rx="12" fill="none"/><rect x="150" y="480" width="100" height="50" rx="8" fill="none"/><rect x="150" y="550" width="100" height="50" rx="8" fill="none"/><rect x="150" y="620" width="100" height="50" rx="8" fill="none"/><rect x="150" y="690" width="100" height="50" rx="8" fill="none"/><line x1="500" y1="400" x2="500" y2="430" stroke-width="3"/><line x1="500" y1="970" x2="500" y2="1000" stroke-width="3"/><line x1="200" y1="700" x2="230" y2="700" stroke-width="3"/><line x1="770" y1="700" x2="800" y2="700" stroke-width="3"/></g></svg>');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
-  transform: none; /* Remove rotation - keep it straight */
+  transform: rotate(45deg) translateY(-100px); /* 45 degree diamond rotation */
 }
 
 /* Content Inside the White Box - Grid Layout */

@@ -1142,6 +1142,15 @@ p { margin: 0 0 1rem; }
     aspect-ratio: auto !important;
   }
   
+  /* Front page mobile: ensure audio player is visible and positioned correctly */
+  .home .latest-grid__embed .audio-player {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    display: flex !important;
+  }
+  
   /* Front page mobile: ensure minimum height for image + text overlay */
   .home .latest-grid .card {
     position: relative !important;

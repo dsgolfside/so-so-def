@@ -41,17 +41,7 @@ get_header(); ?>
 								</div>
 							<?php endif; ?>
 							
-							<?php if ( !$has_additional_slides ) : ?>
-								<!-- Only show text if this is the primary slide (no additional slides) -->
-								<div class="slide-overlay">
-									<div class="slide-text-content">
-										<h1 class="slide-title"><?php the_title(); ?></h1>
-										<?php if ( get_the_excerpt() ) : ?>
-											<p class="slide-subtitle"><?php the_excerpt(); ?></p>
-										<?php endif; ?>
-									</div>
-								</div>
-							<?php endif; ?>
+
 						</div>
 					</div>
 				<?php endif; ?>

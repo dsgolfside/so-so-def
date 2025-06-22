@@ -1372,8 +1372,9 @@ p { margin: 0 0 1rem; }
   transform: translateY(0);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-/* ——— Latest Grid: Spotify embed styling ——— */
-.latest-grid__embed .audio-player {
+/* ——— Latest Grid: Audio/Video embed styling ——— */
+.latest-grid__embed .audio-player,
+.latest-grid__embed .video-player {
   background: linear-gradient(135deg, var(--color-accent) 0%, #c41e3a 100%);
   padding: 2rem;
   display: flex;
@@ -1386,16 +1387,19 @@ p { margin: 0 0 1rem; }
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 0;
 }
 
-/* Mobile: Smaller padding for audio player */
+/* Mobile: Smaller padding for audio/video player */
 @media (max-width: 768px) {
-  .latest-grid__embed .audio-player {
+  .latest-grid__embed .audio-player,
+  .latest-grid__embed .video-player {
     padding: 1rem;
   }
 }
 
-.latest-grid__embed .audio-player::before {
+.latest-grid__embed .audio-player::before,
+.latest-grid__embed .video-player::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1411,29 +1415,46 @@ p { margin: 0 0 1rem; }
   transition: left 0.5s;
 }
 
-.latest-grid__embed .audio-player:hover {
+.latest-grid__embed .audio-player:hover,
+.latest-grid__embed .video-player:hover {
   transform: scale(1.02);
 }
 
-.latest-grid__embed .audio-player:hover::before {
+.latest-grid__embed .audio-player:hover::before,
+.latest-grid__embed .video-player:hover::before {
   left: 100%;
 }
 
-/* remove any white flash behind the iframe */
-.latest-grid__embed .audio-player iframe {
+/* remove any white flash behind the iframe and rounded corners */
+.latest-grid__embed .audio-player iframe,
+.latest-grid__embed .video-player iframe {
   background: transparent;
   border-radius: 0;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   min-height: 152px;
 }
 
+/* Video specific styling - larger for video content */
+.latest-grid__embed .video-player iframe {
+  max-width: 85%;
+  min-height: 250px;
+}
+
 /* Mobile: Responsive iframe */
 @media (max-width: 768px) {
-  .latest-grid__embed .audio-player iframe {
+  .latest-grid__embed .audio-player iframe,
+  .latest-grid__embed .video-player iframe {
     width: 100%;
+    max-width: 95%;
+  }
+  
+  .latest-grid__embed .audio-player iframe {
     height: 152px;
-    max-width: none;
+  }
+  
+  .latest-grid__embed .video-player iframe {
+    height: 200px;
   }
 }
 

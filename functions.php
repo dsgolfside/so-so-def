@@ -228,7 +228,7 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
         // Social media fields
         $slide_instagram = get_post_meta( $post->ID, "slide_{$i}_instagram", true );
         $slide_spotify = get_post_meta( $post->ID, "slide_{$i}_spotify", true );
-        $slide_youtube_social = get_post_meta( $post->ID, "slide_{$i}_youtube", true );
+        $slide_youtube_social = get_post_meta( $post->ID, "slide_{$i}_youtube_social", true );
         $slide_twitter = get_post_meta( $post->ID, "slide_{$i}_twitter", true );
         $slide_tiktok = get_post_meta( $post->ID, "slide_{$i}_tiktok", true );
         $slide_soundcloud = get_post_meta( $post->ID, "slide_{$i}_soundcloud", true );
@@ -299,7 +299,7 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                         </label>
                         <label>
                             YouTube<br>
-                            <input type="url" name="slide_<?php echo $i; ?>_youtube" value="<?php echo esc_attr( $slide_youtube_social ); ?>" style="width: 100%;" />
+                            <input type="url" name="slide_<?php echo $i; ?>_youtube_social" value="<?php echo esc_attr( $slide_youtube_social ); ?>" style="width: 100%;" />
                         </label>
                         <label>
                             Twitter<br>
@@ -386,7 +386,7 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
     if ( get_post_type( $post_id ) !== 'page' ) return;
 
     $fields = [
-        'type', 'title', 'subtitle', 'image', 'youtube', 
+        'type', 'title', 'subtitle', 'image', 'youtube', 'youtube_social',
         'instagram', 'spotify', 'twitter', 'tiktok', 
         'soundcloud', 'apple_music', 'website'
     ];
@@ -395,11 +395,19 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
         foreach ( $fields as $field ) {
             $field_name = "slide_{$i}_{$field}";
             if ( isset( $_POST[$field_name] ) ) {
-                if ( in_array( $field, ['youtube', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
+                // Debug logging for YouTube fields
+                if ( $field === 'youtube' && !empty( $_POST[$field_name] ) ) {
+                    error_log( "Saving YouTube URL for {$field_name}: " . $_POST[$field_name] );
+                }
+                
+                if ( in_array( $field, ['youtube', 'youtube_social', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
                     update_post_meta( $post_id, $field_name, esc_url_raw( $_POST[$field_name] ) );
                 } else {
                     update_post_meta( $post_id, $field_name, sanitize_text_field( $_POST[$field_name] ) );
                 }
+            } else if ( $field === 'youtube' ) {
+                // Debug: YouTube field not set in POST
+                error_log( "YouTube field {$field_name} not found in POST data" );
             }
         }
     }

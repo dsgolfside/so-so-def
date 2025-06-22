@@ -2834,10 +2834,9 @@ p { margin: 0 0 1rem; }
 /* Responsive Design */
 @media (max-width: 768px) {
   .page-hero-swiper {
-    height: calc(100vh - 67px); /* Full viewport minus mobile header height */
-    margin-top: 67px; /* Push content down from fixed header */
-    min-height: unset;
-    max-height: unset;
+    height: 40vh;
+    min-height: 250px;
+    max-height: 400px;
   }
   
   /* Mobile video scaling - keep it reasonable */

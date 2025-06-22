@@ -2915,7 +2915,7 @@ p { margin: 0 0 1rem; }
   content: '';
   position: absolute;
   right: -400px; /* Show more of it - 2/3 visible */
-  top: -200px; /* Start higher to accommodate rotation */
+  top: 200px; /* Move it down so only the tip shows */
   width: 1200px; /* Much bigger - almost twice the previous size */
   height: 1200px; /* Much bigger - almost twice the previous size */
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none"><g stroke="%23e8e8e8" stroke-width="2.5" opacity="0.25"><rect x="100" y="400" width="1000" height="600" rx="30" fill="none"/><circle cx="450" cy="700" r="280" fill="none"/><circle cx="450" cy="700" r="250" fill="none"/><circle cx="450" cy="700" r="20" fill="none"/><circle cx="450" cy="700" r="12" fill="%23e8e8e8"/><line x1="650" y1="500" x2="850" y2="650" stroke-width="12" stroke-linecap="round"/><circle cx="850" cy="650" r="18" fill="none"/><rect x="900" y="600" width="120" height="60" rx="12" fill="none"/><rect x="150" y="480" width="90" height="45" rx="6" fill="none"/><rect x="150" y="540" width="90" height="45" rx="6" fill="none"/><rect x="150" y="600" width="90" height="45" rx="6" fill="none"/><rect x="150" y="660" width="90" height="45" rx="6" fill="none"/><line x1="450" y1="420" x2="450" y2="460" stroke-width="3"/><line x1="450" y1="940" x2="450" y2="980" stroke-width="3"/><line x1="170" y1="700" x2="210" y2="700" stroke-width="3"/><line x1="690" y1="700" x2="730" y2="700" stroke-width="3"/></g></svg>');
@@ -2923,7 +2923,7 @@ p { margin: 0 0 1rem; }
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
-  transform: rotate(45deg) translateY(-150px); /* 45 degree rotation + positioning */
+  transform: rotate(45deg) translateY(50px); /* 45 degree rotation + lower positioning */
 }
 
 /* Content Inside the White Box - Grid Layout */

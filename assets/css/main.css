@@ -1435,9 +1435,9 @@ p { margin: 0 0 1rem; }
   min-height: 152px;
 }
 
-/* Video specific styling - larger for video content */
+/* Video specific styling - narrower for 16:9 video aspect ratio */
 .latest-grid__embed .video-player iframe {
-  max-width: 85%;
+  max-width: 65%;
   min-height: 250px;
 }
 
@@ -1455,6 +1455,7 @@ p { margin: 0 0 1rem; }
   
   .latest-grid__embed .video-player iframe {
     height: 200px;
+    max-width: 80%;
   }
 }
 

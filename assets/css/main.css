@@ -1800,11 +1800,14 @@ p { margin: 0 0 1rem; }
 }
 
 /* Specific alignment fix for search icon */
-.social-icon.search-trigger svg {
-  transform: translate(0, 0);
-  vertical-align: middle;
-  width: 24px !important;
-  height: 24px !important;
+.social-icon.search-trigger svg,
+button.social-icon.search-trigger svg {
+  transform: translate(0, 0) !important;
+  vertical-align: middle !important;
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
 }
 
 /* Main Footer Grid */
@@ -2194,12 +2197,15 @@ p { margin: 0 0 1rem; }
   }
   
   /* Ensure search icon is properly centered on mobile */
-  .social-icon.search-trigger svg {
-    transform: translate(0, 0);
-    display: block;
-    margin: auto;
-    width: 26px !important;
-    height: 26px !important;
+  .social-icon.search-trigger svg,
+  button.social-icon.search-trigger svg {
+    transform: translate(0, 0) !important;
+    display: block !important;
+    margin: auto !important;
+    width: 28px !important;
+    height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
   }
   
   .name-fields {

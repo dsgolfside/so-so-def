@@ -2898,19 +2898,42 @@ p { margin: 0 0 1rem; }
 }
 
 .page-content__wrapper {
-  max-width: 680px; /* Narrow column like Roc Nation */
+  max-width: 1000px; /* Wider like Roc Nation - was 680px */
   margin: 0 auto;
   background: white;
   border-radius: 0; /* Clean rectangular box */
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 200px; /* Main content + sidebar space for DJ graphic */
+  gap: 0;
 }
 
-/* Content Inside the White Box */
+/* DJ Background Graphic on Right Side */
+.page-content__wrapper::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 120px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><g stroke="%23e5e5e5" stroke-width="1.5" opacity="0.6"><circle cx="60" cy="60" r="50"/><circle cx="60" cy="60" r="35"/><circle cx="60" cy="60" r="20"/><circle cx="60" cy="60" r="5"/><line x1="10" y1="60" x2="110" y2="60"/><line x1="60" y1="10" x2="60" y2="110"/><path d="M30 30 L90 90 M90 30 L30 90"/><rect x="35" y="15" width="50" height="8" rx="4"/><rect x="35" y="97" width="50" height="8" rx="4"/><rect x="15" y="35" width="8" height="50" rx="4"/><rect x="97" y="35" width="8" height="50" rx="4"/></g></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content Inside the White Box - Grid Layout */
 .page-content__wrapper .entry-content,
 .page-content__wrapper > * {
-  padding: 3rem 3rem;
+  padding: 4rem 4rem 4rem 4rem;
+  grid-column: 1; /* Take first column */
+  max-width: 700px; /* Limit text width for readability */
+  position: relative;
+  z-index: 2;
 }
 
 /* Page Title Styling */
@@ -3085,6 +3108,22 @@ p { margin: 0 0 1rem; }
   .page-content__container {
     padding: 0 1rem;
   }
+  
+  .page-content__wrapper {
+    display: block; /* Remove grid on mobile */
+    max-width: 100%;
+  }
+  
+  .page-content__wrapper::after {
+    display: none; /* Hide DJ graphic on mobile */
+  }
+  
+  .page-content__wrapper .entry-content,
+  .page-content__wrapper > * {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+}
   
   .page-content__wrapper {
     max-width: 100%;

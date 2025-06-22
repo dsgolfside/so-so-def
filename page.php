@@ -214,6 +214,10 @@ get_header(); ?>
 			<div class="page-content__container">
 				<div class="page-content__wrapper">
 					<div class="entry-content">
+						<header class="entry-header">
+							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+						</header><!-- .entry-header -->
+						
 						<?php the_content(); ?>
 						
 						<?php

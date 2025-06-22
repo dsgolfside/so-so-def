@@ -470,7 +470,7 @@ p { margin: 0 0 1rem; }
 /* Mobile Navigation Overlay */
 .mobile-nav-overlay {
   position: fixed;
-  top: 70px; /* Start below header to keep logo visible */
+  top: 0; /* Start from very top of viewport - fixes scrolled position issue */
   left: 0;
   right: 0;
   bottom: 0;
@@ -478,7 +478,7 @@ p { margin: 0 0 1rem; }
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 999;
-  padding-top: 20px; /* Reduced since we start below header */
+  padding-top: 90px; /* Add padding to push content below header area */
 }
 
 .mobile-nav-overlay.active {

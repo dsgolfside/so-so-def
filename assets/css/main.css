@@ -155,6 +155,7 @@ p { margin: 0 0 1rem; }
   width: 100%;
   margin: 0;
   padding: 0;
+  padding-top: 72px; /* Match header height - no overlap */
   overflow: hidden;
   background: var(--color-black);
 }
@@ -165,6 +166,13 @@ p { margin: 0 0 1rem; }
   display: block;
   object-fit: contain;
   object-position: center;
+}
+
+/* Mobile: Match mobile header height */
+@media (max-width: 768px) {
+  .single-post-featured-image {
+    padding-top: 67px; /* Match mobile header height exactly */
+  }
 }
 
 /* ——— About Section - Black Background Bio ——— */

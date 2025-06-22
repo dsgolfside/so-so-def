@@ -137,6 +137,13 @@
   </div>
 </div>
 
+<!-- Scroll to Top Button -->
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" width="24" height="24">
+    <path d="M7 14l5-5 5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -202,4 +202,28 @@ jQuery(document).ready(function($){
       }
     });
   }
+
+  // Scroll to Top Button Functionality
+  const scrollToTopBtn = document.querySelector('#scroll-to-top');
+  
+  if (scrollToTopBtn) {
+    // Show/hide button based on scroll position
+    $(window).on('scroll', function() {
+      const scrollY = window.scrollY;
+      
+      if (scrollY > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    scrollToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });

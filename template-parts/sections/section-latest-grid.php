@@ -77,21 +77,21 @@ $latest_query = new WP_Query( $args );
           endif;
           ?>
 
-          <!-- Spotify Embed: spans 2 cols on desktop, full width on mobile -->
+          <!-- YouTube Video Embed: spans 2 cols on desktop, full width on mobile -->
           <div
             class="latest-grid__embed"
             data-aos="fade-up"
             data-aos-delay="<?php echo esc_attr( (++$i) * 100 ); ?>"
           >
-            <div class="audio-player">
+            <div class="video-player">
               <iframe
                 style="border-radius:12px"
-                src="https://open.spotify.com/embed/album/6kSd9b0f6VghV3weKIQv7q?utm_source=generator"
+                src="https://www.youtube.com/embed/KP63nbhJcZU"
                 width="100%"
-                height="152"
+                height="315"
                 frameborder="0"
                 allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 loading="lazy"
               ></iframe>
             </div>

@@ -92,7 +92,7 @@ get_header(); ?>
 											
 
 											?>
-											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=0&mute=0&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1" 
+											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1&loop=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
 													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
@@ -119,15 +119,16 @@ get_header(); ?>
 									
 								<?php endif; ?>
 								
-								<!-- Slide Overlay Content -->
-								<div class="slide-overlay">
-									<div class="slide-text-content">
-										<?php if ( $slide_title ) : ?>
-											<h2 class="slide-title"><?php echo esc_html( $slide_title ); ?></h2>
-										<?php endif; ?>
-										<?php if ( $slide_subtitle ) : ?>
-											<p class="slide-subtitle"><?php echo esc_html( $slide_subtitle ); ?></p>
-										<?php endif; ?>
+								<!-- Slide Overlay Content (only show if there's title or subtitle) -->
+								<?php if ( $slide_title || $slide_subtitle ) : ?>
+									<div class="slide-overlay">
+										<div class="slide-text-content">
+											<?php if ( $slide_title ) : ?>
+												<h2 class="slide-title"><?php echo esc_html( $slide_title ); ?></h2>
+											<?php endif; ?>
+											<?php if ( $slide_subtitle ) : ?>
+												<p class="slide-subtitle"><?php echo esc_html( $slide_subtitle ); ?></p>
+											<?php endif; ?>
 										
 										<!-- Social Icons (for artist slides) -->
 										<?php if ( $slide_type == 'artist' ) : ?>
@@ -160,6 +161,7 @@ get_header(); ?>
 										<?php endif; ?>
 									</div>
 								</div>
+								<?php endif; ?>
 							</div>
 						</div>
 						<?php

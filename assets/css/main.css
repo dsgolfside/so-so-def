@@ -2738,11 +2738,9 @@ p { margin: 0 0 1rem; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Ensure video covers container completely - scale up to fill */
-  min-width: 100%;
-  min-height: 100%;
-  width: 100vw;
-  height: 56.25vw; /* 16:9 aspect ratio */
+  /* Keep video at reasonable size */
+  width: 100%;
+  height: 100%;
   pointer-events: auto;
 }
 
@@ -2836,14 +2834,15 @@ p { margin: 0 0 1rem; }
 /* Responsive Design */
 @media (max-width: 768px) {
   .page-hero-swiper {
-    height: 50vh;
-    min-height: 300px;
+    height: 30vh;
+    min-height: 200px;
+    max-height: 300px;
   }
   
-  /* Mobile video scaling - use height-based sizing when width-based is too tall */
+  /* Mobile video scaling - keep it reasonable */
   .page-hero-swiper .slide-youtube iframe {
-    width: 177.78vh; /* 16:9 based on viewport height */
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     min-width: 100%;
     min-height: 100%;
   }

@@ -3346,7 +3346,7 @@ p { margin: 0 0 1rem; }
   display: block;
   padding: 1.5rem 2rem;
   background: white;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   text-decoration: none;
   color: var(--color-black);
@@ -3398,7 +3398,7 @@ p { margin: 0 0 1rem; }
 
 .comment-list .comment {
   background: white;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 2rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -3427,7 +3427,7 @@ p { margin: 0 0 1rem; }
 
 .comment-form {
   background: white;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 2rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   margin-top: 2rem;
@@ -3447,7 +3447,7 @@ p { margin: 0 0 1rem; }
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 0;
   font-size: 1rem;
   margin-bottom: 1rem;
   transition: border-color 0.3s ease;
@@ -3470,7 +3470,7 @@ p { margin: 0 0 1rem; }
   color: white;
   padding: 0.75rem 2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 0;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -3503,6 +3503,10 @@ p { margin: 0 0 1rem; }
   
   .comments-area {
     padding: 2rem 0;
+  }
+  
+  .comments-area .comment-reply-title {
+    padding-left: 1rem;
   }
   
   .comment-list .comment,

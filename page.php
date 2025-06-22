@@ -76,11 +76,12 @@ get_header(); ?>
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
 											<?php
-											// Convert various YouTube URL formats to embed URL
+											// Convert various YouTube URL formats to embed URL and handle playlists
 											$video_id = '';
+											$playlist_id = '';
 											$embed_url = '';
 											
-											// More robust regex to handle all YouTube URL formats including playlists
+											// Extract video ID
 											if ( preg_match( '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/', $youtube_url, $matches ) ) {
 												$video_id = $matches[1];
 												$embed_url = 'https://www.youtube.com/embed/' . $video_id;
@@ -90,9 +91,22 @@ get_header(); ?>
 												$embed_url = preg_replace( '/[&?].*/', '', $embed_url ); // Remove parameters from original URL
 											}
 											
+											// Extract playlist ID if present
+											if ( preg_match( '/[?&]list=([a-zA-Z0-9_-]+)/', $youtube_url, $playlist_matches ) ) {
+												$playlist_id = $playlist_matches[1];
+											}
+											
 
 											?>
-											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1&loop=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
+											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1<?php 
+												// If we have a playlist, use it and don't loop (let playlist progress naturally)
+												if ( $playlist_id ) {
+													echo '&list=' . esc_attr( $playlist_id );
+												} else if ( $video_id ) {
+													// Single video - loop it
+													echo '&loop=1&playlist=' . esc_attr( $video_id );
+												}
+											?>" 
 													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>

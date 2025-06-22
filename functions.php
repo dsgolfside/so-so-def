@@ -279,9 +279,9 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                 <!-- YouTube Field -->
                 <p class="youtube-field" style="display: <?php echo ( $slide_type == 'youtube' ) ? 'block' : 'none'; ?>;">
                     <label>
-                        <?php _e( 'YouTube Embed URL', 'so-so-def' ); ?><br>
+                        <?php _e( 'YouTube URL', 'so-so-def' ); ?><br>
                         <input type="url" name="slide_<?php echo $i; ?>_youtube" value="<?php echo esc_attr( $slide_youtube ); ?>" style="width: 100%;" />
-                        <small>Example: https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&controls=0</small>
+                        <small>Any YouTube URL format works: https://youtu.be/VIDEO_ID or https://www.youtube.com/watch?v=VIDEO_ID</small>
                     </label>
                 </p>
                 

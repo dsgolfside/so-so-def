@@ -75,13 +75,24 @@ get_header(); ?>
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
 											<?php
-											// Extract video ID for playlist parameter
+											// Convert various YouTube URL formats to embed URL
 											$video_id = '';
-											if ( preg_match( '/\/embed\/([a-zA-Z0-9_-]+)/', $youtube_url, $matches ) ) {
+											$embed_url = '';
+											
+											// More robust regex to handle all YouTube URL formats including playlists
+											if ( preg_match( '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/', $youtube_url, $matches ) ) {
 												$video_id = $matches[1];
+												$embed_url = 'https://www.youtube.com/embed/' . $video_id;
+											} else {
+												// Fallback - use URL as is but ensure it's an embed URL
+												$embed_url = str_replace( array( 'youtu.be/', 'youtube.com/watch?v=' ), array( 'youtube.com/embed/', 'youtube.com/embed/' ), $youtube_url );
+												$embed_url = preg_replace( '/[&?].*/', '', $embed_url ); // Remove parameters from original URL
 											}
+											
+											// Debug output (remove in production)
+											// echo "<!-- Debug: Original URL: " . $youtube_url . " | Embed URL: " . $embed_url . " | Video ID: " . $video_id . " -->";
 											?>
-											<iframe src="<?php echo esc_url( $youtube_url ); ?>?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
+											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
 													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>

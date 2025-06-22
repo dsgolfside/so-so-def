@@ -2738,11 +2738,12 @@ p { margin: 0 0 1rem; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 56.25vw; /* 16:9 aspect ratio */
-  min-width: 100%;
-  min-height: 100%;
   pointer-events: auto;
+  /* Calculate size to fill container completely */
+  width: calc(100vh * (16/9)); /* Width based on container height */
+  height: 100vh; /* Full viewport height */
+  min-width: 100vw; /* Ensure minimum full width */
+  min-height: calc(100vw * (9/16)); /* Height based on container width */
 }
 
 /* Slide Overlay Content */
@@ -2835,17 +2836,11 @@ p { margin: 0 0 1rem; }
 /* Responsive Design */
 @media (max-width: 768px) {
   .page-hero-swiper {
-    height: 60vh;
-    min-height: 400px;
+    height: 45vh;
+    min-height: 350px;
   }
   
-  /* Fix YouTube video scaling on mobile */
-  .page-hero-swiper .slide-youtube iframe {
-    width: 177.78vh; /* Maintain 16:9 ratio based on viewport height */
-    height: 100vh;
-    min-width: 100%;
-    min-height: 100%;
-  }
+
   
   .page-hero-swiper .slide-title {
     font-size: 2.5rem;
@@ -2875,20 +2870,10 @@ p { margin: 0 0 1rem; }
     gap: 0.75rem;
   }
   
-  /* Further optimize YouTube video for very narrow screens */
-  .page-hero-swiper .slide-youtube iframe {
-    width: 200vh; /* Slightly wider ratio for very narrow screens */
-    height: 100vh;
-  }
+
 }
 
-/* Handle portrait orientation specifically */
-@media (max-width: 768px) and (orientation: portrait) {
-  .page-hero-swiper .slide-youtube iframe {
-    width: 150vh; /* Adjusted for portrait mode */
-    height: 84.4vh; /* Slightly less height in portrait */
-  }
-}
+
 
 /* Old page hero styles removed - using new swiper instead */
 

@@ -1804,11 +1804,15 @@ p { margin: 0 0 1rem; }
 button.social-icon.search-trigger svg {
   transform: translate(0, 0) !important;
   vertical-align: middle !important;
-  width: 36px !important;
-  height: 36px !important;
-  max-width: 36px !important;
-  max-height: 36px !important;
-  stroke-width: 3 !important;
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  stroke-width: 2 !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
 }
 
 /* Main Footer Grid */
@@ -2203,11 +2207,15 @@ button.social-icon.search-trigger svg {
     transform: translate(0, 0) !important;
     display: block !important;
     margin: auto !important;
-    width: 36px !important;
-    height: 36px !important;
-    max-width: 36px !important;
-    max-height: 36px !important;
-    stroke-width: 3 !important;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    stroke-width: 2 !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
   }
   
   .name-fields {

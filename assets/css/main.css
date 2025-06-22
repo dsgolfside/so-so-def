@@ -2910,20 +2910,20 @@ p { margin: 0 0 1rem; }
   gap: 0;
 }
 
-/* Large 80s Technics Turntable - Extends Beyond Page */
+/* Massive Rotated 80s Technics Turntable - Diamond Shape Background */
 .page-content__wrapper::after {
   content: '';
   position: absolute;
-  right: -500px; /* Push it way off the right side */
-  top: -50px;
-  width: 800px; /* Even bigger for dramatic effect */
-  height: 800px; /* Even bigger for dramatic effect */
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none"><g stroke="%23e0e0e0" stroke-width="3" opacity="0.35"><rect x="50" y="200" width="700" height="400" rx="20" fill="none"/><circle cx="300" cy="400" r="180" fill="none"/><circle cx="300" cy="400" r="160" fill="none"/><circle cx="300" cy="400" r="15" fill="none"/><circle cx="300" cy="400" r="8" fill="%23e0e0e0"/><line x1="450" y1="250" x2="580" y2="350" stroke-width="8" stroke-linecap="round"/><circle cx="580" cy="350" r="12" fill="none"/><rect x="600" y="280" width="80" height="40" rx="8" fill="none"/><rect x="100" y="240" width="60" height="30" rx="4" fill="none"/><rect x="100" y="280" width="60" height="30" rx="4" fill="none"/><rect x="100" y="320" width="60" height="30" rx="4" fill="none"/><line x1="300" y1="220" x2="300" y2="240" stroke-width="2"/><line x1="300" y1="560" x2="300" y2="580" stroke-width="2"/><line x1="120" y1="400" x2="140" y2="400" stroke-width="2"/><line x1="460" y1="400" x2="480" y2="400" stroke-width="2"/></g></svg>');
+  right: -400px; /* Show more of it - 2/3 visible */
+  top: -200px; /* Start higher to accommodate rotation */
+  width: 1200px; /* Much bigger - almost twice the previous size */
+  height: 1200px; /* Much bigger - almost twice the previous size */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none"><g stroke="%23e8e8e8" stroke-width="2.5" opacity="0.25"><rect x="100" y="400" width="1000" height="600" rx="30" fill="none"/><circle cx="450" cy="700" r="280" fill="none"/><circle cx="450" cy="700" r="250" fill="none"/><circle cx="450" cy="700" r="20" fill="none"/><circle cx="450" cy="700" r="12" fill="%23e8e8e8"/><line x1="650" y1="500" x2="850" y2="650" stroke-width="12" stroke-linecap="round"/><circle cx="850" cy="650" r="18" fill="none"/><rect x="900" y="600" width="120" height="60" rx="12" fill="none"/><rect x="150" y="480" width="90" height="45" rx="6" fill="none"/><rect x="150" y="540" width="90" height="45" rx="6" fill="none"/><rect x="150" y="600" width="90" height="45" rx="6" fill="none"/><rect x="150" y="660" width="90" height="45" rx="6" fill="none"/><line x1="450" y1="420" x2="450" y2="460" stroke-width="3"/><line x1="450" y1="940" x2="450" y2="980" stroke-width="3"/><line x1="170" y1="700" x2="210" y2="700" stroke-width="3"/><line x1="690" y1="700" x2="730" y2="700" stroke-width="3"/></g></svg>');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
-  transform: translateY(-100px); /* Shift it up for better positioning */
+  transform: rotate(45deg) translateY(-150px); /* 45 degree rotation + positioning */
 }
 
 /* Content Inside the White Box - Grid Layout */

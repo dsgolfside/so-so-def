@@ -470,15 +470,15 @@ p { margin: 0 0 1rem; }
 /* Mobile Navigation Overlay */
 .mobile-nav-overlay {
   position: fixed;
-  top: 0; /* Start from top to cover entire viewport */
+  top: 72px; /* Position below the header height */
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100vh - 72px); /* Fill remaining viewport height */
   background: rgba(0, 0, 0, 0.95);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 10001; /* Higher than header z-index (10000) to appear above it */
-  padding-top: 90px; /* Push content below header area */
+  z-index: 10001; /* Higher than header z-index (10000) */
+  padding-top: 20px; /* Normal padding since we start below header */
 }
 
 .mobile-nav-overlay.active {

@@ -511,6 +511,54 @@ p { margin: 0 0 1rem; }
   color: var(--color-accent);
 }
 
+/* Mobile Instagram Icon */
+.mobile-social-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-instagram-icon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-family-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-instagram-icon:hover {
+  background: #dc3545;
+  color: #fff;
+  transform: translateX(10px);
+}
+
+.mobile-instagram-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.mobile-instagram-icon span {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* Reset and fix the header layout completely */
 .site-header__container {
   display: flex;

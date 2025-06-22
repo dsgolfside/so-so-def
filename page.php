@@ -72,6 +72,7 @@ get_header(); ?>
 								<?php if ( $slide_type == 'youtube' ) : ?>
 									<!-- YouTube Video Slide -->
 									<?php $youtube_url = get_post_meta( get_the_ID(), "slide_{$i}_youtube", true ); ?>
+									<?php echo "<!-- Debug: Slide Type: " . $slide_type . " | YouTube URL Retrieved: '" . $youtube_url . "' | URL Empty: " . (empty($youtube_url) ? 'YES' : 'NO') . " -->"; ?>
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
 											<?php
@@ -90,7 +91,7 @@ get_header(); ?>
 											}
 											
 											// Debug output (remove in production)
-											// echo "<!-- Debug: Original URL: " . $youtube_url . " | Embed URL: " . $embed_url . " | Video ID: " . $video_id . " -->";
+											echo "<!-- Debug: Original URL: " . $youtube_url . " | Embed URL: " . $embed_url . " | Video ID: " . $video_id . " -->";
 											?>
 											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1<?php echo $video_id ? '&playlist=' . esc_attr( $video_id ) : ''; ?>" 
 													frameborder="0" 

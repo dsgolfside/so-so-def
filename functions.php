@@ -395,19 +395,12 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
         foreach ( $fields as $field ) {
             $field_name = "slide_{$i}_{$field}";
             if ( isset( $_POST[$field_name] ) ) {
-                // Debug logging for YouTube fields
-                if ( $field === 'youtube' && !empty( $_POST[$field_name] ) ) {
-                    error_log( "Saving YouTube URL for {$field_name}: " . $_POST[$field_name] );
-                }
-                
+
                 if ( in_array( $field, ['youtube', 'youtube_social', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
                     update_post_meta( $post_id, $field_name, esc_url_raw( $_POST[$field_name] ) );
                 } else {
                     update_post_meta( $post_id, $field_name, sanitize_text_field( $_POST[$field_name] ) );
                 }
-            } else if ( $field === 'youtube' ) {
-                // Debug: YouTube field not set in POST
-                error_log( "YouTube field {$field_name} not found in POST data" );
             }
         }
     }

@@ -2910,20 +2910,20 @@ p { margin: 0 0 1rem; }
   gap: 0;
 }
 
-/* DJ Background Graphic on Right Side */
+/* Large DJ Background Graphic - Extends Beyond Page */
 .page-content__wrapper::after {
   content: '';
   position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 120px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><g stroke="%23e5e5e5" stroke-width="1.5" opacity="0.6"><circle cx="60" cy="60" r="50"/><circle cx="60" cy="60" r="35"/><circle cx="60" cy="60" r="20"/><circle cx="60" cy="60" r="5"/><line x1="10" y1="60" x2="110" y2="60"/><line x1="60" y1="10" x2="60" y2="110"/><path d="M30 30 L90 90 M90 30 L30 90"/><rect x="35" y="15" width="50" height="8" rx="4"/><rect x="35" y="97" width="50" height="8" rx="4"/><rect x="15" y="35" width="8" height="50" rx="4"/><rect x="97" y="35" width="8" height="50" rx="4"/></g></svg>');
+  right: -400px; /* Push it way off the right side */
+  top: 0;
+  width: 600px; /* Much bigger - 5x the original size */
+  height: 600px; /* Much bigger - 5x the original size */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none"><g stroke="%23e5e5e5" stroke-width="4" opacity="0.4"><circle cx="300" cy="300" r="250"/><circle cx="300" cy="300" r="200"/><circle cx="300" cy="300" r="150"/><circle cx="300" cy="300" r="100"/><circle cx="300" cy="300" r="50"/><circle cx="300" cy="300" r="25"/><line x1="50" y1="300" x2="550" y2="300"/><line x1="300" y1="50" x2="300" y2="550"/><path d="M150 150 L450 450 M450 150 L150 450"/><rect x="175" y="75" width="250" height="40" rx="20"/><rect x="175" y="485" width="250" height="40" rx="20"/><rect x="75" y="175" width="40" height="250" rx="20"/><rect x="485" y="175" width="40" height="250" rx="20"/><circle cx="300" cy="200" r="15"/><circle cx="300" cy="400" r="15"/><circle cx="200" cy="300" r="15"/><circle cx="400" cy="300" r="15"/></g></svg>');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
+  transform: translateY(-50px); /* Shift it up slightly for better positioning */
 }
 
 /* Content Inside the White Box - Grid Layout */

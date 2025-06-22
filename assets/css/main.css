@@ -514,16 +514,16 @@ p { margin: 0 0 1rem; }
 
 /* Mobile Instagram Icon */
 .mobile-social-section {
-  margin-top: 1rem; /* Reduced from 2rem */
-  padding-top: 1rem; /* Reduced from 2rem */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .mobile-instagram-icon {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 2rem; /* Match the padding of menu items */
+  padding: 1.5rem 2rem;
   color: #fff;
   text-decoration: none;
   font-family: var(--font-family-sans);
@@ -532,8 +532,8 @@ p { margin: 0 0 1rem; }
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
-  border-radius: 0; /* Remove border radius to match menu items */
-  background: transparent; /* Remove background to match menu items */
+  border-radius: 0;
+  background: transparent;
 }
 
 .mobile-instagram-icon:hover {

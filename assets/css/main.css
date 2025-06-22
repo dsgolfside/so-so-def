@@ -3517,6 +3517,13 @@ button.social-icon {
   padding: 3rem 0;
 }
 
+/* Add proper container constraints like other sections */
+.comments-area .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 .comments-area .comments-title,
 .comments-area .comment-reply-title {
   font-family: var(--font-family-serif);
@@ -3641,15 +3648,19 @@ button.social-icon {
     padding: 2rem 0;
   }
   
+  .comments-area .container {
+    padding: 0 1rem;
+  }
+  
   .comments-area .comment-reply-title {
-    padding-left: 1rem;
+    padding-left: 0;
   }
   
   .comment-list .comment,
   .comment-form {
     padding: 1.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
   
   .page-content__wrapper .entry-meta .byline {

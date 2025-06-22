@@ -42,6 +42,18 @@ body {
   margin-bottom: 0;
 }
 
+/* Remove any bottom margins/padding that could create white bars */
+#primary,
+.site-main {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+body, html {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 /* Ensure main content starts directly under header with NO OVERLAP */
 #content {
   margin: 0;
@@ -2849,9 +2861,9 @@ p { margin: 0 0 1rem; }
 /* Page Content Container - Grey Background */
 .page-content {
   background-color: #f5f5f5;
-  min-height: 100vh;
-  padding: 4rem 0;
+  padding: 4rem 0 0 0;
   position: relative;
+  margin-bottom: 0;
 }
 
 .page-content__container {

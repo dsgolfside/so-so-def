@@ -1803,6 +1803,8 @@ p { margin: 0 0 1rem; }
 .social-icon.search-trigger svg {
   transform: translate(0, 0);
   vertical-align: middle;
+  width: 24px !important;
+  height: 24px !important;
 }
 
 /* Main Footer Grid */
@@ -2196,6 +2198,8 @@ p { margin: 0 0 1rem; }
     transform: translate(0, 0);
     display: block;
     margin: auto;
+    width: 26px !important;
+    height: 26px !important;
   }
   
   .name-fields {

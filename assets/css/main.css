@@ -2738,8 +2738,11 @@ p { margin: 0 0 1rem; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  /* Ensure video covers container completely - scale up to fill */
+  min-width: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 aspect ratio */
   pointer-events: auto;
 }
 
@@ -2833,11 +2836,17 @@ p { margin: 0 0 1rem; }
 /* Responsive Design */
 @media (max-width: 768px) {
   .page-hero-swiper {
-    height: 45vh;
-    min-height: 350px;
+    height: 50vh;
+    min-height: 300px;
   }
   
-
+  /* Mobile video scaling - use height-based sizing when width-based is too tall */
+  .page-hero-swiper .slide-youtube iframe {
+    width: 177.78vh; /* 16:9 based on viewport height */
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+  }
   
   .page-hero-swiper .slide-title {
     font-size: 2.5rem;

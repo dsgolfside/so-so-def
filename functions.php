@@ -128,6 +128,21 @@ function ssd_add_page_hero_slides_metabox() {
 add_action( 'add_meta_boxes', 'ssd_add_page_hero_slides_metabox' );
 
 /**
+ * Register the "Post Hero Slides" meta box on Posts
+ */
+function ssd_add_post_hero_slides_metabox() {
+    add_meta_box(
+        'ssd-post-hero-slides',
+        __( 'Post Hero Slides', 'so-so-def' ),
+        'ssd_page_hero_slides_metabox_callback', // Use same callback as pages
+        'post',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'ssd_add_post_hero_slides_metabox' );
+
+/**
  * Render the meta box fields (3 slides)
  */
 function ssd_homepage_slides_metabox_callback( $post ) {
@@ -383,7 +398,7 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
         return;
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-    if ( get_post_type( $post_id ) !== 'page' ) return;
+    if ( ! in_array( get_post_type( $post_id ), ['page', 'post'] ) ) return;
 
     $fields = [
         'type', 'title', 'subtitle', 'image', 'youtube', 'youtube_social',

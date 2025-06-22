@@ -1799,21 +1799,7 @@ p { margin: 0 0 1rem; }
   height: 20px;
 }
 
-/* Specific alignment fix for search icon */
-.social-icon.search-trigger svg,
-button.social-icon.search-trigger svg {
-  transform: translate(0, 0) !important;
-  vertical-align: middle !important;
-  width: 20px !important;
-  height: 20px !important;
-  max-width: 20px !important;
-  max-height: 20px !important;
-  stroke-width: 2 !important;
-  fill: none !important;
-  stroke: currentColor !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
-}
+
 
 /* Main Footer Grid */
 .footer-grid {
@@ -2201,22 +2187,7 @@ button.social-icon.search-trigger svg {
     height: 20px;
   }
   
-  /* Ensure search icon is properly centered on mobile */
-  .social-icon.search-trigger svg,
-  button.social-icon.search-trigger svg {
-    transform: translate(0, 0) !important;
-    display: block !important;
-    margin: auto !important;
-    width: 20px !important;
-    height: 20px !important;
-    max-width: 20px !important;
-    max-height: 20px !important;
-    stroke-width: 2 !important;
-    fill: none !important;
-    stroke: currentColor !important;
-    stroke-linecap: round !important;
-    stroke-linejoin: round !important;
-  }
+
   
   .name-fields {
     flex-direction: column;

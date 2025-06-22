@@ -24,8 +24,8 @@
     
     <button aria-label="Search" class="social-icon search-trigger">
       <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"/>
-        <path d="m21 21-4.35-4.35"/>
+        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" fill="none"/>
       </svg>
     </button>
   </div>
@@ -125,8 +125,8 @@
       <input type="search" name="s" placeholder="Enter search term..." class="search-input" autofocus>
       <button type="submit" class="search-submit" aria-label="Search">
         <svg viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"/>
-          <path d="m21 21-4.35-4.35"/>
+          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" fill="none"/>
         </svg>
       </button>
     </form>

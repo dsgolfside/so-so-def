@@ -2262,74 +2262,99 @@ p { margin: 0 0 1rem; }
   width: 100%;
 }
 
-/* Desktop: Magazine layout with featured + 2 sidebar posts, then grid */
+/* Desktop: Magazine layout with featured + 2 sidebar posts, then 3-column grid */
 @media (min-width: 768px) {
   .archive-grid__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(300px, auto);
     gap: 2rem;
   }
   
-  /* First post: Large featured on left, spans 2 rows */
+  /* First post: Large featured on left, spans 2 rows and 2 columns */
   .archive-grid__item:nth-child(1) {
-    grid-column: 1;
+    grid-column: 1 / 3;
     grid-row: 1 / 3;
   }
   
-  /* Second post: Bigger on top right - Taller card with more image space */
+  /* Second post: Top right */
   .archive-grid__item:nth-child(2) {
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 1;
-    width: 100%;
   }
   
-  /* Third post: Bigger on bottom right - Taller card with more image space */
+  /* Third post: Bottom right */
   .archive-grid__item:nth-child(3) {
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 2;
-    width: 100%;
   }
   
-  /* Posts 4 and beyond: Regular flow in 2-column grid on tablet */
-  .archive-grid__item:nth-child(n+4) {
+  /* Posts 4, 5, 6: Start new row in 3-column layout */
+  .archive-grid__item:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .archive-grid__item:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
+  .archive-grid__item:nth-child(6) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+  
+  /* Posts 7+: Continue in 3-column auto-flow */
+  .archive-grid__item:nth-child(n+7) {
     grid-column: auto;
   }
 }
 
-/* Large desktop: Keep magazine layout for posts 1-3, 3 columns for posts 4+ */
+/* Large desktop: Enhanced spacing and sizing */
 @media (min-width: 1200px) {
   .archive-grid {
     padding: 3rem;
   }
   
   .archive-grid__grid {
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(350px, auto);
   }
   
-  /* Keep magazine layout: First post on left spanning 2 rows */
+  /* Keep the same layout structure as tablet, just with enhanced sizing */
   .archive-grid__item:nth-child(1) {
-    grid-column: 1;
+    grid-column: 1 / 3;
     grid-row: 1 / 3;
   }
   
-  /* Second post: top right */
   .archive-grid__item:nth-child(2) {
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 1;
   }
   
-  /* Third post: bottom right */
   .archive-grid__item:nth-child(3) {
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 2;
   }
   
-  /* Posts 4+ flow in regular 3-column grid */
-  .archive-grid__item:nth-child(n+4) {
+  .archive-grid__item:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .archive-grid__item:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
+  .archive-grid__item:nth-child(6) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+  
+  .archive-grid__item:nth-child(n+7) {
     grid-column: auto;
-    grid-row: auto;
   }
 }
 

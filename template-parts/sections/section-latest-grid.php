@@ -85,7 +85,7 @@ $latest_query = new WP_Query( $args );
           >
             <div class="video-player">
               <iframe
-                style="border-radius:12px"
+                style="border-radius:0"
                 src="https://www.youtube.com/embed/KP63nbhJcZU"
                 width="100%"
                 height="315"

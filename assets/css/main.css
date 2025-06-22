@@ -1777,21 +1777,25 @@ p { margin: 0 0 1rem; }
   border-radius: 0;
 }
 
+.social-icon {
+  color: #fff !important;
+}
+
 .social-icon:hover {
-  background: #333;
-  color: #fff;
+  background: #dc3545;
+  color: #fff !important;
 }
 
 .social-icon svg {
   width: 20px;
   height: 20px;
-  fill: currentColor;
+  fill: currentColor !important;
   stroke: none;
 }
 
 .social-icon svg[viewBox*="24"] {
-  fill: none;
-  stroke: currentColor;
+  fill: none !important;
+  stroke: currentColor !important;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;

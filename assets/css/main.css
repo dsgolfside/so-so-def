@@ -1721,7 +1721,7 @@ p { margin: 0 0 1rem; }
 .site-footer {
   background: #000;
   color: #fff;
-  margin-top: 4rem;
+  margin-top: 0;
 }
 
 .footer-content {

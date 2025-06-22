@@ -9,12 +9,12 @@
   <div class="container">
     <div class="section__inner">
       <header class="section__header">
-        <h2 class="section__header-heading"><?php esc_html_e( 'Announcements', 'so-so-def' ); ?></h2>
+        <h2 class="section__header-heading"><?php esc_html_e( 'Releases', 'so-so-def' ); ?></h2>
         <div class="section__header-link">
           <?php
-          // Try to link to 'announcements' category, fallback to general post archive
-          $announcements_category = get_category_by_slug('announcements');
-          $archive_link = $announcements_category ? get_category_link($announcements_category->term_id) : get_post_type_archive_link('post');
+          // Try to link to 'releases' category, fallback to general post archive
+          $releases_category = get_category_by_slug('releases');
+          $archive_link = $releases_category ? get_category_link($releases_category->term_id) : get_post_type_archive_link('post');
           ?>
           <a class="link" href="<?php echo esc_url( $archive_link ); ?>">
             <span><?php esc_html_e( 'View All', 'so-so-def' ); ?></span>
@@ -28,10 +28,10 @@
 
       <div class="section__main section__main--full-bleed-small">
         <?php
-        // Query latest 1 post from "announcements" category
+        // Query latest 1 post from "releases" category
         $announcements = new WP_Query([
           'posts_per_page' => 1,
-          'category_name'  => 'announcements',
+          'category_name'  => 'releases',
         ]);
         if ( $announcements->have_posts() ) :
         ?>

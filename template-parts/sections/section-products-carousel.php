@@ -46,7 +46,7 @@ if ( ! class_exists( 'WooCommerce' ) ) {
     $products = new WP_Query([
       'post_type'      => 'product',
       'post_status'    => 'publish',
-      'posts_per_page' => 8
+      'posts_per_page' => 20
     ]);
 
     if ( $products->have_posts() ) :

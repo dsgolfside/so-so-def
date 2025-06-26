@@ -1,9 +1,25 @@
-/node_modules
-/vendor
-package-lock.json
+# WordPress
+/wp-admin/
+/wp-includes/
+/wp-content/plugins/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/uploads/
+/wp-content/themes/twenty*/
+
+# Project-specific
+/node_modules/
+npm-debug.log
+/vendor/
+/wp-content/mu-plugins/
 composer.lock
-style.css.map
+wp-cli.phar
+~/
+.idea/
+.vscode/
+*.log
 .DS_Store
+Thumbs.db
 
 # Dreamweaver project files
 *_notes/

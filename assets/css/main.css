@@ -2403,6 +2403,10 @@ button.social-icon {
     font-size: 1.875rem;
   }
   
+  .footer-content {
+    padding: 2rem 0 1rem;
+  }
+  
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -3347,7 +3351,6 @@ button.social-icon {
     max-width: 100%;
     padding: 2rem 1.5rem;
   }
-}
   
   .page-content__wrapper {
     max-width: 100%;

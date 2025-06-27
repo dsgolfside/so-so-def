@@ -1985,24 +1985,25 @@ button.social-icon {
 
 .footer-logo-section {
   margin-top: 2rem;
+  text-align: center;
 }
 
 .footer-logo-large {
   height: 60px;
   width: auto;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Logo styling when in third column */
 .footer-column:nth-child(3) .footer-logo-section {
   margin-top: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .footer-column:nth-child(3) .footer-logo-large {
   height: 40px;
-  opacity: 0.6;
+  opacity: 1;
   display: block;
 }
 
@@ -2404,7 +2405,7 @@ button.social-icon {
   }
   
   .footer-content {
-    padding: 2rem 0 1rem;
+    padding: 1rem 0 0.5rem;
   }
   
   .footer-grid {

@@ -513,46 +513,41 @@ p { margin: 0 0 1rem; }
 }
 
 /*
- * The social icon inherits footer styles.
- * The rules below override them ONLY for the mobile navigation
- * to create a clean, centered circular background.
-*/
-.mobile-navigation .footer-social-icon {
+ * Specific override for the social icon in the mobile nav.
+ * This creates a circular background and correctly centers the icon,
+ * without affecting any other icons on the site.
+ */
+.mobile-navigation .menu-item a.footer-social-icon {
   display: flex !important;
   align-items: center;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  width: auto !important;
-  height: auto !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  transform: none !important;
-}
-
-.mobile-navigation .footer-social-icon::before {
-  content: '';
-  display: flex;
-  align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  flex-shrink: 0;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 1.5rem 0; /* Match vertical spacing of other menu items */
+  padding: 0 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  transform: none !important; /* Reset inherited transforms */
 }
 
+/* Optional: Add a subtle hover effect for the circle */
+.mobile-navigation .menu-item a.footer-social-icon:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* The screen-reader-text span is for accessibility and should not be displayed */
+.mobile-navigation .footer-social-icon .screen-reader-text {
+  display: none;
+}
+
+/* Correctly style the SVG icon itself */
 .mobile-navigation .footer-social-icon svg {
-  position: absolute;
-  left: 3rem; /* 2rem padding + 1rem to center in 44px circle */
   width: 24px;
   height: 24px;
-  fill: white !important;
-  stroke: none !important;
-}
-
-.mobile-navigation .footer-social-icon .screen-reader-text {
-  order: 2; /* Ensure text comes after the icon pseudo-element */
+  /* The instagram icon is composed of strokes, not a fill */
+  fill: none !important;
+  stroke: white !important;
+  stroke-width: 2px;
 }
 
 /* Mobile Instagram Icon */

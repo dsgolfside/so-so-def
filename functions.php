@@ -135,7 +135,8 @@ add_filter( 'walker_nav_menu_start_el', 'ssd_social_media_nav_menu_icons', 10, 4
  * Append social menu to the primary navigation for mobile overlay
  */
 function ssd_merge_social_into_primary_nav( $items, $args ) {
-    if ( 'primary' === $args->theme_location ) {
+    // Target only the primary menu inside the mobile navigation overlay.
+    if ( 'primary' === $args->theme_location && isset( $args->items_wrap ) && strpos( $args->items_wrap, 'mobile-menu' ) !== false ) {
         if ( has_nav_menu( 'social' ) ) {
             $social_menu_items = wp_nav_menu( array(
                 'theme_location' => 'social',

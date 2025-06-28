@@ -3967,3 +3967,55 @@ button.social-icon {
   stroke-linejoin: round;
 }
 
+/* Header Social Menu - Dark Header State */
+.header-social-menu {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-social-menu li {
+  margin: 0;
+}
+
+.header-social-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header-social-menu a:hover {
+  background: var(--color-accent, #dc3545);
+  transform: translateY(-2px);
+}
+
+.header-social-menu a svg {
+  width: 20px;
+  height: 20px;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Header Social Menu - Light/Sticky Header State */
+.site-header.sticky .header-social-menu a {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+.site-header.sticky .header-social-menu a:hover {
+  background: var(--color-accent, #dc3545);
+  color: #fff;
+}
+

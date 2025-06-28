@@ -2113,6 +2113,12 @@ button.social-icon {
   color: var(--color-white); /* Ensure visited state is not purple */
 }
 
+.footer-social-icon:hover {
+  background: var(--color-white);
+  color: var(--color-black) !important; /* Make icon black on hover */
+  transform: translateY(-2px);
+}
+
 /* Hide the link text, which is used for screen readers */
 .screen-reader-text {
   border: 0;
@@ -2366,11 +2372,6 @@ button.social-icon {
   border-color: #fff;
   color: #fff !important;
 }
-
-.search-input::-webkit-input-placeholder { color: #999 !important; }
-.search-input::-moz-placeholder { color: #999 !important; }
-.search-input:-ms-input-placeholder { color: #999 !important; }
-.search-input:-moz-placeholder { color: #999 !important; }
 
 .search-submit {
   background: #fff;

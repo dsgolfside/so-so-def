@@ -3893,3 +3893,77 @@ button.social-icon {
   transform: translateX(10px);
 }
 
+/* Header Social Menu */
+.header-social-menu {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-social-menu li {
+  margin: 0;
+}
+
+.header-social-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header-social-menu a:hover {
+  background: var(--color-accent, #dc3545);
+  transform: translateY(-2px);
+}
+
+/* Mobile Social Menu */
+.mobile-social-menu {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-social-menu li {
+  margin: 0;
+}
+
+.mobile-social-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.mobile-social-menu a:hover {
+  background: var(--color-accent, #dc3545);
+  transform: translateY(-2px);
+}
+
+/* Keep existing unified SVG styles */
+.header-social-menu a svg,
+.mobile-social-menu a svg {
+  width: 20px;
+  height: 20px;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+

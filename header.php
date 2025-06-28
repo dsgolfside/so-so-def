@@ -45,13 +45,21 @@
     
     <!-- Header Social Icon (Desktop Only) -->
     <div class="header-social-icon">
-      <a href="https://www.instagram.com/sosodefuniversity" aria-label="Instagram" class="header-instagram-icon" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
-      </a>
+      <?php
+      if ( has_nav_menu( 'social' ) ) {
+        wp_nav_menu(
+          array(
+            'theme_location' => 'social',
+            'container'      => false,
+            'menu_class'     => 'header-social-menu',
+            'depth'          => 1,
+            'link_before'    => '<span class="screen-reader-text">',
+            'link_after'     => '</span>',
+            'fallback_cb'    => false,
+          )
+        );
+      }
+      ?>
     </div>
     
     <!-- Mobile Menu Toggle -->
@@ -76,13 +84,21 @@
       
       <!-- Mobile Social Icon -->
       <div class="mobile-social-section">
-        <a href="https://www.instagram.com/sosodefuniversity" aria-label="Instagram" class="mobile-instagram-icon" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
+        <?php
+        if ( has_nav_menu( 'social' ) ) {
+          wp_nav_menu(
+            array(
+              'theme_location' => 'social',
+              'container'      => false,
+              'menu_class'     => 'mobile-social-menu',
+              'depth'          => 1,
+              'link_before'    => '<span class="screen-reader-text">',
+              'link_after'     => '</span>',
+              'fallback_cb'    => false,
+            )
+          );
+        }
+        ?>
       </div>
     </nav>
   </div>

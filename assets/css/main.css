@@ -516,10 +516,12 @@ p { margin: 0 0 1rem; }
 .mobile-social-section {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align items to the top */
-  align-items: flex-start; /* Align items to the left */
-  padding-top: 1.5rem; /* Add some space above */
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 1.5rem;
   padding-left: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 1.5rem;
 }
 
 .mobile-social-menu {
@@ -530,15 +532,23 @@ p { margin: 0 0 1rem; }
 }
 
 .mobile-social-menu li {
-  margin-bottom: 1rem; /* Space between social links */
+  margin-bottom: 1rem;
 }
 
+/* Specific override for social icons in the mobile menu */
+.mobile-social-menu a.footer-social-icon,
 .mobile-social-menu a {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Space between icon and text */
+  gap: 1rem;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
   color: var(--color-white);
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -546,14 +556,19 @@ p { margin: 0 0 1rem; }
   transition: color 0.3s ease;
 }
 
+.mobile-social-menu a.footer-social-icon:hover,
 .mobile-social-menu a:hover {
   color: #e10600;
+  background: transparent !important;
+  transform: none !important;
 }
 
-.mobile-social-menu .icon {
+.mobile-social-menu .icon,
+.mobile-social-menu svg {
   width: 24px;
   height: 24px;
-  fill: currentColor;
+  fill: currentColor !important;
+  stroke: none !important;
 }
 
 /* Reset and fix the header layout completely */

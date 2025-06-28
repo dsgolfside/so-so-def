@@ -2014,7 +2014,7 @@ button.social-icon {
   margin-top: 1.5rem;
 }
 
-.footer-social-icon {
+.footer-social-links .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2022,22 +2022,35 @@ button.social-icon {
   height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: #999;
+  color: #fff; /* Changed from #999 to white */
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
-.footer-social-icon svg {
+.footer-social-links .social-icon svg {
   width: 20px;
   height: 20px;
   fill: currentColor;
-  stroke: none;
 }
 
-.footer-social-icon:hover {
-  background: var(--color-accent);
-  color: var(--color-white);
+.footer-social-links .social-icon:hover {
+  background: var(--color-accent, #0073e6); /* Added fallback color */
+  color: #fff;
   transform: translateY(-2px);
+}
+
+/* Hide the link text, which is used for screen readers */
+.footer-social-links .screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
 }
 
 /* Footer Email Signup */

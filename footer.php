@@ -53,6 +53,7 @@
                   array(
                     'theme_location' => 'social',
                     'container'      => false,
+                    'items_wrap'     => '%3$s',
                     'menu_class'     => 'social-links-menu',
                     'depth'          => 1,
                     'link_before'    => '<span class="screen-reader-text">',

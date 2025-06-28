@@ -2022,7 +2022,7 @@ button.social-icon {
   height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: #fff; /* Changed from #999 to white */
+  color: #999;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -2034,13 +2034,13 @@ button.social-icon {
 }
 
 .footer-social-links .social-icon:hover {
-  background: var(--color-accent, #0073e6); /* Added fallback color */
+  background: var(--color-accent, #0073e6);
   color: #fff;
   transform: translateY(-2px);
 }
 
 /* Hide the link text, which is used for screen readers */
-.footer-social-links .screen-reader-text {
+.screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);

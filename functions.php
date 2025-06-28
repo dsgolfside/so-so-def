@@ -117,10 +117,10 @@ function ssd_social_media_nav_menu_icons( $item_output, $item, $depth, $args ) {
         foreach ( $social_icons as $domain => $path ) {
             if ( strpos( $item->url, $domain ) !== false ) {
                 $item_output = sprintf(
-                    '<a href="%s" target="_blank" rel="noopener noreferrer" class="social-icon social-%s">%s<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="%s"></path></svg></a>',
+                    '<a href="%s" target="_blank" rel="noopener noreferrer" class="social-icon social-%s"><span class="screen-reader-text">%s</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="%s"></path></svg></a>',
                     esc_url( $item->url ),
                     esc_attr( str_replace( '.com', '', $domain ) ),
-                    $item->title,
+                    esc_html( $item->title ),
                     $path
                 );
             }

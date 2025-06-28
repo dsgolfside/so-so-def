@@ -2408,6 +2408,12 @@ button.social-icon {
     padding: 1rem 0 0.5rem;
   }
   
+  .footer-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.5rem;
+  }
+  
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 3rem;

@@ -514,14 +514,7 @@ p { margin: 0 0 1rem; }
 
 /* Mobile Instagram Icon */
 .mobile-social-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 1.5rem;
-  padding-left: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 1.5rem;
+  padding: 1.5rem 2rem 0;
 }
 
 .mobile-social-menu {

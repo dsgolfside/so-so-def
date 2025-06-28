@@ -2,7 +2,7 @@
 <div class="sticky-footer-bar">
   <div class="social-icons">
     <a href="https://www.instagram.com/sosodefuniversity" aria-label="Instagram" class="social-icon" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
@@ -26,8 +26,8 @@
     
     <button aria-label="Search" class="social-icon search-trigger">
       <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
-        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" fill="none"/>
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     </button>
   </div>

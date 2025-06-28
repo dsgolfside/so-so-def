@@ -121,7 +121,7 @@ function ssd_social_media_nav_menu_icons( $item_output, $item, $depth, $args ) {
                     '<a href="%s" class="footer-social-icon" target="_blank" rel="noopener noreferrer"><span class="screen-reader-text">%s</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">%s</svg></a>',
                     esc_url( $item->url ),
                     esc_html( $item->title ),
-                    $svg_data // Use the full SVG data
+                    $svg_data
                 );
             }
         }

@@ -2108,6 +2108,11 @@ button.social-icon {
   transform: translateY(-2px);
 }
 
+.footer-social-icon:visited {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white); /* Ensure visited state is not purple */
+}
+
 /* Hide the link text, which is used for screen readers */
 .screen-reader-text {
   border: 0;

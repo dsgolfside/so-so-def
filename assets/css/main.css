@@ -514,7 +514,9 @@ p { margin: 0 0 1rem; }
 
 /* Mobile Instagram Icon */
 .mobile-social-section {
-  padding: 1.5rem 2rem 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .mobile-social-menu {
@@ -3894,6 +3896,24 @@ button.social-icon {
   background: #dc3545;
   color: #fff;
   transform: translateX(10px);
+}
+
+.mobile-instagram-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.mobile-instagram-icon span {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Header Social Menu */

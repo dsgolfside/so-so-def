@@ -81,25 +81,6 @@
           'menu_class'     => '',
         ] );
       ?>
-      
-      <!-- Mobile Social Icon -->
-      <div class="mobile-social-section">
-        <?php
-        if ( has_nav_menu( 'social' ) ) {
-          wp_nav_menu(
-            array(
-              'theme_location' => 'social',
-              'container'      => false,
-              'menu_class'     => 'mobile-social-menu',
-              'depth'          => 1,
-              'link_before'    => '<span class="screen-reader-text">',
-              'link_after'     => '</span>',
-              'fallback_cb'    => false,
-            )
-          );
-        }
-        ?>
-      </div>
     </nav>
   </div>
 </header>

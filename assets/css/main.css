@@ -2012,8 +2012,8 @@ button.social-icon {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
-  padding-left: 0; /* remove default list padding */
-  list-style: none; /* remove bullet points */
+  padding-left: 0;
+  list-style: none;
 }
 
 .footer-social-links li {
@@ -2028,7 +2028,7 @@ button.social-icon {
   height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: #999;
+  color: #fff;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -2036,27 +2036,31 @@ button.social-icon {
 .footer-social-icon svg {
   width: 20px;
   height: 20px;
-  fill: currentColor;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .footer-social-icon:hover {
-  background: var(--color-accent, #0073e6);
+  background: var(--color-accent, #dc3545);
   color: #fff;
   transform: translateY(-2px);
 }
 
 /* Hide the link text, which is used for screen readers */
 .screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	word-wrap: normal !important;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
 }
 
 /* Footer Email Signup */

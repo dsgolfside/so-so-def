@@ -12,18 +12,40 @@ get_header();
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="slide-content" data-aos="fade-up" data-aos-delay="200">
-          <?php
-          // Enhanced device detection for better DevTools testing
-          $is_mobile = wp_is_mobile() || (isset($_GET['mobile']) && $_GET['mobile'] == '1');
+          <!-- Mobile version - 1080x1080 square format -->
+          <div class="mobile-video" style="display: none;">
+            <?php echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/59/y4LXym77jyp4/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" muted="true" controls="false"]' ); ?>
+          </div>
           
-          if ( $is_mobile ) {
-            // Mobile version - 1080x1080 square format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/59/y4LXym77jyp4/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" muted="true" controls="false"]' );
-          } else {
-            // Desktop version - 1920x1080 widescreen format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/53/2o3KP59k9NJg/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" muted="true" controls="false"]' );
-          }
-          ?>
+          <!-- Desktop version - 1920x1080 widescreen format -->
+          <div class="desktop-video" style="display: none;">
+            <?php echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/53/2o3KP59k9NJg/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" muted="true" controls="false"]' ); ?>
+          </div>
+          
+          <script>
+          (function() {
+            // Client-side mobile detection to avoid caching issues
+            function isMobileDevice() {
+              // Check for URL parameter first (for testing)
+              const urlParams = new URLSearchParams(window.location.search);
+              if (urlParams.get('mobile') === '1') return true;
+              if (urlParams.get('mobile') === '0') return false;
+              
+              // Check screen size and user agent
+              const isMobileScreen = window.innerWidth <= 768;
+              const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+              
+              return isMobileScreen || isMobileUA;
+            }
+            
+            // Show appropriate video based on device
+            if (isMobileDevice()) {
+              document.querySelector('.mobile-video').style.display = 'block';
+            } else {
+              document.querySelector('.desktop-video').style.display = 'block';
+            }
+          })();
+          </script>
         </div>
       </div>
       <!-- add more slides like this if you want multiple IVS streams -->

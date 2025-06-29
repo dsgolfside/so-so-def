@@ -3069,9 +3069,11 @@ button.social-icon {
 }
 
 /* Fix header overlap for page and single post templates only */
-.page .page-hero-swiper,
-.single .page-hero-swiper {
-  margin-top: 72px; /* Push slider down to account for fixed header */
+.page #primary,
+.page .site-main,
+.single #primary,
+.single .site-main {
+  margin-top: 72px; /* Push content down to account for fixed header */
 }
 
 .page-hero-swiper .swiper-slide {
@@ -3226,8 +3228,10 @@ button.social-icon {
   }
   
   /* Fix header overlap for page and single post templates only - mobile */
-  .page .page-hero-swiper,
-  .single .page-hero-swiper {
+  .page #primary,
+  .page .site-main,
+  .single #primary,
+  .single .site-main {
     margin-top: 67px; /* Mobile header height */
   }
   

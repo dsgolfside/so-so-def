@@ -3066,6 +3066,11 @@ button.social-icon {
   min-height: 500px;
   position: relative;
   overflow: hidden;
+}
+
+/* Fix header overlap for page and single post templates only */
+.page .page-hero-swiper,
+.single .page-hero-swiper {
   margin-top: 72px; /* Push slider down to account for fixed header */
 }
 
@@ -3218,6 +3223,11 @@ button.social-icon {
     height: 40vh;
     min-height: 250px;
     max-height: 400px;
+  }
+  
+  /* Fix header overlap for page and single post templates only - mobile */
+  .page .page-hero-swiper,
+  .single .page-hero-swiper {
     margin-top: 67px; /* Mobile header height */
   }
   

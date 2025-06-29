@@ -65,6 +65,28 @@ function ssd_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'ssd_enqueue_assets' );
 
+/**
+ * W3 Total Cache mobile detection - force mobile user agent groups
+ */
+function ssd_w3tc_mobile_user_agents() {
+    // Ensure W3TC recognizes mobile devices properly
+    if ( function_exists( 'w3_instance' ) ) {
+        // Add to mobile user agent detection
+        add_filter( 'w3tc_mobile_user_agents', 'ssd_add_mobile_user_agents' );
+    }
+}
+add_action( 'init', 'ssd_w3tc_mobile_user_agents' );
+
+/**
+ * Add comprehensive mobile user agent detection for W3TC
+ */
+function ssd_add_mobile_user_agents( $user_agents ) {
+    $mobile_agents = array(
+        'Mobile', 'Android', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 
+        'IEMobile', 'Opera Mini', 'Opera Mobi', 'webOS'
+    );
+    return array_merge( $user_agents, $mobile_agents );
+}
 
 /**
  * Theme setup: title tag, thumbnails, menu, and custom logo

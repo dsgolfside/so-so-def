@@ -3066,6 +3066,7 @@ button.social-icon {
   min-height: 500px;
   position: relative;
   overflow: hidden;
+  margin-top: 72px; /* Push slider down to account for fixed header */
 }
 
 .page-hero-swiper .swiper-slide {
@@ -3217,6 +3218,7 @@ button.social-icon {
     height: 40vh;
     min-height: 250px;
     max-height: 400px;
+    margin-top: 67px; /* Mobile header height */
   }
   
   /* Mobile video scaling - keep it reasonable */

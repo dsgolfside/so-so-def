@@ -1,5 +1,11 @@
 <?php
 /**
+ * Essential theme functions
+ */
+require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
  * Enqueue theme assets and initialize AOS, Swiper & AWS IVS Player
  */
 function ssd_enqueue_assets() {

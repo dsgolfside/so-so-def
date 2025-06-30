@@ -18,10 +18,10 @@ get_header();
           
           if ( $is_mobile ) {
             // Mobile version - 1080x1080 square format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/59/y4LXym77jyp4/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" muted="true" controls="false"]' );
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/30/1/37/Buh4nGueQBdK/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" muted="true" controls="false"]' );
           } else {
             // Desktop version - 1920x1080 widescreen format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/29/21/53/2o3KP59k9NJg/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" muted="true" controls="false"]' );
+            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/30/1/41/4BjQZkmNHof2/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" muted="true" controls="false"]' );
           }
           ?>
         </div>

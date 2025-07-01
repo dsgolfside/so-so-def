@@ -51,14 +51,7 @@ function ssd_enqueue_assets() {
         true
     );
 
-    // AWS IVS player SDK
-    wp_enqueue_script(
-        'ivs-player',
-        'https://player.live-video.net/1.18.0/amazon-ivs-player.min.js',
-        [],
-        null,
-        true
-    );
+    // AWS IVS player SDK - REMOVED: No longer using video streaming
 
     // Front-end JS
     wp_enqueue_script(

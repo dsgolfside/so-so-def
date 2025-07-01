@@ -18,10 +18,10 @@ get_header();
           
           if ( $is_mobile ) {
             // Mobile version - 1080x1080 square format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/30/19/12/4XHhlisHDjbw/media/hls/master.m3u8" aspect_ratio="1/1" autoplay="true" loop="true" muted="true" controls="false"]' );
+            echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/1080-x-1080-afroman-animation.jpg' ) . '" alt="Afroman Animation" class="hero-image hero-image--mobile" />';
           } else {
             // Desktop version - 1920x1080 widescreen format
-            echo do_shortcode( '[jj_aws_ivs_recording bucket="sosodefstreaming" key="ivs/v1/627627708382/m9QeULOT1S2b/2025/6/30/1/41/4BjQZkmNHof2/media/hls/master.m3u8" aspect_ratio="16/9" autoplay="true" loop="true" muted="true" controls="false"]' );
+            echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/1920-x-1080-afroman-animation.jpg' ) . '" alt="Afroman Animation" class="hero-image hero-image--desktop" />';
           }
           ?>
         </div>

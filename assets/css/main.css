@@ -1057,6 +1057,27 @@ p { margin: 0 0 1rem; }
   z-index: 2;
 }
 
+/* Hero static images styling */
+.hero .slide-content .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+/* Ensure mobile images maintain proper aspect ratio */
+.hero .slide-content .hero-image--mobile {
+  object-fit: cover;
+}
+
+/* Ensure desktop images maintain proper aspect ratio */
+.hero .slide-content .hero-image--desktop {
+  object-fit: cover;
+}
+
 /* Ensure sections don't overlap the hero */
 .hero + .section,
 .hero + section {

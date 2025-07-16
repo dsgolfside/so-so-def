@@ -11,6 +11,7 @@ jQuery(document).ready(function($){
     loop: true,
     effect: 'fade',
     fadeEffect: { crossFade: true },
+    autoHeight: true, // Auto-resize to content height for video slides
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,

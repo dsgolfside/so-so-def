@@ -4171,6 +4171,19 @@ button.social-icon {
   display: block;
 }
 
+/* On wide screens, give YouTube videos a better minimum height */
+@media (min-width: 1200px) {
+  .slide-youtube {
+    min-height: 400px; /* Minimum height on large screens */
+  }
+}
+
+@media (min-width: 1600px) {
+  .slide-youtube {
+    min-height: 500px; /* Even larger on very wide screens */
+  }
+}
+
 
 
 

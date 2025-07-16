@@ -306,8 +306,23 @@ add_action( 'save_post', 'ssd_save_homepage_slides_meta' );
 function ssd_page_hero_slides_metabox_callback( $post ) {
     wp_nonce_field( 'ssd_page_hero_slides_nonce', 'ssd_page_hero_slides_nonce_field' );
     
-    echo '<p><strong>Note:</strong> If you add slides below, your featured image becomes a fallback. If no slides are added, your featured image will show with the page title.</p>';
+    // Add control for showing featured image in header
+    $show_featured_image = get_post_meta( $post->ID, 'show_featured_image_in_header', true );
+    ?>
+    <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <h4 style="margin: 0 0 10px 0; color: #856404;">Featured Image Header Control</h4>
+        <label>
+            <input type="checkbox" name="show_featured_image_in_header" value="1" <?php checked( $show_featured_image, '1' ); ?> />
+            <strong>Show featured image in header hero section</strong>
+        </label>
+        <p style="margin: 10px 0 0 0; color: #856404; font-size: 13px;">
+            <strong>Note:</strong> Check this box if you want the featured image to appear in the header. If unchecked, only the custom slides below will show (or no header image if no slides are added).
+        </p>
+    </div>
     
+    <p><strong>Note:</strong> Add custom slides below to create a dynamic header slideshow. You can use any image URL in the slide image fields.</p>
+    
+    <?php
     for ( $i = 1; $i <= 5; $i++ ) {
         $slide_type = get_post_meta( $post->ID, "slide_{$i}_type", true );
         $slide_title = get_post_meta( $post->ID, "slide_{$i}_title", true );
@@ -474,6 +489,13 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if ( ! in_array( get_post_type( $post_id ), ['page', 'post'] ) ) return;
+
+    // Save the featured image header control
+    if ( isset( $_POST['show_featured_image_in_header'] ) ) {
+        update_post_meta( $post_id, 'show_featured_image_in_header', '1' );
+    } else {
+        update_post_meta( $post_id, 'show_featured_image_in_header', '0' );
+    }
 
     $fields = [
         'type', 'title', 'subtitle', 'image', 'youtube', 'youtube_social',

@@ -30,19 +30,21 @@ get_header();
 				}
 				
 				// Only show default slide if no additional slides exist
-				if ( !$has_additional_slides ) : ?>
+				if ( !$has_additional_slides ) : 
+					// Check if user wants to show featured image in header
+					$show_featured_image = get_post_meta( get_the_ID(), 'show_featured_image_in_header', true );
+				?>
 					<!-- Default/Fallback slide -->
 					<div class="swiper-slide">
 						<div class="slide-content">
-							<?php if ( has_post_thumbnail() ) : ?>
-								<!-- Featured Image Background -->
+							<?php if ( $show_featured_image && has_post_thumbnail() ) : ?>
+								<!-- Featured Image Background (only if explicitly enabled) -->
 								<div class="slide-background">
 									<?php the_post_thumbnail( 'full', array( 'class' => 'slide-bg-image' ) ); ?>
 								</div>
 							<?php else : ?>
-								<!-- Fallback Background -->
-								<div class="slide-background">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/GENERAL-scaled.jpg" alt="Default background" class="slide-bg-image" />
+								<!-- No header image - just empty slide -->
+								<div class="slide-background" style="background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); min-height: 300px;">
 								</div>
 							<?php endif; ?>
 							

@@ -134,7 +134,6 @@ get_header();
 											</div>
 										</div>
 									<?php endif; ?>
-								<?php endif; ?>
 								
 								<?php elseif ( $slide_type == 'image' ) : ?>
 									<!-- Image Slide -->

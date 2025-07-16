@@ -4126,3 +4126,29 @@ button.social-icon {
   stroke: #fff;
 }
 
+/* Fix for Cloudflare Stream videos in flex containers */
+/* Make the Cloudflare flex item stretch to full width */
+.slide-content > .slide-cloudflare {
+  flex: 1 1 100%;       /* allow it to grow & fill */
+  align-self: stretch;  /* stretch in the cross-axis too */
+  width: 100%;          /* force full width */
+}
+
+/* Ensure wrapper has proper dimensions */
+.slide-cloudflare > div {
+  position: relative;
+  width: 100% !important;          /* override inline styles if needed */
+  padding-top: 56.25%;             /* 16:9 aspect ratio */
+}
+
+/* Ensure iframe fills the wrapper properly */
+.slide-cloudflare iframe {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+

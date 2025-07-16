@@ -121,10 +121,12 @@ get_header(); ?>
 											}
 									?>
 										<div class="slide-cloudflare">
-											<iframe src="<?php echo $final_url; ?>" 
-												frameborder="0" 
-												allow="autoplay; encrypted-media" 
-												allowfullscreen></iframe>
+											<div style="position:relative; width:100%; padding-top:56.25%;">
+												<iframe src="<?php echo $final_url; ?>" 
+													style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+													allow="autoplay; encrypted-media" 
+													allowfullscreen></iframe>
+											</div>
 										</div>
 									<?php endif; ?>
 								

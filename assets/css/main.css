@@ -4123,23 +4123,22 @@ button.social-icon {
   stroke: #fff;
 }
 
-/* Fix for Cloudflare Stream videos in flex containers */
-/* Make the Cloudflare flex item stretch to full width */
-.slide-content > .slide-cloudflare {
+/* Fix for video slides in flex containers */
+.slide-content > .slide-cloudflare,
+.slide-content > .slide-youtube {
   flex: 1 1 100%;       /* allow it to grow & fill */
   align-self: stretch;  /* stretch in the cross-axis too */
   width: 100%;          /* force full width */
 }
 
-/* Ensure wrapper has proper dimensions */
-.slide-cloudflare > div {
+/* Unified 16:9 responsive wrapper for both YouTube and Cloudflare */
+.cf-wrapper {
   position: relative;
-  width: 100% !important;          /* override inline styles if needed */
-  padding-top: 56.25%;             /* 16:9 aspect ratio */
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
 }
 
-/* Ensure iframe fills the wrapper properly */
-.slide-cloudflare iframe {
+.cf-wrapper iframe {
   position: absolute;
   top: 0; 
   left: 0;
@@ -4152,36 +4151,6 @@ button.social-icon {
 /* Allow Swiper slides to auto-size to their content */
 .hero.swiper-container .swiper-slide {
   height: auto !important;
-}
-
-/* Apply 16:9 responsive wrapper to YouTube videos (same as Cloudflare) */
-.slide-youtube {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-}
-
-.slide-youtube iframe {
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-/* On wide screens, give YouTube videos a better minimum height */
-@media (min-width: 1200px) {
-  .slide-youtube {
-    min-height: 400px; /* Minimum height on large screens */
-  }
-}
-
-@media (min-width: 1600px) {
-  .slide-youtube {
-    min-height: 500px; /* Even larger on very wide screens */
-  }
 }
 
 

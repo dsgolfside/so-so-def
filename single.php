@@ -67,39 +67,41 @@ get_header();
 
 									<?php if ( $youtube_url ) : ?>
 										<div class="slide-youtube">
-											<?php
-											// Convert various YouTube URL formats to embed URL and handle playlists
-											$video_id = '';
-											$playlist_id = '';
-											$embed_url = '';
-											
-											// Extract video ID
-											if ( preg_match( '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/', $youtube_url, $matches ) ) {
-												$video_id = $matches[1];
-												$embed_url = 'https://www.youtube.com/embed/' . $video_id;
-											} else {
-												// Fallback - use URL as is but ensure it's an embed URL
-												$embed_url = str_replace( array( 'youtu.be/', 'youtube.com/watch?v=' ), array( 'youtube.com/embed/', 'youtube.com/embed/' ), $youtube_url );
-												$embed_url = preg_replace( '/[&?].*/', '', $embed_url ); // Remove parameters from original URL
-											}
-											
-											// Extract playlist ID if present
-											if ( preg_match( '/[?&]list=([a-zA-Z0-9_-]+)/', $youtube_url, $playlist_matches ) ) {
-												$playlist_id = $playlist_matches[1];
-											}
-											?>
-											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1<?php 
-												// If we have a playlist, use it and don't loop (let playlist progress naturally)
-												if ( $playlist_id ) {
-													echo '&list=' . esc_attr( $playlist_id );
-												} else if ( $video_id ) {
-													// Single video - loop it
-													echo '&loop=1&playlist=' . esc_attr( $video_id );
+											<div class="cf-wrapper">
+												<?php
+												// Convert various YouTube URL formats to embed URL and handle playlists
+												$video_id = '';
+												$playlist_id = '';
+												$embed_url = '';
+												
+												// Extract video ID
+												if ( preg_match( '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/', $youtube_url, $matches ) ) {
+													$video_id = $matches[1];
+													$embed_url = 'https://www.youtube.com/embed/' . $video_id;
+												} else {
+													// Fallback - use URL as is but ensure it's an embed URL
+													$embed_url = str_replace( array( 'youtu.be/', 'youtube.com/watch?v=' ), array( 'youtube.com/embed/', 'youtube.com/embed/' ), $youtube_url );
+													$embed_url = preg_replace( '/[&?].*/', '', $embed_url ); // Remove parameters from original URL
 												}
-											?>" 
-													frameborder="0" 
-													allow="autoplay; encrypted-media" 
-													allowfullscreen></iframe>
+												
+												// Extract playlist ID if present
+												if ( preg_match( '/[?&]list=([a-zA-Z0-9_-]+)/', $youtube_url, $playlist_matches ) ) {
+													$playlist_id = $playlist_matches[1];
+												}
+												?>
+												<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1<?php 
+													// If we have a playlist, use it and don't loop (let playlist progress naturally)
+													if ( $playlist_id ) {
+														echo '&list=' . esc_attr( $playlist_id );
+													} else if ( $video_id ) {
+														// Single video - loop it
+														echo '&loop=1&playlist=' . esc_attr( $video_id );
+													}
+												?>" 
+														frameborder="0" 
+														allow="autoplay; encrypted-media" 
+														allowfullscreen></iframe>
+											</div>
 										</div>
 																	<?php endif; ?>
 								
@@ -124,9 +126,8 @@ get_header();
 											}
 									?>
 										<div class="slide-cloudflare">
-											<div style="position:relative; width:100%; padding-top:56.25%;">
+											<div class="cf-wrapper">
 												<iframe src="<?php echo $final_url; ?>" 
-													style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
 											</div>

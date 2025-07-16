@@ -85,18 +85,20 @@ get_header(); ?>
 											
 
 											?>
-											<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1<?php 
-												// If we have a playlist, use it and don't loop (let playlist progress naturally)
-												if ( $playlist_id ) {
-													echo '&list=' . esc_attr( $playlist_id );
-												} else if ( $video_id ) {
-													// Single video - loop it
-													echo '&loop=1&playlist=' . esc_attr( $video_id );
-												}
-											?>" 
-													frameborder="0" 
-													allow="autoplay; encrypted-media" 
-													allowfullscreen></iframe>
+											<div class="cf-wrapper">
+												<iframe src="<?php echo esc_url( $embed_url ); ?>?autoplay=1&mute=1&controls=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&fs=1<?php 
+													// If we have a playlist, use it and don't loop (let playlist progress naturally)
+													if ( $playlist_id ) {
+														echo '&list=' . esc_attr( $playlist_id );
+													} else if ( $video_id ) {
+														// Single video - loop it
+														echo '&loop=1&playlist=' . esc_attr( $video_id );
+													}
+												?>" 
+														frameborder="0" 
+														allow="autoplay; encrypted-media" 
+														allowfullscreen></iframe>
+											</div>
 										</div>
 																	<?php endif; ?>
 								
@@ -121,9 +123,8 @@ get_header(); ?>
 											}
 									?>
 										<div class="slide-cloudflare">
-											<div style="position:relative; width:100%; padding-top:56.25%;">
+											<div class="cf-wrapper">
 												<iframe src="<?php echo $final_url; ?>" 
-													style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
 											</div>

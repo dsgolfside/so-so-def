@@ -114,8 +114,12 @@ get_header(); ?>
 												$customer_code = $matches[1];
 												$video_uid = $matches[2];
 												
-												// Construct clean URL with proper autoplay parameters for Swiper.js compatibility
-												$final_url = "https://customer-{$customer_code}.cloudflarestream.com/{$video_uid}/iframe?autoplay=true&muted=true&controls=true&loop=true";
+												// Correctly rebuild the clean embed URL with autoplay params
+												$final_url = sprintf(
+													'https://customer-%s.cloudflarestream.com/%s/iframe?autoplay=true&muted=true&controls=true&loop=true',
+													$customer_code,
+													$video_uid
+												);
 											}
 											?>
 											<div style="position: relative; padding-top: 56.25%; background: #000;">

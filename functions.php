@@ -396,7 +396,10 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                     <label for="slide_<?php echo $i; ?>_cloudflare">
                         <?php _e( 'Cloudflare Stream Iframe URL', 'so-so-def' ); ?><br>
                         <input type="url" name="slide_<?php echo $i; ?>_cloudflare" value="<?php echo esc_attr( get_post_meta( $post->ID, "slide_{$i}_cloudflare", true ) ); ?>" style="width: 100%;" />
-                        <small>Paste the full iframe src URL from Cloudflare Stream (e.g., https://customer-xyz.cloudflarestream.com/abc123/iframe...)</small>
+                        <small>Paste the Cloudflare Stream iframe URL. You can use either format:<br/>
+                • Full URL: https://customer-xyz.cloudflarestream.com/abc123/iframe?poster=...<br/>
+                • Clean URL: https://customer-xyz.cloudflarestream.com/abc123/iframe<br/>
+                System will auto-add autoplay, mute, and loop parameters for Swiper.js compatibility.</small>
                     </label>
                 </p>
                 

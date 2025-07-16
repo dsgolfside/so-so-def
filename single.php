@@ -110,15 +110,16 @@ get_header();
 									<?php if ( $cloudflare_url ) : ?>
 										<div class="slide-cloudflare">
 											<?php
-											// Clean and add autoplay parameters to Cloudflare Stream URL
-											$cleaned_url = $cloudflare_url;
+											// Extract customer code and video UID from Cloudflare Stream URL
+											$final_url = $cloudflare_url;
 											
-											// Remove any problematic encoded parameters from poster URL
-											$cleaned_url = preg_replace('/(%3F|%26)[^&]*/', '', $cleaned_url);
-											
-											// Add autoplay and mute parameters for mobile compatibility
-											$separator = (strpos($cleaned_url, '?') !== false) ? '&' : '?';
-											$final_url = $cleaned_url . $separator . 'autoplay=true&muted=true&controls=true';
+											if (preg_match('/https:\/\/customer-([^.]+)\.cloudflarestream\.com\/([^\/\?]+)\/iframe/', $cloudflare_url, $matches)) {
+												$customer_code = $matches[1];
+												$video_uid = $matches[2];
+												
+												// Construct clean URL with proper autoplay parameters for Swiper.js compatibility
+												$final_url = "https://customer-{$customer_code}.cloudflarestream.com/{$video_uid}/iframe?autoplay=true&muted=true&controls=true&loop=true";
+											}
 											?>
 											<div style="position: relative; padding-top: 56.25%; background: #000;">
 												<iframe

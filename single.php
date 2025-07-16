@@ -66,8 +66,8 @@ get_header();
 									<?php $youtube_url = get_post_meta( get_the_ID(), "slide_{$i}_youtube", true ); ?>
 
 									<?php if ( $youtube_url ) : ?>
-										<div class="slide-youtube">
-											<div class="cf-wrapper">
+																		<div class="slide-youtube">
+									<div style="position:relative; width:100%; padding-top:56.25%;">
 												<?php
 												// Convert various YouTube URL formats to embed URL and handle playlists
 												$video_id = '';
@@ -97,15 +97,16 @@ get_header();
 														// Single video - loop it
 														echo '&loop=1&playlist=' . esc_attr( $video_id );
 													}
-												?>" 
-														frameborder="0" 
-														allow="autoplay; encrypted-media" 
-														allowfullscreen></iframe>
-											</div>
-										</div>
-																	<?php endif; ?>
-								
-								<?php elseif ( $slide_type === 'cloudflare' ) : ?>
+																				?>" 
+									frameborder="0"
+									allow="autoplay; encrypted-media"
+									allowfullscreen
+									style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+								</div>
+							</div>
+													<?php endif; ?>
+
+					<?php elseif ( $slide_type === 'cloudflare' ) : ?>
 									<?php
 										$cloudflare_url = get_post_meta( get_the_ID(), "slide_{$i}_cloudflare", true );
 										if ( $cloudflare_url ) :
@@ -127,10 +128,11 @@ get_header();
 									?>
 										<div class="slide-cloudflare">
 											<div class="cf-wrapper">
-												<iframe src="<?php echo $final_url; ?>" 
-													frameborder="0" 
-													allow="autoplay; encrypted-media" 
-													allowfullscreen></iframe>
+																						<iframe src="<?php echo $final_url; ?>" 
+											frameborder="0" 
+											allow="autoplay; encrypted-media" 
+											allowfullscreen
+											style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
 											</div>
 										</div>
 									<?php endif; ?>

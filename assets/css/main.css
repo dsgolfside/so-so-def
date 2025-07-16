@@ -4127,10 +4127,10 @@ button.social-icon {
 }
 
 /* Fix for Cloudflare Stream videos in flex containers */
-/* Make the Cloudflare flex item stretch to full width */
+/* Make the Cloudflare flex item stretch to full width but not height */
 .slide-content > .slide-cloudflare {
-  flex: 1 1 100%;       /* allow it to grow & fill */
-  align-self: stretch;  /* stretch in the cross-axis too */
+  flex: 1 1 100%;       /* allow it to grow & fill width */
+  align-self: flex-start; /* don't stretch height, start at top */
   width: 100%;          /* force full width */
 }
 
@@ -4150,5 +4150,11 @@ button.social-icon {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* Prevent video slides from taking full viewport height - only for video slides */
+.slide-content:has(.slide-cloudflare),
+.slide-content:has(.slide-youtube) {
+  align-items: flex-start; /* Align video content to top instead of center */
 }
 

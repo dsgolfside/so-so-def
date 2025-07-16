@@ -125,6 +125,7 @@ get_header(); ?>
 										<div class="slide-cloudflare">
 											<div class="cf-wrapper">
 												<iframe src="<?php echo $final_url; ?>" 
+													frameborder="0" 
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
 											</div>

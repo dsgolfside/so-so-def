@@ -945,6 +945,7 @@ p { margin: 0 0 1rem; }
 
 /* ——— Responsive Slider Height ——— */
 .hero.swiper-container {
+  min-height: 50vh; /* Minimum height for layout, but allow autoHeight to override */
   position: relative;
   z-index: 1;
   padding: 0;
@@ -1090,6 +1091,7 @@ p { margin: 0 0 1rem; }
   }
   
   .hero.swiper-container {
+    min-height: 50vh; /* Minimum height for mobile layout */
     padding: 0;
   }
   

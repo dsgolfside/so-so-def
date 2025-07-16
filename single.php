@@ -103,34 +103,38 @@ get_header();
 										</div>
 																	<?php endif; ?>
 								
-								<?php elseif ( $slide_type == 'cloudflare' ) : ?>
-									<!-- Cloudflare Stream Video Slide -->
-									<?php $cloudflare_url = get_post_meta( get_the_ID(), "slide_{$i}_cloudflare", true ); ?>
-
-									<?php if ( $cloudflare_url ) : ?>
-										<div class="slide-cloudflare">
-											<?php
-											// Extract customer code and video UID from Cloudflare Stream URL
-											$final_url = $cloudflare_url;
-											
-											if (preg_match('/https:\/\/customer-([^.]+)\.cloudflarestream\.com\/([^\/\?]+)\/iframe/', $cloudflare_url, $matches)) {
-												$customer_code = $matches[1];
-												$video_uid = $matches[2];
-												
-												// Correctly rebuild the clean embed URL with autoplay params
+								<?php elseif ( $slide_type === 'cloudflare' ) : ?>
+									<?php
+										$cloudflare_url = get_post_meta( get_the_ID(), "slide_{$i}_cloudflare", true );
+										if ( $cloudflare_url ) :
+											// Try to extract customer code & UID; fallback to raw URL otherwise
+											if ( preg_match(
+													'#^https://customer-([^.]+)\.cloudflarestream\.com/([^/?]+)/iframe#',
+													$cloudflare_url,
+													$matches
+												) ) {
 												$final_url = sprintf(
 													'https://customer-%s.cloudflarestream.com/%s/iframe?autoplay=true&muted=true&controls=true&loop=true',
-													$customer_code,
-													$video_uid
+													esc_attr( $matches[1] ),
+													esc_attr( $matches[2] )
 												);
+											} else {
+												// If someone pasted the iframe URL with params already, use it
+												$final_url = esc_url( $cloudflare_url );
 											}
-											?>
-											<iframe src="<?php echo esc_url( $final_url ); ?>" 
-												frameborder="0" 
-												allow="autoplay; encrypted-media" 
-												allowfullscreen></iframe>
+									?>
+										<div class="slide-cloudflare">
+											<div style="position:relative; padding-top:56.25%;">
+												<iframe
+													src="<?php echo $final_url; ?>"
+													style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+													allow="autoplay; encrypted-media; picture-in-picture"
+													allowfullscreen
+												></iframe>
+											</div>
 										</div>
 									<?php endif; ?>
+								<?php endif; ?>
 								
 								<?php elseif ( $slide_type == 'image' ) : ?>
 									<!-- Image Slide -->

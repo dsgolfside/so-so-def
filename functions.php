@@ -391,17 +391,23 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                     </label>
                 </p>
                 
-                <!-- Cloudflare Stream Field -->
-                <p class="cloudflare-field" style="display: <?php echo ( $slide_type == 'cloudflare' ) ? 'block' : 'none'; ?>;">
-                    <label for="slide_<?php echo $i; ?>_cloudflare">
-                        <?php _e( 'Cloudflare Stream Iframe URL', 'so-so-def' ); ?><br>
-                        <input type="url" name="slide_<?php echo $i; ?>_cloudflare" value="<?php echo esc_attr( get_post_meta( $post->ID, "slide_{$i}_cloudflare", true ) ); ?>" style="width: 100%;" />
-                        <small>Paste the Cloudflare Stream iframe URL. You can use either format:<br/>
-                • Full URL: https://customer-xyz.cloudflarestream.com/abc123/iframe?poster=...<br/>
-                • Clean URL: https://customer-xyz.cloudflarestream.com/abc123/iframe<br/>
-                System will auto-add autoplay, mute, and loop parameters for Swiper.js compatibility.</small>
-                    </label>
-                </p>
+                        <!-- Cloudflare Stream Field -->
+        <p class="cloudflare-field" style="display: <?php echo ( $slide_type === 'cloudflare' ) ? 'block' : 'none'; ?>;">
+            <label for="slide_<?php echo $i; ?>_cloudflare">
+                <?php _e( 'Cloudflare Stream Iframe URL', 'so-so-def' ); ?><br>
+                <input
+                    type="url"
+                    id="slide_<?php echo $i; ?>_cloudflare"
+                    name="slide_<?php echo $i; ?>_cloudflare"
+                    value="<?php echo esc_attr( get_post_meta( $post->ID, "slide_{$i}_cloudflare", true ) ); ?>"
+                    style="width:100%;"
+                />
+                <small>
+                    Paste the full Cloudflare Stream iframe URL, e.g.:<br>
+                    https://customer-8gh259qxpp9ev1dn.cloudflarestream.com/8deb1de90d431ea3df66d48d8f060464/iframe
+                </small>
+            </label>
+        </p>
                 
                 <!-- Social Media Fields (for Artist type) -->
                 <div class="social-fields" style="display: <?php echo ( $slide_type == 'artist' ) ? 'block' : 'none'; ?>;">

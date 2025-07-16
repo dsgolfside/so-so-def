@@ -973,7 +973,7 @@ p { margin: 0 0 1rem; }
 .hero .slide-content {
   position: relative;
   z-index: 2;
-  height: 100%;
+  height: auto; /* Allow content to determine height for autoHeight to work */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4147,6 +4147,11 @@ button.social-icon {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* Allow Swiper slides to auto-size to their content */
+.hero.swiper-container .swiper-slide {
+  height: auto !important;
 }
 
 

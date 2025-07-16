@@ -4152,5 +4152,12 @@ button.social-icon {
   display: block;
 }
 
+/* Override min-height for video slides to allow autoHeight to work */
+.hero.swiper-container:has(.slide-cloudflare),
+.hero.swiper-container:has(.slide-youtube) {
+  min-height: auto !important;
+  height: auto !important;
+}
+
 
 

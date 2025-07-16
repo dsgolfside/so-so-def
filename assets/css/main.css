@@ -4132,13 +4132,17 @@ button.social-icon {
 }
 
 /* Unified 16:9 responsive wrapper for both YouTube and Cloudflare */
-.cf-wrapper {
+.cf-wrapper,
+.slide-youtube .cf-wrapper,
+.slide-cloudflare .cf-wrapper {
   position: relative;
   width: 100%;
   padding-top: 56.25%; /* 16:9 aspect ratio */
 }
 
-.cf-wrapper iframe {
+.cf-wrapper iframe,
+.slide-youtube .cf-wrapper iframe,
+.slide-cloudflare .cf-wrapper iframe {
   position: absolute;
   top: 0; 
   left: 0;

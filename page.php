@@ -122,14 +122,10 @@ get_header(); ?>
 												);
 											}
 											?>
-											<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-												<iframe
-													src="<?php echo esc_url( $final_url ); ?>"
-													style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-													allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-													allowfullscreen="true">
-												</iframe>
-											</div>
+											<iframe src="<?php echo esc_url( $final_url ); ?>" 
+												frameborder="0" 
+												allow="autoplay; encrypted-media" 
+												allowfullscreen></iframe>
 										</div>
 									<?php endif; ?>
 								

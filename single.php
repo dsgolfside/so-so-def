@@ -119,21 +119,20 @@ get_header();
 												
 												// Correctly rebuild the clean embed URL with autoplay params
 												$final_url = sprintf(
-													'https://customer-%s.cloudflarestream.com/%s/iframe?autoplay=true&muted=true&controls=true&loop=true',
+													'https://customer-%s.cloudflarestream.com/%s/iframe?muted=true&controls=true',
 													$customer_code,
 													$video_uid
 												);
 											}
 											?>
-											<div style="position: relative; padding-top: 56.25%; background: #000;">
-												<iframe
-													src="<?php echo esc_url( $final_url ); ?>"
-													loading="lazy"
-													style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
-													allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-													allowfullscreen="true">
-												</iframe>
-											</div>
+											<iframe
+												src="<?php echo esc_url( $final_url ); ?>"
+												width="1280"
+												height="720"
+												style="border: none; max-width: 100%;"
+												allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+												allowfullscreen="true">
+											</iframe>
 										</div>
 									<?php endif; ?>
 								

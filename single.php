@@ -109,9 +109,20 @@ get_header();
 
 									<?php if ( $cloudflare_url ) : ?>
 										<div class="slide-cloudflare">
+											<?php
+											// Clean and add autoplay parameters to Cloudflare Stream URL
+											$cleaned_url = $cloudflare_url;
+											
+											// Remove any problematic encoded parameters from poster URL
+											$cleaned_url = preg_replace('/(%3F|%26)[^&]*/', '', $cleaned_url);
+											
+											// Add autoplay and mute parameters for mobile compatibility
+											$separator = (strpos($cleaned_url, '?') !== false) ? '&' : '?';
+											$final_url = $cleaned_url . $separator . 'autoplay=true&muted=true&controls=true';
+											?>
 											<div style="position: relative; padding-top: 56.25%; background: #000;">
 												<iframe
-													src="<?php echo esc_url( $cloudflare_url ); ?>"
+													src="<?php echo esc_url( $final_url ); ?>"
 													loading="lazy"
 													style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
 													allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"

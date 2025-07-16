@@ -98,8 +98,26 @@ get_header(); ?>
 													allow="autoplay; encrypted-media" 
 													allowfullscreen></iframe>
 										</div>
+																	<?php endif; ?>
+								
+								<?php elseif ( $slide_type == 'cloudflare' ) : ?>
+									<!-- Cloudflare Stream Video Slide -->
+									<?php $cloudflare_url = get_post_meta( get_the_ID(), "slide_{$i}_cloudflare", true ); ?>
+
+									<?php if ( $cloudflare_url ) : ?>
+										<div class="slide-cloudflare">
+											<div style="position: relative; padding-top: 56.25%; background: #000;">
+												<iframe
+													src="<?php echo esc_url( $cloudflare_url ); ?>"
+													loading="lazy"
+													style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+													allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+													allowfullscreen="true">
+												</iframe>
+											</div>
+										</div>
 									<?php endif; ?>
-									
+								
 								<?php elseif ( $slide_type == 'image' ) : ?>
 									<!-- Image Slide -->
 									<?php $image_url = get_post_meta( get_the_ID(), "slide_{$i}_image", true ); ?>

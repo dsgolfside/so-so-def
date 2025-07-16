@@ -346,11 +346,12 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
             <p>
                 <label>
                     <?php _e( 'Slide Type', 'so-so-def' ); ?><br>
-                    <select name="slide_<?php echo $i; ?>_type" style="width: 200px;">
-                        <option value=""><?php _e( 'Select slide type...', 'so-so-def' ); ?></option>
+                    <select name="slide_<?php echo $i; ?>_type" id="slide_<?php echo $i; ?>_type" style="width: 100%;">
+                        <option value="" <?php selected( $slide_type, '' ); ?>><?php _e( 'None', 'so-so-def' ); ?></option>
                         <option value="image" <?php selected( $slide_type, 'image' ); ?>><?php _e( 'Image Slide', 'so-so-def' ); ?></option>
                         <option value="youtube" <?php selected( $slide_type, 'youtube' ); ?>><?php _e( 'YouTube Video', 'so-so-def' ); ?></option>
-                        <option value="artist" <?php selected( $slide_type, 'artist' ); ?>><?php _e( 'Artist (with social icons)', 'so-so-def' ); ?></option>
+                        <option value="cloudflare" <?php selected( $slide_type, 'cloudflare' ); ?>><?php _e( 'Cloudflare Stream Video', 'so-so-def' ); ?></option>
+                        <option value="artist" <?php selected( $slide_type, 'artist' ); ?>><?php _e( 'Artist Spotlight', 'so-so-def' ); ?></option>
                     </select>
                 </label>
             </p>
@@ -383,10 +384,19 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                 
                 <!-- YouTube Field -->
                 <p class="youtube-field" style="display: <?php echo ( $slide_type == 'youtube' ) ? 'block' : 'none'; ?>;">
-                    <label>
+                    <label for="slide_<?php echo $i; ?>_youtube">
                         <?php _e( 'YouTube URL', 'so-so-def' ); ?><br>
                         <input type="url" name="slide_<?php echo $i; ?>_youtube" value="<?php echo esc_attr( $slide_youtube ); ?>" style="width: 100%;" />
                         <small>Any YouTube URL format works: https://youtu.be/VIDEO_ID or https://www.youtube.com/watch?v=VIDEO_ID</small>
+                    </label>
+                </p>
+                
+                <!-- Cloudflare Stream Field -->
+                <p class="cloudflare-field" style="display: <?php echo ( $slide_type == 'cloudflare' ) ? 'block' : 'none'; ?>;">
+                    <label for="slide_<?php echo $i; ?>_cloudflare">
+                        <?php _e( 'Cloudflare Stream Iframe URL', 'so-so-def' ); ?><br>
+                        <input type="url" name="slide_<?php echo $i; ?>_cloudflare" value="<?php echo esc_attr( get_post_meta( $post->ID, "slide_{$i}_cloudflare", true ) ); ?>" style="width: 100%;" />
+                        <small>Paste the full iframe src URL from Cloudflare Stream (e.g., https://customer-xyz.cloudflarestream.com/abc123/iframe...)</small>
                     </label>
                 </p>
                 
@@ -447,7 +457,7 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                     const selectedType = select.value;
                     
                     // Hide all type-specific fields
-                    slideContainer.querySelectorAll('.image-field, .youtube-field, .artist-field, .social-fields').forEach(field => {
+                    slideContainer.querySelectorAll('.image-field, .youtube-field, .cloudflare-field, .artist-field, .social-fields').forEach(field => {
                         field.style.display = 'none';
                     });
                     
@@ -458,6 +468,9 @@ function ssd_page_hero_slides_metabox_callback( $post ) {
                     } else if (selectedType === 'youtube') {
                         const youtubeField = slideContainer.querySelector('.youtube-field');
                         if (youtubeField) youtubeField.style.display = 'block';
+                    } else if (selectedType === 'cloudflare') {
+                        const cloudflareField = slideContainer.querySelector('.cloudflare-field');
+                        if (cloudflareField) cloudflareField.style.display = 'block';
                     } else if (selectedType === 'artist') {
                         const artistField = slideContainer.querySelector('.artist-field');
                         const socialFields = slideContainer.querySelector('.social-fields');
@@ -498,7 +511,7 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
     }
 
     $fields = [
-        'type', 'title', 'subtitle', 'image', 'youtube', 'youtube_social',
+                    'type', 'title', 'subtitle', 'image', 'youtube', 'youtube_social', 'cloudflare',
         'instagram', 'spotify', 'twitter', 'tiktok', 
         'soundcloud', 'apple_music', 'website'
     ];
@@ -508,7 +521,7 @@ function ssd_save_page_hero_slides_meta( $post_id ) {
             $field_name = "slide_{$i}_{$field}";
             if ( isset( $_POST[$field_name] ) ) {
 
-                if ( in_array( $field, ['youtube', 'youtube_social', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
+                if ( in_array( $field, ['youtube', 'youtube_social', 'cloudflare', 'instagram', 'spotify', 'twitter', 'tiktok', 'soundcloud', 'apple_music', 'website', 'image'] ) ) {
                     update_post_meta( $post_id, $field_name, esc_url_raw( $_POST[$field_name] ) );
                 } else {
                     update_post_meta( $post_id, $field_name, sanitize_text_field( $_POST[$field_name] ) );

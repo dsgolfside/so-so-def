@@ -14,41 +14,36 @@ get_header();
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		
+		<?php
+		// Check if there are any additional slides first
+		$has_additional_slides = false;
+		for ( $i = 1; $i <= 5; $i++ ) {
+			$slide_type = get_post_meta( get_the_ID(), "slide_{$i}_type", true );
+			if ( $slide_type ) {
+				$has_additional_slides = true;
+				break;
+			}
+		}
+		
+		// Check if user wants to show featured image in header
+		$show_featured_image = get_post_meta( get_the_ID(), 'show_featured_image_in_header', true );
+		$has_featured_image = $show_featured_image && has_post_thumbnail();
+		
+		// Only show header section if there are slides OR featured image is enabled
+		if ( $has_additional_slides || $has_featured_image ) : ?>
 		<!-- Page Hero Swiper -->
 		<section class="hero page-hero-swiper swiper-container" data-aos="fade">
 			<div class="swiper-wrapper">
 				
 				<?php
-				// Check if there are any additional slides first
-				$has_additional_slides = false;
-				for ( $i = 1; $i <= 5; $i++ ) {
-					$slide_type = get_post_meta( get_the_ID(), "slide_{$i}_type", true );
-					if ( $slide_type ) {
-						$has_additional_slides = true;
-						break;
-					}
-				}
-				
-				// Only show default slide if no additional slides exist
-				if ( !$has_additional_slides ) : 
-					// Check if user wants to show featured image in header
-					$show_featured_image = get_post_meta( get_the_ID(), 'show_featured_image_in_header', true );
-				?>
-					<!-- Default/Fallback slide -->
+				// Only show default slide if no additional slides exist but featured image is enabled
+				if ( !$has_additional_slides && $has_featured_image ) : ?>
+					<!-- Featured Image slide -->
 					<div class="swiper-slide">
 						<div class="slide-content">
-							<?php if ( $show_featured_image && has_post_thumbnail() ) : ?>
-								<!-- Featured Image Background (only if explicitly enabled) -->
-								<div class="slide-background">
-									<?php the_post_thumbnail( 'full', array( 'class' => 'slide-bg-image' ) ); ?>
-								</div>
-							<?php else : ?>
-								<!-- No header image - just empty slide -->
-								<div class="slide-background" style="background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); min-height: 300px;">
-								</div>
-							<?php endif; ?>
-							
-
+							<div class="slide-background">
+								<?php the_post_thumbnail( 'full', array( 'class' => 'slide-bg-image' ) ); ?>
+							</div>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -184,8 +179,8 @@ get_header();
 			<?php 
 			$total_slides = 0;
 			
-			// Count default slide (only if no additional slides)
-			if ( !$has_additional_slides ) {
+			// Count featured image slide (only if enabled and no additional slides)
+			if ( !$has_additional_slides && $has_featured_image ) {
 				$total_slides++;
 			}
 			
@@ -207,6 +202,7 @@ get_header();
 				<div class="swiper-pagination"></div>
 			<?php endif; ?>
 		</section>
+		<?php endif; // End header section conditional ?>
 
 		<!-- Single Post Content -->
 		<section class="page-content">

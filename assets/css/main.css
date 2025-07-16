@@ -945,7 +945,7 @@ p { margin: 0 0 1rem; }
 
 /* ——— Responsive Slider Height ——— */
 .hero.swiper-container {
-  height: calc(100vh - 72px); /* Full viewport minus header height */
+  min-height: calc(100vh - 72px); /* Minimum height, but allow autoHeight to shrink */
   position: relative;
   z-index: 1;
   padding: 0;
@@ -1092,7 +1092,7 @@ p { margin: 0 0 1rem; }
   }
   
   .hero.swiper-container {
-    height: calc(100vh - 67px); /* Full viewport minus mobile header height */
+    min-height: calc(100vh - 67px); /* Minimum height, but allow autoHeight to shrink */
     padding: 0;
   }
   

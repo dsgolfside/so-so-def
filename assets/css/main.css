@@ -945,7 +945,6 @@ p { margin: 0 0 1rem; }
 
 /* ——— Responsive Slider Height ——— */
 .hero.swiper-container {
-  min-height: calc(100vh - 72px); /* Minimum height, but allow autoHeight to shrink */
   position: relative;
   z-index: 1;
   padding: 0;
@@ -1092,7 +1091,6 @@ p { margin: 0 0 1rem; }
   }
   
   .hero.swiper-container {
-    min-height: calc(100vh - 67px); /* Minimum height, but allow autoHeight to shrink */
     padding: 0;
   }
   
@@ -4152,12 +4150,7 @@ button.social-icon {
   display: block;
 }
 
-/* Override min-height for video slides to allow autoHeight to work */
-.hero.swiper-container:has(.slide-cloudflare),
-.hero.swiper-container:has(.slide-youtube) {
-  min-height: auto !important;
-  height: auto !important;
-}
+
 
 
 
